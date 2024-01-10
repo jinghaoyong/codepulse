@@ -28,7 +28,7 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "baseHref": "/codepulse_web_frontend/"
+            "baseHref": "/codepulse/"
           },
           "configurations": {
             "production": {
