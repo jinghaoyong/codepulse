@@ -1,0 +1,36 @@
+.toast-container {
+    width: 350px;
+    height: 100px;
+    color: #fff;
+    background-color: #51a351;
+    margin: 10px;
+    padding: 20px 25px;
+    position: fixed;
+    z-index: 1001;
+    box-shadow: 0 0 12px #999;
+    border-radius: 3px;
+    display: flex;
+
+    .toast-content {
+        align-self: center;
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            display: inline;
+            border-radius: #fff;
+            color: #51a351;
+            padding-left: 6px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    }
+
+    .closeBtn {
+        position: absolute;
+        right: 12px;
+        top: 2px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+}
