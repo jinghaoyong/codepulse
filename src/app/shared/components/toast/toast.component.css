@@ -1,36 +1,74 @@
-.toast-container {
-    width: 350px;
-    height: 100px;
-    color: #fff;
-    background-color: #51a351;
-    margin: 10px;
-    padding: 20px 25px;
-    position: fixed;
-    z-index: 1001;
-    box-shadow: 0 0 12px #999;
-    border-radius: 3px;
+::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm {
+    top: calc(100vh - 60vh);
+    padding-bottom: 0;
+    height: 286px;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content {
+    height: 100%;
+    border-radius: 6px;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body {
+    height: 100%;
+    padding: 24px;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper {
     display: flex;
-
-    .toast-content {
-        align-self: center;
-
-        .icon {
-            width: 24px;
-            height: 24px;
-            display: inline;
-            border-radius: #fff;
-            color: #51a351;
-            padding-left: 6px;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-    }
-
-    .closeBtn {
-        position: absolute;
-        right: 12px;
-        top: 2px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-}
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-content {
+    margin: 0;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-content app-modal-confirm p {
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-content app-modal-confirm p:first-of-type {
+    font-size: 24px;
+    line-height: 30px;
+    color: #15243c;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-content app-modal-confirm p:last-of-type {
+    font-size: 16px;
+    line-height: 24px;
+    color: #5f5f5f;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-btns {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-btns button:first-of-type {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #444b55;
+    border: 0;
+    box-shadow: none;
+  }
+  
+  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-btns button:last-of-type {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #edf3fb;
+    background: #F29637;
+    border-radius: 6px;
+  }
+  

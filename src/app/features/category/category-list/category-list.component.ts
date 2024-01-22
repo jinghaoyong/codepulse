@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../models/category.model';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { ToastComponent } from 'src/app/shared/components/toast/toast.component';
+import { ModalService } from 'src/app/shared/services/modal/modal.service';
 
 @Component({
   selector: 'app-category-list',
@@ -13,7 +15,12 @@ export class CategoryListComponent implements OnInit {
   // categories?: Category[];
   categories$?: Observable<Category[]>;
 
-  constructor(private categorySer: CategoryService) {
+  subscription = new Subscription();
+  
+  constructor(
+    private categorySer: CategoryService,
+    private modalService: ModalService,
+    ) {
 
   }
   ngOnInit(): void {
@@ -24,5 +31,31 @@ export class CategoryListComponent implements OnInit {
     //     this.categories = res;
     //   }
     // });
+
+    this.openBanModal("hahaha");
   }
+
+  openBanModal(id: string): void {
+
+    this.subscription.add(
+      this.modalService.createModalConfirmSM<ToastComponent, any>(
+        '',
+        ToastComponent,
+        {
+          title: '_MODAL.TITLE',
+          subTitle: '_MODAL.CONTENT',
+        },
+        {
+          nzClosable: false,
+          nzOkText: 'Yes, I Confirm',
+          nzOnOk: () => {
+            console.log("haha")
+          },
+        },
+        'confirm'
+      )
+    );
+  }
+
+
 }

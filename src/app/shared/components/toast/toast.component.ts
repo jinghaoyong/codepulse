@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -7,21 +8,19 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./toast.component.css']
 })
 export class ToastComponent implements OnInit {
-  @Input() showToast: boolean = false;
+  @Input() data!: any;
+  prefixTranslate: string = 'MODAL_CONFIRM.';
 
-  private status: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-
-  constructor(
-    private toastr: ToastrService
-  ) {
-
+  constructor(private modal: NzModalRef) {
+    this.modal.updateConfig({ nzWrapClassName: 'modal-confirm' });
   }
 
-  ngOnInit(): void {
-    this.showToast = true;
-  }
+  ngOnInit(): void {}
 
-  closeToast() {
-    this.showToast = false;
+  handleCancel() {
+    this.modal.destroy(null);
+  }
+  handleConfirm() {
+    this.modal.destroy(this.data);
   }
 }
