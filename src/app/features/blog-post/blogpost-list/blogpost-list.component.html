@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="mt-3">BlogPost List</h1>
-    
+
     <div class="d-flex justify-content-end mt-3">
         <a [routerLink]="['/admin/blogposts/add']" class="btn btn-primary">Add BlogPost</a>
     </div>
@@ -12,6 +12,8 @@
                     <th>Title</th>
                     <th>Short Description</th>
                     <th>Is Visible?</th>
+                    <th>Categories</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -19,9 +21,17 @@
                     <td>{{blogPost.title}}</td>
                     <td>{{blogPost.shortDescription}}</td>
                     <td>{{blogPost.isVisible}}</td>
-               </tr>
-        </tbody>
+                    <td>
+                        <span *ngFor="let category of blogPost.categories">
+                            <span class="badge bg-secondary me-2"> {{category.name}}</span>
+                        </span>
+                    </td>
+                    <td>
+                        <a class="btn btn-light" [routerLink]="['/admin/blogposts', blogPost.id]">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </ng-container>
-    
+
 </div>
