@@ -27,7 +27,10 @@
                         </span>
                     </td>
                     <td>
-                        <a class="btn btn-light" [routerLink]="['/admin/blogposts', blogPost.id]">Edit</a>
+                        <div class="d-flex m-1">
+                            <a class="btn btn-light m-1" [routerLink]="['/admin/blogposts', blogPost.id]">Edit</a>
+                            <a class="btn btn-danger m-1" (click)="onDelete(blogPost.id)">Delete</a>
+                        </div>
                     </td>
                 </tr>
             </tbody>

@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
+import { ImageSelectorComponent } from './shared/components/image-selector/image-selector.component';
 
 registerLocaleData(en);
 
@@ -37,6 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
     AddBlogpostComponent,
     ToastComponent,
     EditBlogpostComponent,
+    ImageSelectorComponent,
   ],
   imports: [
     BrowserModule,
