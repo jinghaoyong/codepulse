@@ -20,6 +20,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 import { ImageSelectorComponent } from './shared/components/image-selector/image-selector.component';
+import { HomeComponent } from './features/public/home/home.component';
+import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
 
 registerLocaleData(en);
 
@@ -39,6 +41,8 @@ export function createTranslateLoader(http: HttpClient) {
     ToastComponent,
     EditBlogpostComponent,
     ImageSelectorComponent,
+    HomeComponent,
+    BlogDetailsComponent,
   ],
   imports: [
     BrowserModule,

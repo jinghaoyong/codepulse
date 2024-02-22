@@ -6,6 +6,7 @@ import { BlogPost } from '../models/blog-post.model';
 import { CategoryService } from '../../category/services/category.service';
 import { Category } from '../../category/models/category.model';
 import { UpdateBlogPost } from '../models/update-blog-post.model';
+import { ImageService } from 'src/app/shared/components/image-selector/image.service';
 
 @Component({
   selector: 'app-edit-blogpost',
@@ -23,12 +24,14 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   updateBlogPostSubscription?: Subscription;
   getBlogPostSubscription?: Subscription;
   deleteBlogPostSubscription?: Subscription;
+  imageSelectSubscription?: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private blogPostServ: BlogPostService,
     private categoryServ: CategoryService,
-    private router: Router
+    private router: Router,
+    private imageServ: ImageService
   ) {
 
   }
@@ -39,13 +42,25 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
       next: (params) => {
         this.id = params.get('id');
 
-        if (this.id)
+        if (this.id) {
           this.getBlogPostSubscription = this.blogPostServ.getBlogPostById(this.id).subscribe({
             next: res => {
               this.model = res
               this.selectedCategories = res.categories.map(x => x.id);
             }
           })
+        }
+
+        this.imageSelectSubscription =  this.imageServ.onSelectImage()
+          .subscribe({
+            next: (response) => {
+              if (this.model) {
+                this.model.featuredImageUrl = response.url;
+                this.isImageSelectorVisible = false;
+              }
+            }
+          })
+
       }
     })
   }
@@ -86,7 +101,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   openImageSelector(): void {
     this.isImageSelectorVisible = true;
   }
-  closeImageSelector():void{
+  closeImageSelector(): void {
     this.isImageSelectorVisible = false;
   }
   ngOnDestroy(): void {
@@ -94,5 +109,6 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
     this.updateBlogPostSubscription?.unsubscribe();
     this.getBlogPostSubscription?.unsubscribe();
     this.deleteBlogPostSubscription?.unsubscribe();
+    this.imageSelectSubscription?.unsubscribe();
   }
 }
