@@ -32,7 +32,7 @@ export class CategoryListComponent implements OnInit {
     //   }
     // });
 
-    this.openBanModal("hahaha");
+    // this.openBanModal("hahaha");
   }
 
   openBanModal(id: string): void {

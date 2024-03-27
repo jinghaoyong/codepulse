@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../models/category.model';
 import { UpdateCategoryRequest } from '../models/update-category-request.model';
+import { ToastService } from 'src/app/shared/services/toast/toast.service';
 
 @Component({
   selector: 'app-edit-category',
@@ -21,7 +22,8 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private categoryServ: CategoryService,
-    private router: Router
+    private router: Router,
+    private toastServ: ToastService
   ) {
 
   }
@@ -64,6 +66,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
     if (this.id) {
       this.deleteCategorySubscription = this.categoryServ.deleteCategory(this.id).subscribe({
         next: (res) => {
+          this.toastServ.showToast('error', "Deleted !!", 'top-left', true)
           this.router.navigateByUrl('/admin/categories');
         }
       })

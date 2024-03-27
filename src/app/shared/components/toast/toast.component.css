@@ -1,74 +1,114 @@
-::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm {
-    top: calc(100vh - 60vh);
-    padding-bottom: 0;
-    height: 286px;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content {
-    height: 100%;
-    border-radius: 6px;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body {
-    height: 100%;
-    padding: 24px;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-content {
-    margin: 0;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-content app-modal-confirm p {
-    font-weight: 500;
-    margin-bottom: 16px;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-content app-modal-confirm p:first-of-type {
-    font-size: 24px;
-    line-height: 30px;
-    color: #15243c;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-content app-modal-confirm p:last-of-type {
-    font-size: 16px;
-    line-height: 24px;
-    color: #5f5f5f;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-btns {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-btns button:first-of-type {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #444b55;
-    border: 0;
-    box-shadow: none;
-  }
-  
-  ::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm .ant-modal-content .ant-modal-body .ant-modal-confirm-body-wrapper .ant-modal-confirm-body .ant-modal-confirm-btns button:last-of-type {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #edf3fb;
-    background: #F29637;
-    border-radius: 6px;
-  }
-  
+.toastcontainer {
+  width: 350px;
+  height: 100px;
+  color: #fff;
+  margin: 10px;
+  padding: 20px 25px;
+  position: fixed;
+  z-index: 1001;
+  box-shadow: 0 0 12px #999;
+  border-radius: 3px;
+  display: flex;
+}
+
+.toastcontainer .toastcontent {
+  align-self: center;
+}
+
+.toastcontainer .toastcontent .icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #51a351;
+  font-weight: bolder;
+  margin-right: 10px;
+}
+
+.toastcontainer .closeBtn {
+  position: absolute;
+  right: 12px;
+  top: 2px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: aquamarine;
+  padding: 15px;
+}
+
+.toastcontainer.success {
+  background-color: #51a351;
+}
+
+.toastcontainer.success.toastcontent {
+  color: green;
+  padding-left: 9px;
+}
+
+.toastcontainer.success.icon {
+  color: green;
+  padding-left: 9px;
+}
+
+.toastcontainer.error {
+  background-color: red;
+}
+
+.toastcontainer.error.toastcontent {
+  color: red;
+  padding-left: 9px;
+}
+
+.toastcontainer.error.icon {
+  color: red;
+  padding-left: 9px;
+}
+
+
+.toastcontainer.warn {
+  background-color: yellow;
+}
+
+.toastcontainer.warn.toastcontent {
+  color: yellow;
+  padding-left: 9px;
+}
+
+.toastcontainer.warn.icon {
+  color: yellow;
+  padding-left: 9px;
+}
+
+.toastcontainer.info {
+  background-color: blue;
+}
+
+.toastcontainer.info.toastcontent {
+  color: blue;
+  padding-left: 9px;
+}
+
+.toastcontainer.info.icon {
+  color: blue;
+  padding-left: 9px;
+}
+
+.toastcontainer.top-left{
+  left: 0px;
+  top: 75px;
+}
+
+.toastcontainer.top-right{
+  right: 0px;
+  top: 75px;
+}
+
+.toastcontainer.bottom-left{
+  left: 0px;
+  bottom: 75px;
+}
+
+.toastcontainer.bottom-right{
+  right: 0px;
+  bottom: 75px;
+}

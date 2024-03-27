@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NzModalRef } from 'ng-zorro-antd/modal';
-import { BehaviorSubject } from 'rxjs';
+import { ToastService } from '../../services/toast/toast.service';
 
 @Component({
   selector: 'app-toast',
@@ -8,19 +7,30 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./toast.component.css']
 })
 export class ToastComponent implements OnInit {
-  @Input() data!: any;
-  prefixTranslate: string = 'MODAL_CONFIRM.';
 
-  constructor(private modal: NzModalRef) {
-    this.modal.updateConfig({ nzWrapClassName: 'modal-confirm' });
+  showToast = false;
+  toastrMessage = "";
+  toastrType = "";
+  toastrPosition = "";
+
+  constructor(
+    private toastr: ToastService
+  ) { }
+
+  ngOnInit(): void {
+    this.showToast = true;
+    this.toastr.status.subscribe((msg: string) => {
+      this.toastrType = localStorage.getItem("toastrType") || "";
+      this.toastrPosition = localStorage.getItem("toastrPosition") || "";
+      if (msg === null) {
+        this.showToast = false;
+      } else {
+        this.showToast = true;
+        this.toastrMessage = msg;
+      }
+    })
   }
-
-  ngOnInit(): void {}
-
-  handleCancel() {
-    this.modal.destroy(null);
-  }
-  handleConfirm() {
-    this.modal.destroy(this.data);
+  closeToast() {
+    this.showToast = false;
   }
 }

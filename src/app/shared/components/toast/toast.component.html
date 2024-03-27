@@ -1,5 +1,21 @@
-<div>
-    <p>{{ data.title  }}</p>
-    <p>{{ data.subTitle }}</p>
+<div class="toastcontainer" *ngIf="showToast" [ngClass]="{
+  success : toastrType == 'success',
+  error : toastrType == 'error',
+  warn : toastrType == 'warn',
+  info : toastrType == 'info',
+  'top-left': toastrPosition == 'top-left',
+  'top-right': toastrPosition == 'top-right',
+  'bottom-left': toastrPosition == 'bottom-left',
+  'bottom-right': toastrPosition == 'bottom-right',
+}">
+  <div class="closeBtn" (click)="closeToast()">
+    <span>x</span>
   </div>
-  
+  <div class="toastcontent">
+    <span class="icon" *ngIf="toastrType == 'success'">v</span>
+    <span class="icon" *ngIf="toastrType == 'error'">X</span>
+    <span class="icon" *ngIf="toastrType == 'warn'">!</span>
+    <span class="icon" *ngIf="toastrType == 'info'">i</span>
+    <span>{{toastrMessage}}</span>
+  </div>
+</div>
