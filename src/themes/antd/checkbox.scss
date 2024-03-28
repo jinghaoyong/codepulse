@@ -1,0 +1,16 @@
+label.ant-checkbox-wrapper.checkbox__custom {
+  @apply p-2 border border-bg-neutral-4 rounded-[999px];
+  @apply text-gray-70 font-medium text-[16px];
+  span.ant-checkbox {
+    @apply hidden;
+  }
+  span.anticon {
+    @apply font-medium text-[20px];
+  }
+  .checkbox__label {
+    @apply flex justify-center items-center gap-3;
+  }
+  &.checked {
+    @apply text-blue-60 bg-blue-10 border-blue-60;
+  }
+}

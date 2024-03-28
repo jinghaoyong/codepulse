@@ -1,0 +1,7 @@
+nz-collapse.ant-collapse.custom {
+  > .ant-collapse-item {
+    > .ant-collapse-header {
+      @apply p-0;
+    }
+  }
+}

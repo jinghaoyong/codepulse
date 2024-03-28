@@ -1,0 +1,4 @@
+@mixin form-error-status {
+  border: 1px solid #ff4d4f !important;
+  background-color: var(--gray-10) !important;
+}

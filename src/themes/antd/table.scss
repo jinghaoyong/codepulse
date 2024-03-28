@@ -1,0 +1,287 @@
+@mixin table-default {
+  .ant-table {
+    border-radius: 10px;
+    .ant-table-title {
+      display: flex;
+      min-height: 72px;
+      padding: 12px 24px !important;
+      border-radius: 6px 6px 0 0;
+      align-items: center;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--gray-80);
+    }
+    .ant-table-container {
+      border-radius: 0 0 6px 6px;
+      .ant-table-content {
+        overflow-x: overlay;
+        border-radius: 6px;
+        & table {
+          & .ant-table-thead {
+            .ant-table-row {
+              .ant-table-cell {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                color: #ffffff;
+                background: #135726;
+                border-bottom: 0;
+                padding: 16px 32px;
+                &::before {
+                  background-color: transparent;
+                }
+              }
+            }
+          }
+          & .ant-table-tbody {
+            .ant-table-row {
+              height: 64px;
+              &.dark {
+                background-color: var(--gray-10);
+              }
+              &.light {
+                background-color: var(--neutral-1);
+              }
+
+              .ant-table-cell {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                color: var(--blue-100);
+                font-weight: 500;
+                font-size: 16px;
+                // line-height: 24px;
+                border-bottom: 0;
+                padding: 16px 32px;
+              }
+              &:last-of-type {
+                .ant-table-cell {
+                  border-bottom: 1px solid #f0f0f0;
+                  &:first-of-type {
+                    border-bottom-left-radius: 5px;
+                  }
+                  &:last-of-type {
+                    border-bottom-right-radius: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.table-base {
+  @include table-default;
+}
+
+.application-table {
+  @include table-default;
+  .ant-table {
+    .ant-table-container {
+      .ant-table-content {
+        border-radius: unset;
+        & table {
+          @apply md:w-full;
+          & .ant-table-thead {
+            .ant-table-row {
+              .ant-table-cell {
+                text-align: start;
+                padding-left: 8px;
+                padding-right: 8px;
+                color: #ffffff;
+                background: #135726;
+              }
+              .ant-table-cell:first-child {
+                border-top-left-radius: 0;
+                border-left: 1px solid var(--neutral-4);
+                padding-left: 24px;
+              }
+              .ant-table-cell:last-child {
+                border-top-right-radius: 0;
+                border-right: 1px solid var(--neutral-4);
+                padding-right: 34px;
+              }
+            }
+          }
+          & .ant-table-tbody {
+            .ant-table-row {
+              .ant-table-cell {
+                vertical-align: top;
+                padding-left: 8px;
+                padding-right: 8px;
+                border-bottom: 1px solid var(--neutral-4);
+              }
+              .ant-table-cell:first-child {
+                border-left: 1px solid var(--neutral-4);
+                padding-left: 24px;
+              }
+              .ant-table-cell:last-child {
+                border-right: 1px solid var(--neutral-4);
+                padding-right: 24px;
+              }
+            }
+          }
+          & .ant-table-tbody >tr > td {
+            padding-top: 12px;
+            padding-bottom: 7px;
+          }
+        }
+      }
+    }
+  }
+  .col__no {
+    @apply w-16;
+  }
+  .col__appno {
+    @apply w-52;
+  }
+  .col__apprev {
+    @apply w-14;
+  }
+  .col__appdate {
+    @apply w-36;
+  }
+  .col__vehicle {
+    @apply w-60 md:w-[18%];
+    padding-left: 2rem !important;
+  }
+  .application__table__cell__vehicle {
+    padding-left: 2rem !important;
+  }
+  .col__amount {
+    @apply w-52;
+  }
+  .col__period {
+    @apply w-44;
+  }
+  .col__status {
+    @apply w-48;
+    padding-left: 3rem !important;
+  }
+  .application__table__cell__status {
+    padding-left: 3rem !important;
+  }
+  .col__action {
+    @apply w-52 md:w-[15%];
+  }
+  .application__table__cell {
+    @apply grid grid-rows-2 gap-2;
+    p {
+      @apply text-base font-normal overflow-hidden text-ellipsis;
+      align-self: start;
+    }
+    p:first-child {
+      @apply font-medium;
+    }
+    p:not(:first-child) {
+      @apply text-gray-70 text-base font-normal;
+    }
+  }
+}
+
+.dashboard-application-table {
+  .col__no {
+    @apply w-9;
+  }
+  .col__appno {
+    @apply w-32;
+  }
+  .col__apprev {
+    @apply w-8;
+  }
+  .col__appdate {
+    @apply w-20;
+  }
+  .col__vehicle {
+    @apply w-48;
+    padding-left: 3rem !important;
+  }
+  .application__table__cell__vehicle {
+    padding-left: 3rem !important;
+  }
+  .col__amount {
+    @apply w-32;
+  }
+  .col__period {
+    @apply w-28;
+  }
+  .col__status {
+    @apply w-64;
+    padding-left: 3.5rem !important;
+  }
+  .application__table__cell__status {
+    padding-left: 3.5rem !important;
+  }
+}
+
+// Paging
+.ant-pagination {
+  display: flex;
+  align-items: center;
+  ul {
+    @apply flex items-center;
+  }
+  .ant-pagination-total-text {
+    display: flex;
+    align-items: center;
+    margin-right: auto !important;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--neutral-7);
+  }
+  .ant-pagination-item {
+    border: none;
+    a {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--neutral-6) !important;
+    }
+    &-active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      background: var(--primary-light-2);
+
+      border: 1px solid var(--neutral-8);
+      border-radius: 6px;
+      a {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+        color: var(--neutral-8) !important;
+      }
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .ant-pagination-next,
+  .ant-pagination-prev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span.anticon {
+      font-size: 25px;
+      font-weight: 600;
+      color: #1e2d3d;
+    }
+  }
+  .ant-pagination-disabled {
+    display: none;
+  }
+  .rmx-icon {
+    color: #1e2d3d;
+  }
+  li {
+    margin: 0 4px !important;
+  }
+}

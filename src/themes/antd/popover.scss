@@ -1,0 +1,9 @@
+.ant-popover.custom {
+  .ant-popover-content > .ant-popover-inner {
+    @apply bg-gray-10 rounded;
+  }
+}
+
+.anticon.phase__card__tooltip {
+  @apply text-gray-50 text-[20px] cursor-pointer;
+}

@@ -1,0 +1,28 @@
+nz-switch {
+  & button.ant-switch.ant-switch-small {
+    height: 19px;
+    width: 30px;
+    border: 2.5px solid var(--gray-2);
+    background-color: white;
+    & span.ant-switch-handle {
+      width: 8px;
+      height: 8px;
+      top: 3px;
+      left: 3px;
+      &::before {
+        background-color: var(--gray-2) !important;
+      }
+    }
+
+    &.ant-switch-checked {
+      border: 2.5px solid #0fc97b;
+      span.ant-switch-handle {
+        left: calc(100% - 12px);
+        &::before {
+          background-color: white !important;
+        }
+      }
+      background-color: #0fc97b;
+    }
+  }
+}

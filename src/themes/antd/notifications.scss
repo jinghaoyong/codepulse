@@ -1,0 +1,8 @@
+.ant-message {
+  .ant-message-success,
+  .ant-message-error,
+  .ant-message-warning,
+  .ant-message-info {
+    @apply flex items-center;
+  }
+}

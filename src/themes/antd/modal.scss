@@ -1,0 +1,109 @@
+.ant-modal-content {
+  @apply rounded-[6px];
+  & .ant-modal-close {
+    @apply top-[12px];
+    margin-right: 16px;
+    span.ant-modal-close-x {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-sign-close-icon.ng-star-inserted {
+      // border: 2px solid #e3e3e3;
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-top: -20px;
+    }
+  }
+  & .ant-modal-header {
+    @apply rounded-tl-[6px] rounded-tr-[6px] flex h-[60px] items-center;
+    background-color: #135726;
+    & .ant-modal-title {
+      font-weight: 600 !important;
+      font-size: 1.3rem;
+      color: white;
+    }
+  }
+  & .ant-modal-footer {
+    @apply border-t-0 p-[24px];
+
+    & .request-by-link-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & nz-input-group.ant-input-group-wrapper {
+        width: auto;
+      }
+
+      & span.ant-input-wrapper.ant-input-group.ng-star-inserted {
+        width: 288px;
+        height: 48px;
+        background: #f4f5f5;
+        border-radius: 6px;
+        & .ant-input-group-addon {
+          border: 0;
+          border-radius: 6px 0 0 6px;
+          & nz-select-top-control {
+            box-shadow: none;
+            border-radius: 6px 0 0 6px !important;
+            width: 90px;
+            & .ant-select-selection-item {
+              border-right: 1px solid #e3e3e3;
+              padding-right: 24px;
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 24px;
+              color: #15243c;
+            }
+          }
+          & .ant-select-arrow {
+            margin-right: 10px;
+          }
+        }
+        & .ant-input-number {
+          width: -webkit-fill-available;
+          border: 0;
+          background: #f4f5f5;
+          box-shadow: none;
+          border-radius: 0 6px 6px 0;
+          & .ant-input-number-handler-wrap {
+            display: none;
+          }
+        }
+        & .ant-input-number-input {
+          height: 48px;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          color: #b4b4b4;
+        }
+      }
+
+      & .send-whatsapp {
+        width: 253px;
+        height: 48px;
+        background: #327c1e;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+.ant-modal.custom {
+  .ant-modal-content {
+    & .ant-modal-title {
+      @apply w-full;
+    }
+  }
+}

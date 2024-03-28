@@ -1,0 +1,105 @@
+.ant-tabs {
+  height: 100%;
+  width: 100%;
+  &.ant-tabs-left {
+    & .ant-tabs-nav {
+      @apply w-[var(--left-tab-width)] md:w-[var(--left-tab-width-md)] lg:w-[var(--left-tab-width-lg)];
+      & .ant-tabs-nav-wrap {
+        overflow: overlay;
+        & .ant-tabs-nav-list {
+          & .ant-tabs-tab {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 24px 16px;
+            height: 102px;
+            margin: 0;
+            border-bottom: 1px solid var(--neutral-4);
+
+            &:nth-of-type(7) {
+              color: #c70000;
+              background: #ffeeee;
+              & .tab-title-custom {
+                & .tab-icon > svg > path {
+                  fill: var(--red-error);
+                }
+                & .text-block {
+                  & span {
+                    white-space: pre-wrap;
+                    text-align: left;
+                    color: var(--red-error);
+                    &:first-of-type {
+                      font-weight: 500;
+                      font-size: 16px;
+                      line-height: 24px;
+                    }
+                    &:last-of-type {
+                      font-weight: 400;
+                      font-size: 14px;
+                      line-height: 22px;
+                    }
+                  }
+                }
+              }
+            }
+
+            & span.tab-icon > svg > path {
+              fill: var(--gray-70);
+            }
+            &-active {
+              background: var(--gray-20);
+
+              & span.tab-icon > svg > path {
+                fill: var(--blue-100);
+              }
+              &:nth-of-type(7) {
+                color: var(--blue-100);
+                background: var(--gray-20);
+                & .tab-title-custom {
+                  & .tab-icon > svg > path {
+                    fill: var(--blue-100);
+                  }
+                  & .text-block {
+                    & span {
+                      color: var(--blue-100);
+                      &:first-of-type {
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 24px;
+                      }
+                      &:last-of-type {
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 22px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            & .ant-tabs-tab-btn {
+              flex-grow: 1;
+            }
+          }
+          & .ant-tabs-ink-bar.ant-tabs-ink-bar-animated {
+            display: none;
+          }
+        }
+      }
+      &-operations {
+        display: none;
+      }
+    }
+    & .ant-tabs-content-holder {
+      & .ant-tabs-content {
+        &.ant-tabs-content-left {
+          height: 100%;
+          & .ant-tabs-tabpane {
+            padding: 0;
+            overflow: overlay;
+          }
+        }
+      }
+    }
+  }
+}

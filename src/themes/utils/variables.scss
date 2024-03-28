@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body.default__theme {
+  font-family: 'Poppins';
+
+  --neutral-1: #ffffff;
+  --neutral-2: #fafafa;
+  --neutral-4: #e3e3e3;
+  --neutral-5: #b4b4b4;
+  --neutral-6: #8c8c8c;
+  --neutral-7: #5f5f5f;
+  --neutral-8: #232323;
+  --neutral-90: #323232;
+  --light-4: #ebeff5;
+
+  --purple-20: #ebdbfa;
+  --purple-70: #7d3cbe;
+
+  --indigo-20: #dedefc;
+  --indigo-70: #4d4dd1;
+
+  --teal-20: #a6ede9;
+  --teal-70: #116963;
+
+  --gold-20: #fefad2;
+  --gold-90: #78640e;
+
+  --cyan-20: #bde6fa;
+  --cyan-70: #066493;
+
+  --bronze-10: #fcf3e8;
+  --bronze-60: #ad5f00;
+
+  --red-20: #fad6d6;
+  --red-70: #ba0d0d;
+  --red-light: #fff1f0;
+  --red-light-3: #fff5f5;
+  --red-error: #c70000;
+
+  --green-1: #0fc97b;
+  --green-2: #20ce50;
+  --green-3: #327c1e;
+
+  --green-10: #e0faeb;
+  --green-20: #abedc5;
+  --green-60: #2a844e;
+  --green-70: #20693e;
+
+  --primary-light-2: #f4f5f5;
+
+  --blue-1-9: #edf3fb 20%;
+  --blue-6: #093b88;
+  --blue-8: #1e2d3d;
+  --blue-10: #edf3fb;
+  --blue-20: #cfe0fc;
+  --blue-30: #abcafc;
+  --blue-40: #80acff;
+  --blue-50: #4988ff;
+  --blue-60: #0b5fff;
+  --blue-70: #0052ef;
+  --blue-80: #0043c0;
+  --blue-90: #103570;
+  --blue-100: #15243c;
+
+  --gray-1-9: #fefefe;
+  --gray-2: #8c8c8c;
+  --gray-10: #f5f7fa;
+  --gray-20: #ebeff5;
+  --gray-30: #dee3ed;
+  --gray-40: #c8d0e0;
+  --gray-50: #aeb9cb;
+  --gray-60: #8d98aa;
+  --gray-70: #707a89;
+  --gray-80: #59616e;
+  --gray-90: #444b55;
+  --gray-100: #343941;
+
+  --bg-secondary: #f4f5f5;
+  --bg-active: #e5eefb;
+
+  --left-tab-width: 50px;
+  --left-tab-width-md: 230px;
+  --left-tab-width-lg: 330px;
+
+  --tab-content-width: calc(100% - var(--left-tab-width));
+  --tab-content-width-md: calc(100% - var(--left-tab-width-md));
+  --tab-content-width-lg: calc(100% - var(--left-tab-width-lg));
+}

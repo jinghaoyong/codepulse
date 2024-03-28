@@ -1,0 +1,11 @@
+<div class="page-overlay-wrapper" *ngIf="isShowSpinner">
+  <div class="spinner">
+    <ng-template #indicatorTemplate>
+      <i nz-icon nzType="loading" style="font-size: 65px"></i>
+    </ng-template>
+    <nz-spin
+      nzSimple
+      nzSize="large"
+      [nzIndicator]="indicatorTemplate"></nz-spin>
+  </div>
+</div>

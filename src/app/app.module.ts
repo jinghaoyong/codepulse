@@ -24,6 +24,9 @@ import { HomeComponent } from './features/public/home/home.component';
 import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { ModalComponent } from './shared/components/modal/modal/modal.component';
+import { AntdDesignModule } from './shared/antd-design/antd-design-module.module';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 registerLocaleData(en);
 
@@ -46,6 +49,8 @@ export function createTranslateLoader(http: HttpClient) {
     HomeComponent,
     BlogDetailsComponent,
     LoginComponent,
+    ModalComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     NzModalModule,
+    AntdDesignModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {

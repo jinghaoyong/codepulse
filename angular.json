@@ -5,7 +5,14 @@
   "projects": {
     "codepulse": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -16,6 +23,7 @@
             "outputPath": "dist/codepulse",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "inlineStyleLanguage": "scss",
             "polyfills": [
               "zone.js"
             ],
@@ -26,7 +34,9 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/prismjs/themes/prism-okaidia.css"
+              "node_modules/prismjs/themes/prism-okaidia.css",
+              "src/themes/theme.less",
+              "src/themes/style.scss"
             ],
             "scripts": [
               "node_modules/prismjs/prism.js",

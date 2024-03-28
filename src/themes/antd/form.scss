@@ -1,0 +1,26 @@
+nz-form-label {
+  margin-bottom: 1px !important;
+  padding-left: 10px;
+  padding-bottom: 0px !important;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: var(--gray-70);
+}
+nz-form-item.ant-form-item {
+  margin-bottom: 0;
+  label {
+    color: var(--gray-70);
+    font-weight: 550;
+    font-size: 15px;
+  }
+}
+nz-form-item.ant-form-item.ant-form-item-has-error.ant-form-item-with-help {
+  input[nz-input],
+  input[nz-input]:hover {
+    background: var(--gray-10);
+    color: var(--blue-100);
+  }  
+}
