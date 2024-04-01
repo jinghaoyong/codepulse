@@ -27,8 +27,13 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ModalComponent } from './shared/components/modal/modal/modal.component';
 import { AntdDesignModule } from './shared/antd-design/antd-design-module.module';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { environment } from '../environments/environment';
+import { initializeApp } from 'firebase/app';
+
+initializeApp(environment.firebaseConfig);
 
 registerLocaleData(en);
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
