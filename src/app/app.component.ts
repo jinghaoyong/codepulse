@@ -10,6 +10,9 @@ import { environment } from 'src/environments/environment';
 
 
 export class AppComponent {
+  constructor(){
+    
+  }
   ngOnInit() {
     this.requestPermission();
   }

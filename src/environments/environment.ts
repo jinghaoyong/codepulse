@@ -1,6 +1,6 @@
 export const environment = {
     apiBaseUrl: 'https://localhost:7152',
-    production: false,
+    production: true,
     firebaseConfig: {
         apiKey: "AIzaSyBMkSBbjx7EY4UdMstd0lxFP_bFiSYZR1o",
         authDomain: "zenapp-1d503.firebaseapp.com",
