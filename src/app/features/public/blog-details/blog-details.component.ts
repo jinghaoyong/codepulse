@@ -21,6 +21,7 @@ export class BlogDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("got come in")
     this.route.paramMap
       .subscribe({
         next: (params) => {

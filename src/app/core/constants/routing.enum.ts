@@ -1,0 +1,18 @@
+export enum ROUTING {
+  HOME = '/codepulse',
+  DASHBOARD = 'dashboard',
+  CATEGORY = 'category',
+  ADMIN = 'admin',
+  HP_APPLICATION = 'hp-application',
+  RENTAL_QUOTATION = 'rental-quotation',
+  SALES_QUOTATION = 'sales-quotation',
+  PURCHASE_QUOTATION = 'purchase-quotation',
+  REPORT = 'report',
+  REPORT_LEAD_MASTER = 'report/leadMaster',
+  REPORT_QUOTATION = 'report/quotation',
+  // SETTING = 'setting',
+  LOAN_CALCULATOR = 'calculator',
+  LOGOUT = 'logout',
+  LOGIN = 'login',
+  NEW = 'new',
+}

@@ -4,7 +4,6 @@ import en from '@angular/common/locales/en';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
-import { CategoryListComponent } from './features/category/category-list/category-list.component';
 import { AddCategoryComponent } from './features/category/add-category/add-category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
@@ -21,7 +20,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 import { ImageSelectorComponent } from './shared/components/image-selector/image-selector.component';
 import { HomeComponent } from './features/public/home/home.component';
-import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ModalComponent } from './shared/components/modal/modal/modal.component';
@@ -29,6 +27,8 @@ import { AntdDesignModule } from './shared/antd-design/antd-design-module.module
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { environment } from '../environments/environment';
 import { initializeApp } from 'firebase/app';
+import { ComponentModule } from './shared/components/component.module';
+import { RouterModule } from '@angular/router';
 
 initializeApp(environment.firebaseConfig);
 
@@ -42,31 +42,17 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    CategoryListComponent,
-    AddCategoryComponent,
-    EditCategoryComponent,
-    BlogpostListComponent,
-    AddBlogpostComponent,
-    ToastComponent,
-    EditBlogpostComponent,
-    ImageSelectorComponent,
-    HomeComponent,
-    BlogDetailsComponent,
-    LoginComponent,
-    ModalComponent,
-    SpinnerComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
     NzModalModule,
     AntdDesignModule,
-    FormsModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
+    ComponentModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
