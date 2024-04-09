@@ -2,6 +2,7 @@ import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ROUTING } from '../core/constants/routing.enum';
 import { HomeComponent } from './public/home/home.component';
+import { authGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
     {
@@ -35,9 +36,17 @@ const routes: Routes = [
         // ],
     },
     { path: 'blog', loadChildren: () => import('./public/public.module').then(m => m.PublicModule) },
-    { path: 'admin/categories', loadChildren: () => import('./category/category.module').then(m => m.CategoryListModule) },
-    { path: 'admin/categories', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-    { path: 'admin/categories', loadChildren: () => import('./blog-post/blog-post.module').then(m => m.BlogPostModule) },
+    {
+        path: 'admin/categories',
+        loadChildren: () => import('./category/category.module').then(m => m.CategoryListModule),
+        canActivate: [authGuard]
+    },
+    { path: 'login', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+    {
+        path: 'admin/blogposts',
+        loadChildren: () => import('./blog-post/blog-post.module').then(m => m.BlogPostModule),
+        canActivate: [authGuard]
+    }
 ];
 
 @NgModule({

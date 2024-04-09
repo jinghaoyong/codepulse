@@ -1,31 +1,13 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { authGuard } from "../auth/guards/auth.guard";
+import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
-    // {
-    //     path: '',
-    //     data: {
-    //         breadcrumb: 'Category',
-    //     },
-    //     children: [
-    //         {
-    //             path: '',
-    //             component: CategoryListComponent,
-    //             canActivate: [authGuard]
-    //         },
-    //         {
-    //             path: 'add',
-    //             component: AddCategoryComponent,
-    //             canActivate: [authGuard]
-    //         },
-    //         {
-    //             path: ':id',
-    //             component: EditCategoryComponent,
-    //             canActivate: [authGuard]
-    //         },
-    //     ],
-    // },
+    {
+        path: '',
+        component: LoginComponent
+    },
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],

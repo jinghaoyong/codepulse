@@ -6,29 +6,29 @@ import { AddCategoryComponent } from "./add-category/add-category.component";
 import { EditCategoryComponent } from "./edit-category/edit-category.component";
 
 const routes: Routes = [
-    // {
-    //     path: '',
-    //     data: {
-    //         breadcrumb: 'Category',
-    //     },
-    //     children: [
-    //         {
-    //             path: '',
-    //             component: CategoryListComponent,
-    //             canActivate: [authGuard]
-    //         },
-    //         {
-    //             path: 'add',
-    //             component: AddCategoryComponent,
-    //             canActivate: [authGuard]
-    //         },
-    //         {
-    //             path: ':id',
-    //             component: EditCategoryComponent,
-    //             canActivate: [authGuard]
-    //         },
-    //     ],
-    // },
+    {
+        path: '',
+        data: {
+            breadcrumb: 'Category',
+        },
+        children: [
+            {
+                path: '',
+                component: CategoryListComponent,
+                canActivate: [authGuard]
+            },
+            {
+                path: 'add',
+                component: AddCategoryComponent,
+                canActivate: [authGuard]
+            },
+            {
+                path: ':id',
+                component: EditCategoryComponent,
+                canActivate: [authGuard]
+            },
+        ],
+    },
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],

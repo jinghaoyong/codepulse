@@ -37,9 +37,9 @@ export class CategoryListComponent implements OnInit {
 
     // this.openBanModal("hahaha");
     this.spinService.requestStarted();
-    // setTimeout(() => {
-    //   this.spinService.requestEnded();
-    // }, 3000);
+    setTimeout(() => {
+      this.spinService.requestEnded();
+    }, 3000);
   }
 
   openBanModal(id: string): void {

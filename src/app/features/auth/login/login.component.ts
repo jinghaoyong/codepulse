@@ -25,9 +25,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private formBuilder: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private authServ: AuthService,
+    private cookieServ: CookieService,
     // private authenticationService: AuthenticationService,
     // private authFackservice: AuthfakeauthenticationService
-  ) { }
+  ) {
+  }
+
 
   ngOnInit() {
     document.body.setAttribute('class', 'authentication-bg');
@@ -85,6 +89,37 @@ export class LoginComponent implements OnInit, AfterViewInit {
     //   }
     // }
   }
+
+  onFormSubmit(): void {
+    console.log(this.loginForm.getRawValue())
+    const data: LoginRequest = {
+      email: this.loginForm.getRawValue().email,
+      password: this.loginForm.getRawValue().password
+    }
+    console.log("data", data)
+    this.authServ.login(data)
+      .subscribe({
+        next: res => {
+          console.log(res)
+          //set auth cookie
+          this.cookieServ.set('Authorization', `Bearer ${res.token}`,
+            undefined, '/', undefined, true, 'Strict');
+
+          // set user 
+          this.authServ.setUser({
+            email: res.email,
+            roles: res.roles
+          })
+
+          //redirect back to home
+          this.router.navigateByUrl('/');
+        }
+      })
+  }
+
+  loginWithGoogle() {
+    this.authServ.googleLogin();
+  }
 }
 // {
 
@@ -101,26 +136,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
 //     }
 //   }
 
-//   onFormSubmit(): void {
-//     console.log(this.model)
-//     this.authServ.login(this.model)
-//       .subscribe({
-//         next: res => {
-//           console.log(res)
-//           //set auth cookie
-//           this.cookieServ.set('Authorization', `Bearer ${res.token}`,
-//             undefined, '/', undefined, true, 'Strict');
 
-//           // set user 
-//           this.authServ.setUser({
-//             email: res.email,
-//             roles: res.roles
-//           })
-
-//           //redirect back to home
-//           this.router.navigateByUrl('/');
-//         }
-//       })
-//   }
 
 // }

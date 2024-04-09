@@ -29,7 +29,9 @@ import { environment } from '../environments/environment';
 import { initializeApp } from 'firebase/app';
 import { ComponentModule } from './shared/components/component.module';
 import { RouterModule } from '@angular/router';
-
+import { AngularFireModule, FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AuthService } from './features/auth/services/auth.service';
 initializeApp(environment.firebaseConfig);
 
 registerLocaleData(en);
@@ -49,6 +51,8 @@ export function createTranslateLoader(http: HttpClient) {
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     NzModalModule,
     AntdDesignModule,
     BrowserAnimationsModule,
@@ -61,13 +65,9 @@ export function createTranslateLoader(http: HttpClient) {
       },
       defaultLanguage: 'en',
     }),
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

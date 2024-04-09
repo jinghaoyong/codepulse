@@ -7,10 +7,10 @@
                 <div class="card-body p-4">
                   <div class="text-center mt-2">
                     <h5 class="text-primary">Welcome Back !</h5>
-                    <p class="text-muted">Sign in to continue to Minible.</p>
+                    <p class="text-muted">Sign in to continue to zenApp.</p>
                   </div>
                   <div class="p-2 mt-4">
-                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
       
                       <div class="mb-3">
                         <label for="email">Email</label>
@@ -48,20 +48,20 @@
                         </div>
       
                         <ul class="list-inline">
-                          <li class="list-inline-item">
+                          <!-- <li class="list-inline-item">
                             <a href="javascript:void()" class="social-list-item bg-primary text-white border-primary">
-                              <i class="mdi mdi-facebook"></i>
+                              <div>facebook login</div>
                             </a>
                           </li>
                           <li class="list-inline-item">
                             <a href="javascript:void()" class="social-list-item bg-info text-white border-info">
                               <i class="mdi mdi-twitter"></i>
                             </a>
-                          </li>
+                          </li> -->
                           <li class="list-inline-item">
-                            <a href="javascript:void()" class="social-list-item bg-danger text-white border-danger">
-                              <i class="mdi mdi-google"></i>
-                            </a>
+                           <button (click)="loginWithGoogle()">
+                              Login with google
+                           </button>
                           </li>
                         </ul>
                       </div>
@@ -78,7 +78,7 @@
               </div>
       
               <div class="mt-5 text-center">
-                <p>© {{year}} Minible. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                <p>© {{year}} zenApp</p>
               </div>
       
             </div>
