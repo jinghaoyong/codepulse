@@ -106,10 +106,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
             undefined, '/', undefined, true, 'Strict');
 
           // set user 
-          this.authServ.setUser({
-            email: res.email,
-            roles: res.roles
-          })
+          // this.authServ.setUser({
+          //   email: res.email,
+          //   name: res.roles
+          // })
 
           //redirect back to home
           this.router.navigateByUrl('/');

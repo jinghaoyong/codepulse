@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { Auth, GoogleAuthProvider, signInWithPopup, signOut, user, UserCredential } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,14 @@ export class AuthService {
 
   $user = new BehaviorSubject<User | undefined>(undefined);
   private provider = new GoogleAuthProvider();
+  private readonly SESSION_TIMEOUT_DURATION = 3600; // 1 hour in seconds
+  private sessionTimeout?: any;
 
   constructor(
     private http: HttpClient,
     private cookieServ: CookieService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private router: Router
   ) { }
 
   login(request: LoginRequest): Observable<LoginResponse> {
@@ -34,7 +38,10 @@ export class AuthService {
   setUser(user: User): void {
     this.$user.next(user);
     localStorage.setItem('user-email', user.email);
-    localStorage.setItem('user-roles', user.roles.join(','));
+    localStorage.setItem('user-name', user.name);
+    localStorage.setItem('user-photoUrl', user.photoUrl);
+    localStorage.setItem('user-uid', user.uid);
+    // localStorage.setItem('user-roles', user.roles.join(','));
   }
 
   user(): Observable<User | undefined> {
@@ -43,12 +50,16 @@ export class AuthService {
 
   getUser(): User | undefined {
     const email = localStorage.getItem('user-email');
-    const roles = localStorage.getItem('user-roles');
+    const name = localStorage.getItem('user-name');
+    const photoUrl = localStorage.getItem('user-photoUrl');
+    const uid = localStorage.getItem('user-uid');
 
-    if (email && roles) {
+    if (email && name) {
       const user: User = {
         email: email,
-        roles: roles?.split(',')
+        name: name,
+        photoUrl: photoUrl ?? '',
+        uid: uid ?? '',
       }
       return user
     }
@@ -76,6 +87,16 @@ export class AuthService {
         const credential = GoogleAuthProvider.credentialFromResult(formattedResult);
         // // Do something with credential if needed
         // console.log("i want to see credential here", credential)
+        this.setUser({
+          email: result?.user._delegate?.email,
+          name: result?.user._delegate?.displayName,
+          photoUrl: result?.user._delegate?.photoURL,
+          uid: result?.user?._delegate?.uid,
+        })
+
+        // //redirect back to home
+        this.router.navigateByUrl('/');
+        // do here lo log 
       }).catch((error) => {
         // Handle errors
         console.log('Google login error:', error);
@@ -87,8 +108,27 @@ export class AuthService {
     this.afAuth.signOut()
       .then(() => {
         console.log('Signed out successfully');
+        localStorage.clear();
+        this.$user.next(undefined);
       }).catch((error) => {
         console.log('Sign out error:', error);
       });
+  }
+
+  startSessionTimeout() {
+    this.sessionTimeout = setTimeout(() => {
+      this.afAuth.signOut()
+        .then(() => {
+          console.log('User logged out due to inactivity');
+        })
+        .catch((error) => {
+          console.error('Error logging out user:', error);
+        });
+    }, this.SESSION_TIMEOUT_DURATION * 1000); // Convert seconds to milliseconds
+  }
+
+  resetSessionTimeout() {
+    clearTimeout(this.sessionTimeout);
+    this.startSessionTimeout();
   }
 }

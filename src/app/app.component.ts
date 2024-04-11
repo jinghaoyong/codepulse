@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { getMessaging, getToken } from "firebase/messaging";
 import { environment } from 'src/environments/environment';
+import { AuthService } from './features/auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,13 @@ import { environment } from 'src/environments/environment';
 
 
 export class AppComponent {
-  constructor(){
+  constructor(
+    private authServ : AuthService
+  ){
     
   }
   ngOnInit() {
+    this.authServ.startSessionTimeout();
     this.requestPermission();
   }
 

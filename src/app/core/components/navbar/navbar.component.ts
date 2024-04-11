@@ -30,8 +30,9 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogout(): void {
-    this.authServ.logout();
-    this.router.navigateByUrl('/')
+    // this.authServ.logout();
+    // this.router.navigateByUrl('/')
+    this.authServ.googleLogout();
   }
 
 }

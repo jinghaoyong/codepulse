@@ -12,29 +12,35 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   let token = cookieServ.get('Authorization');
 
-  if (token && user) {
-    token = token.replace('Bearer', '');
-    const decodedToken: any = jwtDecode(token);
+  // if (token && user) {
+  //   token = token.replace('Bearer', '');
+  //   const decodedToken: any = jwtDecode(token);
 
-    const expirationDate = decodedToken.exp * 1000;
-    const currentTime = new Date().getTime();
+  //   const expirationDate = decodedToken.exp * 1000;
+  //   const currentTime = new Date().getTime();
 
-    if (expirationDate < currentTime) {
-      // logout
-      authServ.logout();
-      return router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } })
-    } else {
-      // token is still valid
-      if (user.roles.includes('Writer')) {
-        return true;
-      } else {
-        alert('Unauthorized');
-        return false;
-      }
-    }
+  //   if (expirationDate < currentTime) {
+  //     // logout
+  //     authServ.logout();
+  //     return router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } })
+  //   } else {
+  //     // token is still valid
+  //     // if (user.roles.includes('Writer')) {
+  //     //   return true;
+  //     // } else {
+  //       alert('Unauthorized');
+  //       return false;
+  //     // }
+  //   }
+  // } else {
+  //   // logout
+  //   authServ.logout();
+  //   return router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } })
+  // }
+  if (user) {
+    return true;
   } else {
-    // logout
-    authServ.logout();
+    authServ.googleLogout();
     return router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } })
   }
 };
