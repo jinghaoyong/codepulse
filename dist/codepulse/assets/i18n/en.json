@@ -1,0 +1,1468 @@
+{
+  "EMPTY": "",
+  "NAV_MENU": {
+    "HOME": "Home",
+    "LEAD_MASTER": "Lead Master",
+    "INSURANCE": "Insurance Quotation",
+    "HP_APP": "HP Application",
+    "RENTAL": "Rental Quotation",
+    "SALES": "Sales Quotation",
+    "PURCHASE": "Purchase Quotation",
+    "REPORT": {
+      "REPORT": "Report",
+      "LEAD_MASTER": "Lead Master",
+      "QUOTATION": "Quotation"
+    },
+    "SETTING": "Setting",
+    "LOGOUT": "Logout"
+  },
+  "BREAD_CRUMB": {
+    "HOME": "Home",
+    "LEAD_MASTER": "Lead Master",
+    "INSURANCE": "Insurance Quotation",
+    "RENTAL": "Rental Quotation",
+    "PURCHASE": "Purchase Quotation",
+    "HP_APPLICATION": "HP Application",
+    "SALES_QUOTATION": "Sales Quotation",
+    "LEAD_MASTER_REPORT": "Lead Master Report",
+    "QUOTATION_REPORT": "Quotation Report"
+  },
+  "TABLE_BASE": {
+    "VIEW": "View",
+    "ACTION_HEADER": "Action",
+    "FOOTER": {
+      "COUNT_RESULT": ""
+    }
+  },
+  "LEAD_MASTER": {
+    "TITLE": "Lead Master",
+    "BUTTON": {
+      "ADD_NEW": "Add New",
+      "EDIT_DETAILS": "Edit Details",
+      "ASSIGN": "Assign",
+      "REASSIGN": "Re-Assign",
+      "UNASSIGN": "Unassign",
+      "QUOTE": "Quote",
+      "LINK_CV": "Link CV",
+      "ADD_NEW_ACTIVITY": "Add New Activity",
+      "VOID": "Void",
+      "UNVOID": "Unvoid",
+      "LOSE": "Lose",
+      "UNDO_LOSE": "Undo Lose Lead",
+      "SAVE_LEAD": "Save Lead",
+      "CANCEL": "Cancel",
+      "SAVE_CHANGE": "Save Changes"
+    },
+    "SEARCH_HEADER": {
+      "STATUS_PLACEHOLDER": "Status All",
+      "DUE_DATE_PLACEHOLDER": "Due Date",
+      "FROM_PLACEHOLDER": "From",
+      "TO_PLACEHOLDER": "To",
+      "LEAD_TYPE_PLACEHOLDER": "Lead Type",
+      "ASSIGNED_TO_PLACEHOLDER": "Assigned To",
+      "QUOTATION": "Application No",
+      "LEAD_NO": "Lead No",
+      "CUSTOMER_NAME": "Customer Name",
+      "SEARCH": "Search",
+      "INPUT_PLACEHOLDER_APPLICATION_NO": "Application No",
+      "INPUT_PLACEHOLDER_LEAD_NO": "Lead No",
+      "INPUT_PLACEHOLDER_CUSTOMER_NAME": "Customer Name"
+    },
+    "TABLE": {
+      "HEADER": {
+        "LEAD_NO": "Lead No",
+        "SOURCE_TYPE": "Source Type",
+        "LEAD_TYPE": "Lead Type",
+        "CUSTOMER_NAME": "Customer Name",
+        "STATUS": "Status",
+        "CV": "CV",
+        "ASSIGNED_TO": "Assigned To",
+        "DUE_DATE": "Due Date",
+        "LAST_ACTION_DATE": "Last Action Date",
+        "ACTION": "Action"
+      }
+    },
+    "NEW_LEAD": {
+      "HEADER": "New Lead",
+      "LEAD_DETAIL": "Lead Details",
+      "FORM": {
+        "SOURCE_TYPE": "Source Type",
+        "LEAD_TYPE": "Lead Type",
+        "CUSTOMER": "Customer/Company Name",
+        "NRIC": "NRIC / ROC No.",
+        "CONTACT_PERSON": " Contact Person",
+        "EMAIL": "Email Address",
+        "MOBILE_NO": "Mobile No.",
+        "OFFICE_NO": "Office No.",
+        "NOTE": "Note",
+        "SELECT_PLACEHOLDER": "Select Here",
+        "INPUT_PLACEHOLDER": "Input Here",
+        "ERROR_VALIDATOR": "This is require field",
+        "LEAD_NO": "Lead No"
+      }
+    },
+    "DETAIL": {
+      "LEAD": {
+        "TITLE": "Lead Details",
+        "ENTRY_DATE": "Entry Date",
+        "STATUS": "Status",
+        "ASSIGN_BY": "Assigned By",
+        "ASSIGN_TO": "Assigned To",
+        "DUE_DATE": "Due Date",
+        "LAST_ACTION_DATE": "Last Action Date",
+        "QUOTE_REF_NO": "Quote Ref No",
+        "LEAD_NO": "Lead No",
+        "SOURCE_TYPE": "Source Type",
+        "LEAD_TYPE": "Lead Type",
+        "CUSTOMER": "Customer/Company Name",
+        "NRIC": "NRIC / ROC No.",
+        "CONTACT_PERSON": " Contact Person",
+        "EMAIL": "Email Address",
+        "MOBILE_NO": "Mobile No.",
+        "OFFICE_NO": "Office No.",
+        "NOTE": "Note"
+      },
+      "CUSTOMER": {
+        "TITLE": "Customer Details",
+        "NAME": "Name",
+        "NRIC/ROC": "NRIC/ROC",
+        "OFFICE_NO": "Office No.",
+        "EMAIL": "Email"
+      },
+      "ACTIVITY": {
+        "TITLE": "Activity History",
+        "TABLE": {
+          "FOLLOW_DATE": "Follow Up Date",
+          "FOLLOW_TIME": "Follow Up Time",
+          "REMARK": "Remark",
+          "CREATOR": "Creator",
+          "CREATED": "Created",
+          "EDITOR": "Editor",
+          "EDITED": "Edited"
+        }
+      },
+      "VOID": {
+        "TITLE": "Void Lead",
+        "DATE": "Date",
+        "REMARK": "Remark",
+        "INFO_VOID": "Info Void",
+        "INPUT_PLACEHOLDER": "Input Here"
+      }
+    },
+    "MODAL": {
+      "LEAD_ASSIGN": {
+        "TITLE": "Lead Assign",
+        "ASSIGN_TO": "Assign To",
+        "DUE_DATE": "Due Date",
+        "SELECT_PLACEHOLDER": "Please select",
+        "INPUT_PLACEHOLDER": "Input Here",
+        "ERROR_VALIDATOR": "Please input",
+        "BUTTON": {
+          "SAVE": "Save Assign",
+          "CANCEL": "Cancel",
+          "UNASSIGN": "Unassign"
+        }
+      },
+      "ADD_ACTIVITY": {
+        "TITLE": "Activity",
+        "FOLLOW_DATE": "Follow Up Date",
+        "FOLLOW_TIME": "Follow Up Time",
+        "REMARK": "Remark",
+        "INPUT_PLACEHOLDER": "Input Here",
+        "ERROR_VALIDATOR": "Please input",
+        "BUTTON": {
+          "SAVE": "Save Activity",
+          "CANCEL": "Cancel"
+        }
+      },
+      "VOID_CONTENT": "Do you want to Void this item?",
+      "LOSE_CONTENT": "Do you want to Lose?"
+    },
+    "CUSTOMER": {
+      "TITLE": "Add New Customer",
+      "CANCEL": "Cancel",
+      "SAVE_CV": "Save CV",
+      "IMPORT": "Import From System",
+      "COMPANY": "Company",
+      "CUSTOMER": "Customer Name",
+      "GENERAL_DETAILS": "General Details",
+      "PERSONAL": {
+        "PERSONAL_INFO": "Personal Information",
+        "GENERAL_DETAILS": "General Details",
+        "FULL_NAME": "Full Name",
+        "NRIC_FIN": "NRIC/ FIN",
+        "DATE_OF_BIRTH": "Date of Birth",
+        "GENDER": "Gender",
+        "CHECK_EXIST": "Checking Existing Customer",
+        "PASS_TYPE": "Pass Type",
+        "MARITAL_STATUS": "Marital Status",
+        "NATIONALITY": "Nationality",
+        "DRIVING_PASS_DATE": "Driving Pass Date",
+        "CONTACT_NO": "Contact No",
+        "EMAIL": "Email",
+        "REGISTERED_ADDRESS": "Registered Address",
+        "ADDRESS": "Address",
+        "POSTAL_CODE": "Postal Code",
+        "COUNTRY": "Country",
+        "BILLING_ADDRESS": "Billing Address",
+        "BILLING_ADDRESS_CHOICE": "Billing Address is same as Registered Address",
+        "REGISTERED_BILLING_ADDRESS": "Registered Address For Billing Address",
+        "YES": "Yes",
+        "NO": "No",
+        "EMPLOYMENT_DETAILS": "Employment Details",
+        "SELF_EMPLOYED": "Self Employed?",
+        "OCCUPATION": "Occupation",
+        "LEN_OF_SERVICE": "Length of Service",
+        "SALARY": "Salary",
+        "EMP_NAME": "Employer Name",
+        "EMP_CONTACT": "Employer Contact"
+      },
+      "COMPANY_FORM": {
+        "TITLE": "Company Details",
+        "GENERAL_DETAIL": "General Details",
+        "NAME": "Company Name",
+        "CHECK_EXIST": "Checking Existing Company",
+        "UEN/ROC": "UEN/ROC",
+        "GST_REG_NO": "GST Reg No.",
+        "INCORPORATION_DATE": "Incorporation Date",
+        "BUSINESS_CONTRACT_NO": " Business Contract No",
+        "BUSINESS_EMAIL": " Business Email",
+        "CONTACT_PERSON": " Contact Person",
+        "BUSINESS_NATURE": " Business Nature",
+        "REGISTERED_ADDRESS": "Registered Address",
+        "ADDRESS": "Address",
+        "POSTAL_CODE": "Postal Code",
+        "COUNTRY": "Country",
+        "BILLING_ADDRESS": "Billing Address",
+        "BILLING_ADDRESS_CHOICE": "Billing Address is same as Registered Address",
+        "REGISTERED_BILLING_ADDRESS": "Registered Address For Billing Address"
+      }
+    }
+  },
+  "DASH_BOARD": {
+    "GREETING": "Good Morning, {{userName}}!",
+    "SELECT_DATA": {
+      "UP_TO_DATE": "Up to Date",
+      "THIS_MONTH": "This Month"
+    },
+    "HEADER_TITLE": {
+      "LEAD_MASTER": "Lead Master",
+      "OVERDUE_TASK": "Overdue Task",
+      "PURCHASE_QUOTATION": "Purchase Quotation",
+      "SALES_QUOTATION": "Sales Quotation",
+      "INSURANCE_QUOTATION": "Insurance Quotation",
+      "RENTAL_QUOTATION": "Rental Quotation",
+      "HP_APPLICATION": "HP Application"
+    },
+    "TABLE": {
+      "STATUS": "STATUS",
+      "QUANTITY": "QUANTITY"
+    },
+    "GO_TO_PAGE": "Go To Page"
+  },
+  "INSURANCE": {
+    "HEADER": "Insurance Quotation",
+    "TABLE": {
+      "HEADER": {
+        "QUOTATION_NO": "Quotation No",
+        "LEAD_NO": "Lead No",
+        "QUOTE_DATE": "Quote Date",
+        "CUSTOMER_NAME": "Customer Name",
+        "ISSUED_BY": "Issued By",
+        "STATUS": "Status"
+      }
+    },
+    "BUTTON": {
+      "EDIT_DETAILS": "Edit Details",
+      "SAVE_CHANGES": "Save Changes",
+      "ADD_NEW_DRIVER": "Add New Driver",
+      "ADD_NEW_ITEM": "Add New Item",
+      "QUOTE": "Quote",
+      "UNDO_QUOTE": "Undo Quote",
+      "SEND_QUOTE": "Send Quote",
+      "CONFIRM": "Confirm",
+      "UNDO_CONFIRM": "Undo Confirm",
+      "INSURANCE_QUOTATION_PRINT": "Insurance Quotation Print",
+      "GENERATE_INSURANCE_AGMT": "Generate InsuranceAgmt",
+      "VOID": "Void",
+      "UNVOID": "Unvoid",
+      "LOSE": "Lose",
+      "SEND_WHATSAPP": "Send Whatsapp"
+    },
+    "DETAIL": {
+      "INSURANCE": {
+        "TITLE": "Insurance Details",
+        "LEAD_NO": "Lead No",
+        "STATUS": "Status",
+        "ISSUED_BY": "Issued By",
+        "ENTRY_DATE": "Entry Date",
+        "QUOTATION_DATE": "Quotation Date",
+        "QUOTATION_NO": "Quotation No",
+        "TYPE_OF_COVERAGE": "Type of Coverage",
+        "DOC_TYPE": "Document Type"
+      },
+      "INSURED": {
+        "TITLE": "Insured Details",
+        "NAME": "Name",
+        "CONTACT": "Contact No",
+        "CONTACT_PERSON": " Contact Person",
+        "MOBILE_NO": "Mobile No.",
+        "NRIC_ROC": "NRIC/ ROC",
+        "OFFICE_NO": "Office No.",
+        "EMAIL": "Email Address",
+        "DOB": "Date of Birth",
+        "GENDER": "Gender",
+        "NATIONALITY": "Nationality",
+        "MARITAL_STATUS": "Marital Status",
+        "OCCUPATION": "Occupation",
+        "BUSINESS_NATURE": "Nature of Business",
+        "DRIVING_PASS_DATE": "Driving Pass Date",
+        "NCD": "NCD?",
+        "NCD_PERCENT": "NCD Percentage (%)",
+        "CLAIM_LAST_YEARS": "Claim Last 3 Years?",
+        "PREVIOUS_INSURER": "Previous Insurer",
+        "PREVIOUS_VEHICLE_NO": "Previous Vehicle No",
+        "PREVIOUS_CLAIM": "Previous Claim",
+        "INPUT_PLACEHOLDER": "Input Here"
+      },
+      "VEHICLE": {
+        "TITLE": "Vehicle Details",
+        "REG_NO": "Reg No",
+        "TYPE": "Vehicle Type",
+        "SEATING": "Seating Capacity (Included Driver)",
+        "LADEN": "Laden (kg)",
+        "UNLADEN": "Unladen (kg)",
+        "CAPACITY": "Capacity (cc/tonnage)"
+      },
+      "ADDITIONAL_DRIVER": {
+        "TITLE": "Additional Driver",
+        "TABLE": {
+          "NAME": "Name",
+          "DOB": "DOB",
+          "NRIC": "NRIC",
+          "GENDER": "Gender",
+          "DRIVING_PASS_DATE": "Driving Pass Date",
+          "OCCUPATION": "Occupation"
+        }
+      },
+      "QUOTE_ITEM": {
+        "TITLE": "Quote Item",
+        "TABLE": {
+          "INSURANCE_COMPANY": "Insurance Company",
+          "PREMIUM_AMT": "Premium Amount",
+          "EXCESS": "Excess",
+          "REMARK": "Remark"
+        }
+      },
+      "VOID_QUOTE": {
+        "TITLE": "Void Quote",
+        "DATE": "Date",
+        "REMARK": "Remark"
+      },
+      "CONFIRMATION": {
+        "TITLE": "Confirmation",
+        "DATE": "Date",
+        "INSURANCE_COMPANY": "Insurance Company",
+        "REMARK": "Remark"
+      }
+    },
+    "MODAL": {
+      "ADD_NEW_DRIVER": {
+        "TITLE": "Add New Driver",
+        "FULL_NAME": "Driver Name",
+        "NRIC_FIN": "NRIC No",
+        "DATE_OF_BIRTH": "Date of Birth",
+        "GENDER": "Gender",
+        "MARITAL_STATUS": "Marital Status",
+        "DRIVING_PASS_DATE": "Driving Pass Date",
+        "OCCUPATION": "Occupation"
+      },
+      "ADD_QUOTATION_ITEM": {
+        "EDIT_QUOTE_TITLE": "Edit Insurance Quotation",
+        "TITLE": "Insurance Quotation",
+        "INSURANCE_COMPANY": "Insurance Company",
+        "PREMIUM": "Premium ",
+        "EXCESS": "Excess ",
+        "REMARK": "Remark"
+      },
+      "SEND_QUOTE": {
+        "TITLE": "Send Quote",
+        "SUBJECT": "Subject",
+        "TO": "To",
+        "CC": "CC",
+        "WHATSAPP_NO": "WhatsApp No"
+      },
+      "VOID_CONFIRM": {
+        "TITLE": "Do you want to Void {{ item }}?",
+        "DESCRIBE": "Void the selected {{ item }}. This action cannot be undone?"
+      },
+      "BUTTON": {
+        "VOID": "Void",
+        "CANCEL": "Cancel",
+        "SAVE": "Save",
+        "SAVE_CV": "Save CV",
+        "SEND_EMAIL": "Send Email",
+        "SEND_APP": "Send to WhatsApp",
+        "IMPORT_FROM_SYS": "Import From System"
+      }
+    },
+    "ATTACH_DOC": {
+      "TITLE": "Document",
+      "GUIDELINE_TITLE": "Click or drag file to this area to upload",
+      "GUIDELINE_SUBTITLE": "File format can only *.doc, *.docx and *pdf, files must be </br> less than 2MB.",
+      "TABLE": {
+        "FILE_NAME": "File Name",
+        "FILE_SIZE": "File Size"
+      }
+    }
+  },
+  "HP_APPLICATION": {
+    "HEADER": "HP Application",
+    "TABLE": {
+      "HEADER": {
+        "QUOTATION_NO": "Application No",
+        "LEAD_NO": "Lead No",
+        "QUOTE_DATE": "Quote Date",
+        "CUSTOMER_NAME": "Customer Name",
+        "ISSUED_BY": "Issued By",
+        "STATUS": "Status"
+      }
+    },
+    "APPLICATION_DETAILS": {
+      "TITLE": "Application Details",
+      "LEAD_NO": "Lead No",
+      "STATUS": "Status",
+      "ISSUED_BY": "Issued By",
+      "ENTRY_DATE": "Entry Date",
+      "APPLICATION_DATE": "Application Date",
+      "APPLICATION_NO": "Application No"
+    },
+    "LOAN_DETAILS": {
+      "TITLE": "Loan Details",
+      "TYPE": "Type",
+      "REG_NO": "Reg No",
+      "CASH_PRICE": "Cash Price ",
+      "MAKE": "Make",
+      "MODEL": "Model",
+      "LOAN_AMOUNT": "Loan Amount ",
+      "LOAN_TERM": "Loan Term (Month)",
+      "INTEREST_RATE": "Interest Rate (%)",
+      "MONTHLY_INSTALLMENT": "Monthly Installment "
+    },
+    "APPLICANT_DETAILS": {
+      "TITLE": "Applicant Details",
+      "RELATIONSHIP": "Relationship",
+      "CLIENT_TYPE": "Client Type",
+      "ID_IC": "ID/IC No",
+      "NAME": "Name",
+      "SEX": "Sex",
+      "OCCUPATION": "Occupation",
+      "NATIONALITY": "Nationality",
+      "ADDRESS_1": "Address Line 1",
+      "ADDRESS_2": "Address Line 2",
+      "ADDRESS_3": "Address Line 3",
+      "EMP_NAME": "Employer Name",
+      "EMP_ADDR_1": "Employer Address Line 1",
+      "EMP_ADDR_2": "Employer Address Line 2",
+      "EMP_ADDR_3": "Employer Address Line 3",
+      "MOBILE_NO": "Mobile No.",
+      "OFFICE_NO": "Office No.",
+      "RESIDENCE_NO": "Residence No.",
+      "FAX": "Fax No.",
+      "EMAIL": "Email Address",
+      "DOB": "DOB",
+      "MARITAL": "Marital Status",
+      "SERVICE": "Service(Yr)",
+      "SALARY": "Salary"
+    },
+    "GUARANTOR_DETAILS": {
+      "TITLE": "Guarantor Details",
+      "TABLE": {
+        "NAME": "Name",
+        "DOB": "DOB",
+        "NRIC": "NRIC",
+        "RELATIONSHIP": "Relationship"
+      }
+    },
+    "ATTACH_DOC": {
+      "TITLE": "Document",
+      "GUIDELINE_TITLE": "Click or drag file to this area to upload",
+      "GUIDELINE_SUBTITLE": "File format can only *.doc, *.docx and *pdf, files must be </br> less than 2MB.",
+      "TABLE": {
+        "FILE_NAME": "File Name",
+        "FILE_SIZE": "File Size"
+      }
+    },
+    "VERIFICATION": {
+      "TITLE": "Verification",
+      "VERIFY_BY": "Verify By",
+      "DATE": "Date",
+      "REMARK": "Remark"
+    },
+    "APPROVAL_ADVICE": {
+      "TITLE": "Approval Advice",
+      "LOAN_AMOUNT": "Loan Amount ",
+      "LOAN_TERM": "Loan Term (Month)",
+      "INTEREST_RATE": "Interest Rate (%)",
+      "MONTHLY_INSTALLMENT": "Monthly Installment ",
+      "DATE": "Date",
+      "VALID_TILL": "Valid till",
+      "REMARK": "Remark",
+      "MODAL": {
+        "SEND_QUOTE": {
+          "TITLE": "Send Quote"
+        }
+      }
+    },
+    "VOID_QUOTE": {
+      "TITLE": "Void Quote",
+      "DATE": "Date",
+      "REMARK": "Remark"
+    },
+    "CONFIRMATION": {
+      "TITLE": "Confirmation",
+      "DATE": "Date"
+    },
+    "BUTTON": {
+      "VOID": "Void",
+      "UNVOID": "Unvoid",
+      "CONFIRM": "Confirm",
+      "UNDO_CONFIRM": "Undo Confirm",
+      "GENERATE_AGMT": "Generate HP Agmt",
+      "SEND_AA": "Send AA",
+      "REJECT": "Reject",
+      "APPROVAL": "Approve",
+      "UNDO_APPROVAL": "Undo Approval",
+      "UNDO_REJECT": "Undo Reject",
+      "EDIT_DETAILS": "Edit Details",
+      "SAVE_CHANGES": "Save Changes",
+      "QUOTATION_PRINT": "Approval Advice Print",
+      "CANCEL": "Cancel",
+      "SAVE": "Save",
+      "SAVE_CV": "Save CV",
+      "SEND_EMAIL": "Send Email",
+      "SEND_APP": "Send to WhatsApp",
+      "IMPORT_FROM_SYS": "Import From System",
+      "ADD_NEW_GUARANTOR": "Add New Guarantor",
+      "SEND_WHATSAPP": "Send Whatsapp"
+    },
+    "INPUT_PLACEHOLDER": "Input Here",
+    "DATE_PICKER_PLACEHOLDER": "Select date"
+  },
+  "RENTAL_QUOTATION": {
+    "HEADER": "Rental Quotation",
+    "TABLE": {
+      "HEADER": {
+        "QUOTATION_NO": "Quotation No",
+        "LEAD_NO": "Lead No",
+        "QUOTE_DATE": "Quote Date",
+        "CUSTOMER_NAME": "Customer Name",
+        "ISSUED_BY": "Issued By",
+        "STATUS": "Status"
+      }
+    },
+    "BUTTON": {
+      "EDIT_DETAILS": "Edit Details",
+      "SAVE_CHANGES": "Save Changes",
+      "ADD_NEW_ITEM": "Add New Item",
+      "QUOTE": "Quote",
+      "UNDO_QUOTE": "Undo Quote",
+      "SEND_QUOTE": "Send Quote",
+      "CONFIRM": "Confirm",
+      "UNDO_CONFIRM": "Undo Confirm",
+      "RENTAL_QUOTATION_PRINT": "Rental Quotation Print",
+      "GENERATE_RENTAL_AGMT": "Generate Rental Agmt",
+      "VOID": "Void",
+      "UNVOID": "Unvoid",
+      "LOSE": "Lose",
+      "UNLOSE": "Undo Lost",
+      "SEND_EMAIL": "Send Email",
+      "SEND_WHATSAPP": "Send Whatsapp"
+    },
+    "DETAIL": {
+      "RENTAL": {
+        "TITLE": "Rental Details",
+        "LEAD_NO": "Lead No",
+        "STATUS": "Status",
+        "ISSUED_BY": "Issued By",
+        "ENTRY_DATE": "Entry Date",
+        "QUOTATION_DATE": "Quotation Date",
+        "QUOTATION_NO": "Quotation No"
+      },
+      "CUSTOMER": {
+        "TITLE": "Customer Details",
+        "CUSTOMER": "Customer/Company Name",
+        "NRIC": "NRIC / ROC No.",
+        "CONTACT_PERSON": " Contact Person",
+        "EMAIL": "Email Address",
+        "MOBILE_NO": "Mobile No.",
+        "OFFICE_NO": "Office No."
+      },
+      "QUOTE_ITEM": {
+        "TITLE": "Quote Item",
+        "TABLE": {
+          "MAKE_MODEL": "Make Model",
+          "VEHICLE_DESCRIBE": "Vehicle Description",
+          "PRICE_DETAILS": "Price Details",
+          "REMARKS": "Remarks",
+          "OCCUPATION": "Occupation"
+        }
+      },
+      "VOID_QUOTE": {
+        "TITLE": "Void Quote",
+        "DATE": "Date",
+        "REMARK": "Remark"
+      },
+      "CONFIRMATION": {
+        "TITLE": "Confirmation",
+        "DATE": "Date",
+        "MAKE_MODEL": "Make Model",
+        "REMARK": "Remark"
+      }
+    },
+    "MODAL": {
+      "QUOTATION_ITEM": {
+        "TITLE": "Add Quote Item",
+        "EDIT_TITLE": "Update Quote Item",
+        "MAKE": "Make",
+        "MODEL": "Model",
+        "PRICE_DETAILS": "Price Details",
+        "REMARK": "Remark",
+        "RENTAL_RATE": "Rental Rate",
+        "DEPOSIT": "Deposit",
+        "FIN_PERIOD_TYPE": "Rental Period Type",
+        "FIN_PERIOD": "Rental Period"
+      },
+      "SEND_QUOTE": {
+        "TITLE": "Send Quote",
+        "SUBJECT": "Subject",
+        "TO": "To",
+        "CC": "CC",
+        "WHATSAPP_NO": "WhatsApp No"
+      },
+      "VOID_CONFIRM": {
+        "TITLE": "Do you want to Void {{ item }}?",
+        "DESCRIBE": "Void the selected {{ item }}. This action cannot be undone?"
+      },
+      "BUTTON": {
+        "VOID": "Void",
+        "CANCEL": "Cancel",
+        "SAVE": "Save",
+        "SAVE_CV": "Save CV",
+        "SEND_EMAIL": "Send Email",
+        "SEND_APP": "Send to WhatsApp",
+        "IMPORT_FROM_SYS": "Import From System"
+      }
+    },
+    "ATTACH_DOC": {
+      "TITLE": "Document",
+      "GUIDELINE_TITLE": "Click or drag file to this area to upload",
+      "GUIDELINE_SUBTITLE": "File format can only *.doc, *.docx and *pdf, files must be </br> less than 2MB.",
+      "TABLE": {
+        "FILE_NAME": "File Name",
+        "FILE_SIZE": "File Size"
+      }
+    }
+  },
+  "SALES_QUOTATION": {
+    "HEADER": "Sales Quotation",
+    "TABLE": {
+      "HEADER": {
+        "QUOTATION_NO": "Quotation No",
+        "LEAD_NO": "Lead No",
+        "QUOTE_DATE": "Quote Date",
+        "CUSTOMER_NAME": "Customer Name",
+        "ISSUED_BY": "Issued By",
+        "STATUS": "Status"
+      }
+    },
+    "BUTTON": {
+      "EDIT_DETAILS": "Edit Details",
+      "QUOTE": "Quote",
+      "SEND_QUOTE": "Send Quote",
+      "UNDO_QUOTE": "Undo Quote",
+      "CONFIRM": "Confirm",
+      "UNDO_CONFIRM": "Undo Confirm",
+      "SAVE_CHANGES": "Save Changes",
+      "VOID": "Void",
+      "UNVOID": "Unvoid",
+      "LOSE": "Lose",
+      "UNLOSE": "Unlose",
+      "ADD_SALES_ITEM": "Add Sales Item",
+      "ADD_VEHICLE": "Add More Vehicle",
+      "DELETE_VEHICLE": "Delete Vehicle",
+      "REQUEST_INSURANCE": "Request Insurance",
+      "REQUEST_HP_APP": "Request HP App.",
+      "GENERATE_SALES_ORDER": "Generate Sales Order",
+      "QUOTATION_PRINT": "Sales Quotation Print",
+      "SEND_EMAIL": "Send Email",
+      "SEND_WHATSAPP": "Send Whatsapp"
+    },
+    "DETAIL": {
+      "SALES": {
+        "TITLE": "Sales Details",
+        "LEAD_NO": "Lead No",
+        "STATUS": "Status",
+        "ISSUED_BY": "Issued By",
+        "ENTRY_DATE": "Entry Date",
+        "QUOTATION_DATE": "Quotation Date",
+        "QUOTATION_NO": "Quotation No"
+      },
+      "CUSTOMER": {
+        "TITLE": "Customer Details",
+        "CUSTOMER": "Customer/Company Name",
+        "NRIC": "NRIC / ROC No.",
+        "CONTACT_PERSON": " Contact Person",
+        "EMAIL": "Email Address",
+        "MOBILE_NO": "Mobile No.",
+        "OFFICE_NO": "Office No.",
+        "INPUT_PLACEHOLDER": "Input Here"
+      },
+      "QUOTE_ITEM": {
+        "TITLE": "Quote Item",
+        "REMARK": "Remarks",
+        "MODAL": {
+          "SEND_QUOTE": {
+            "TITLE": "Send Quote"
+          }
+        }
+      },
+      "VEHICLE_SALES": {
+        "TITLE": "Vehicle and Sales Details",
+        "REG_NO": "Reg No",
+        "VEHICLE": "Vehicle {{value}}",
+        "MAKE": "Make",
+        "MODEL": "Model",
+        "CHASSIS_NO": "Chassis No",
+        "TYPE": "Type",
+        "REG_DATE": "Reg Date",
+        "MANU_YEAR": "Manu Year",
+        "COLOR": "Color",
+        "SELLING_PRICE": "Selling Price ($)",
+        "FINANCE_AMT": "Finance Amount ($)",
+        "STOCK_ID": "Stock ID",
+        "REV": "Rev",
+        "INSTALLMENT_AMT": "Installment Amount ($)",
+        "LOAN_PERIOD": "Loan Period (mth)",
+        "LOAN_INTEREST": "Loan Interest Rate (%)",
+        "DOWN_PAYMENT": "Down Payment ($)",
+        "ADVANCE_INSTALLMENT": "Advance Installment",
+        "TABLE": {
+          "SALES_ITEM": "Sales Item",
+          "REMARK": "Remark",
+          "TOTAL": "Total ",
+          "GRAND_TOTAL": "Total Balance (before Trade In)",
+          "GRAND_TOTAL_NOTE": "Total Balance (before Trade In) = Selling Price - Finance Amt. - Down Payment + Advanced Instalment + ALL Sales Items"
+        }
+      },
+      "TRADE_IN": {
+        "TITLE": "Trade In",
+        "REG_NO": "Reg No",
+        "MAKE": "Make",
+        "MODEL": "Model",
+        "CHASSIS_NO": "Chassis No",
+        "TYPE": "Type",
+        "REG_DATE": "Reg Date",
+        "MANU_YEAR": "Manu Year",
+        "TRADE_IN_PRICE": "Trade In Price ",
+        "COLOR": "Color",
+        "FINANCE_COMPANY": "Finance Company",
+        "LESS_FULL_SETTLEMENT": "Less Full Settlement ",
+        "BALANCE_AMT": "Balance Amount ",
+        "VALIDATE_MESSAGE": {
+          "MAX_LESS_FULL_SETTLEMENT": "Less Full Settlement must be smaller than Trade in price "
+        }
+      },
+      "VOID_QUOTE": {
+        "TITLE": "Void Quote",
+        "DATE": "Date",
+        "REMARK": "Remark"
+      },
+      "LOSE_QUOTE": {
+        "TITLE": "Lose Quote",
+        "DATE": "Date",
+        "REMARK": "Remark"
+      },
+      "CONFIRMATION": {
+        "TITLE": "Confirmation",
+        "DATE": "Date",
+        "VEHICLE_STOCK_ID": "Vehicle / Stock ID",
+        "REMARK": "Remark",
+        "GENERATE_SO_FAIL": "Fail to generate Sales Order"
+      },
+      "FORM_FIELDS": {
+        "INPUT_PLACEHOLDER": "Input Here"
+      }
+    },
+    "ATTACH_DOC": {
+      "TITLE": "Document",
+      "GUIDELINE_TITLE": "Click or drag file to this area to upload",
+      "GUIDELINE_SUBTITLE": "File format can only *.doc, *.docx and *pdf, files must be </br> less than 2MB.",
+      "TABLE": {
+        "FILE_NAME": "File Name",
+        "FILE_SIZE": "File Size"
+      }
+    }
+  },
+  "PURCHASE_QUOTATION": {
+    "HEADER": "Purchase Quotation",
+    "TABLE": {
+      "HEADER": {
+        "QUOTATION_NO": "Quotation No",
+        "LEAD_NO": "Lead No",
+        "QUOTE_DATE": "Quote Date",
+        "CUSTOMER_NAME": "Customer Name",
+        "ISSUED_BY": "Issued By",
+        "STATUS": "Status"
+      }
+    },
+    "BUTTON": {
+      "EDIT_DETAILS": "Edit Details",
+      "SAVE_CHANGES": "Save Changes",
+      "ADD_VEHICLE": "Add Vehicle",
+      "ADD_COST_ITEM": "Add Cost Item",
+      "QUOTE": "Quote",
+      "UNDO_QUOTE": "Undo Quote",
+      "SEND_QUOTE": "Send Quote",
+      "CONFIRM": "Confirm",
+      "UNDO_CONFIRM": "Undo Confirm",
+      "PURCHASE_QUOTATION_PRINT": "Purchase Quotation Print",
+      "GENERATE_PURCHASE_AGMT": "Generate Purchase Agreement",
+      "VOID": "Void",
+      "UNVOID": "Unvoid",
+      "SEND_EMAIL": "Send Email",
+      "SEND_WHATSAPP": "Send Whatsapp"
+    },
+    "DETAIL": {
+      "PURCHASE": {
+        "TITLE": "Purchase Details",
+        "LEAD_NO": "Lead No",
+        "STATUS": "Status",
+        "ISSUED_BY": "Issued By",
+        "ENTRY_DATE": "Entry Date",
+        "QUOTATION_DATE": "Quotation Date",
+        "QUOTATION_NO": "Quotation No"
+      },
+      "CUSTOMER": {
+        "TITLE": "Customer Details",
+        "CUSTOMER": "Customer/Company Name",
+        "NRIC": "NRIC / ROC No.",
+        "CONTACT_PERSON": " Contact Person",
+        "EMAIL": "Email Address",
+        "MOBILE_NO": "Mobile No.",
+        "OFFICE_NO": "Office No.",
+        "INPUT_PLACEHOLDER": "Input Here"
+      },
+      "VEHICLE_AND_PUR_DETAIL": {
+        "TITLE": "Vehicle and Purchase Details",
+        "REG_NO": "Reg No",
+        "REG_DATE": "Reg Date",
+        "MAKE": "Make",
+        "MODEL": "Model",
+        "VEHICLE": "Vehicle {{value}}",
+        "CHASSIS_NO": "Chassis No",
+        "TYPE": "Type",
+        "MANU_YEAR": "Manu Year",
+        "COLOR": "Color",
+        "PURCHASE_PRICE": "Purchase Price ",
+        "REV": "Rev",
+        "TABLE": {
+          "COST_ITEM": "Make Model",
+          "REMARK": "Remark",
+          "TOTAL": "Total ",
+          "GRAND_TOTAL": "Grand Total",
+          "GRAND_TOTAL_NOTE": "Grand Total = Purchasing Price + Total Items"
+        }
+      },
+      "FULL_SETTLEMENT": {
+        "TITLE": "Full Settlement",
+        "FINANCE_COMPANY": "Finance Company",
+        "FULL_SETTLEMENT": "Full Settlement",
+        "SETTLEMENT_DUE_DATE": "Settlement Due Date"
+      },
+      "QUOTE_DETAILS": {
+        "TITLE": "Quote Details",
+        "REMARK": "Remark"
+      },
+      "VOID_QUOTE": {
+        "TITLE": "Void Quote",
+        "DATE": "Date",
+        "REMARK": "Remark"
+      },
+      "CONFIRMATION": {
+        "TITLE": "Confirmation",
+        "DATE": "Date",
+        "REMARK": "Remark"
+      }
+    },
+    "MODAL": {
+      "ADD_VEHICLE": {
+        "TITLE": "Add Vehicle",
+        "VEHICLE_INFO": "Vehicle Information",
+        "AUTO_RETRIEVE_DATA": "Auto Retrieve Data",
+        "CREATE_MANUAL": "Create Manual",
+        "PERSONAL_INFO": "Personal Information",
+        "OWNER_TYPE": "Owner Type",
+        "OWNER_ID": "Owner ID",
+        "REG_NO": "Reg No",
+        "INTENDED_DEREGISTRATION_DATE": "Intended Deregistration Date",
+        "NEW_USED_VEHICLE": "New/ Used Vehicle",
+        "MANU_YEAR": "Manu Year",
+        "MAKE": "Make",
+        "MODEL": "Model",
+        "COLOR": "Color",
+        "REV": "Rev",
+        "PURCHASE_PRICE": "Purchase Price ",
+        "CHASSIS_NO": "Chassis No",
+        "ENGINE_NO": "Engine No",
+        "ENGINE_CAPACITY": "Engine Capacity",
+        "ORIGINAL_REG_DATE": "Original Reg Date",
+        "REG_DATE": "Reg Date",
+        "VEHICLE_TYPE": "Vehicle Type",
+        "OMV": "OMV ",
+        "MILEAGE": "Mileage",
+        "PROPELLANT": "Propellant",
+        "MAX_LADEN_WEIGHT": "Maximum Laden Weight (KG)",
+        "UNLADEN_WEIGHT": "Unladen Weight (KG)",
+        "TRANSFER_COUNT": "Transfer Count",
+        "COE_CATEGORY": "COE Category",
+        "VEHICLE_SCHEME": "Vehicle Scheme",
+        "TOTAL_REBATE": "Total Rebate ",
+        "QUOTA_PREMIUM": "Quota Premium ",
+        "ACTUAL_ARF_PAID": "Actual ARF Paid ",
+        "OPC_REBATE": "OPC Rebate ",
+        "COE_REBATE": "COE Rebate ",
+        "PARF_REBATE": "PARF Rebate ",
+        "OPC_REBATE_EXP": "OPC Rebate Expiry",
+        "COE_EXPIRY": "COE Expiry",
+        "PARF_EXPIRY": "PARF Expiry",
+        "ROAD_TAX_EXPIRY": "Road Tax Expiry",
+        "CANCEL_BTN": "Cancel",
+        "SAVE_BTN": "Save Changes"
+      },
+      "SEND_QUOTE": {
+        "TITLE": "Send Quote",
+        "SUBJECT": "Subject",
+        "TO": "To",
+        "CC": "CC",
+        "WHATSAPP_NO": "WhatsApp No"
+      },
+      "VOID_CONFIRM": {
+        "TITLE": "Do you want to Void {{ item }}?",
+        "DESCRIBE": "Void the selected {{ item }}. This action cannot be undone?"
+      },
+      "BUTTON": {
+        "VOID": "Void",
+        "CANCEL": "Cancel",
+        "CREATE_NEW": "Create New",
+        "SEND_EMAIL": "Send Email",
+        "SEND_APP": "Send to WhatsApp",
+        "AUTO_RETRIEVE": "Auto Retrieve Data"
+      },
+      "PLACEHOLDER": {
+        "SELECT": "Select Here",
+        "INPUT": "Input Here"
+      }
+    }
+  },
+  "REPORT": {
+    "BUTTON": {
+      "VIEW": "View"
+    },
+    "TITLE_SEARCH": "Search Condition",
+    "QUOTATION": {
+      "TITLE": "Search Condition",
+      "QUOTATION_DATE": "Quotation Date",
+      "LEAD_TYPE": "Lead Type",
+      "STATUS": "Status",
+      "ISSUE_BY": "Issued By"
+    },
+    "LEAD_MASTER": {
+      "TITLE": "Search Condition",
+      "ENTRY_DATE": "Entry Date",
+      "LEAD_TYPE": "Lead Type",
+      "STATUS": "Status"
+    },
+    "PLACE_HOLDER": {
+      "DATE_FROM": "Date From",
+      "DATE_TO": "Date To",
+      "SELECT": "Select options"
+    }
+  },
+  "COMMON": {
+    "MODAL": {
+      "VOID_CONFIRM": {
+        "TITLE": "Do you want to Void {{ item }}?",
+        "DESCRIBE": "Void the selected {{ item }}.",
+        "VOID_BUTTON": "Void",
+        "CANCEL_BUTTON": "Cancel"
+      },
+      "LOSE_CONFIRM": {
+        "TITLE": "Do you want to lose {{ item }}?",
+        "DESCRIBE": "Lose the selected {{ item }}",
+        "LOSE_BUTTON": "Lose",
+        "CANCEL_BUTTON": "Cancel"
+      },
+      "DELETE_CONFIRM": {
+        "TITLE": "Confirm",
+        "DESCRIBE": "Do you want to delete this item?"
+      },
+      "DELETE_CONFIRM_ITEM": {
+        "TITLE": "Confirm",
+        "DESCRIBE": "Do you want to delete {{name}}?"
+      }
+    },
+    "PERSONAL_FORM": {
+      "PERSONAL_INFO": "Personal Information",
+      "GENERAL_DETAILS": "General Details",
+      "FULL_NAME": "Full Name",
+      "CHECK_EXIST": "Checking Existing Customer",
+      "RELATIONSHIP": "Relationship",
+      "NRIC_FIN": "NRIC/ FIN",
+      "DATE_OF_BIRTH": "Date of Birth",
+      "GENDER": "Gender",
+      "PASS_TYPE": "Pass Type",
+      "MARITAL_STATUS": "Marital Status",
+      "NATIONALITY": "Nationality",
+      "DRIVING_PASS_DATE": "Driving Pass Date",
+      "CONTACT_NO": "Contact No",
+      "EMAIL": "Email",
+      "REGISTERED_ADDRESS": "Registered Address",
+      "ADDRESS": "Address",
+      "POSTAL_CODE": "Postal Code",
+      "COUNTRY": "Country",
+      "BILLING_ADDRESS": "Billing Address",
+      "BILLING_ADDRESS_CHOICE": "Billing Address is same as Registered Address",
+      "YES": "Yes",
+      "NO": "No",
+      "EMPLOYMENT_DETAILS": "Employment Details",
+      "SELF_EMPLOYED": "Self Employed?",
+      "OCCUPATION": "Occupation",
+      "LEN_OF_SERVICE": "Length of Service",
+      "SALARY": "Salary",
+      "EMP_NAME": "Employer Name",
+      "EMP_CONTACT": "Employer Contact",
+      "REGISTERED_BILLING_ADDRESS": "Registered Address For Billing Address"
+    },
+    "BUTTON": {
+      "CANCEL": "Cancel",
+      "SAVE": "Save",
+      "UPDATE": "Update",
+      "IMPORT_FROM_SYS": "Import From System",
+      "SEND_EMAIL": "Send Email"
+    },
+    "MODAL_SEND_EMAIL": {
+      "TITLE": "Send Email",
+      "SALES": {
+        "TO": "To",
+        "CC": "CC",
+        "SUBJECT": "Subject",
+        "SUBJECT_CONTENT": "Sales Quotation {{quotationNo}} | Think One Group",
+        "BODY_CONTENT": "Dear <strong>{{clientName}}</strong>,<br/> <div class='email-body-content'>We are pleased to offer our services to your esteemed organization. As per our discussions, please find below our quotation <strong>{{quotationNo}}</strong>.<br/>We assure you of the highest quality and timely delivery of our vehicles. Please let us know if you have any questions or concerns regarding the quotation or our services.<br/>Thank you for considering our offer.<br/>To proceed with your quotation, we kindly request you to reply to this email <strong>{{salesmanEmail}}</strong> with your acceptance or any modifications you would like to make to the quotation.</div><br/>Sincerely,<br/><strong>{{salesman}}</strong><br/><strong>Think One Group</strong>"
+      },
+      "PURCHASE": {
+        "TO": "To",
+        "CC": "CC",
+        "SUBJECT": "Subject",
+        "SUBJECT_CONTENT": "Purchase Quotation {{quotationNo}} | Think One Group",
+        "BODY_CONTENT": "Dear <strong>{{clientName}}</strong>,<br/> <div class='email-body-content'>We are pleased to offer our services to your esteemed organization. As per our discussions, please find below our quotation <strong>{{quotationNo}}</strong>.<br/>We assure you of the highest quality and timely delivery of our vehicles. Please let us know if you have any questions or concerns regarding the quotation or our services.<br/>Thank you for considering our offer.<br/>To proceed with your quotation, we kindly request you to reply to this email <strong>{{salesmanEmail}}</strong> with your acceptance or any modifications you would like to make to the quotation.</div><br/>Sincerely,<br/><strong>{{salesman}}</strong><br/><strong>Think One Group</strong>"
+      },
+      "HP": {
+        "TO": "To",
+        "CC": "CC",
+        "SUBJECT": "Subject",
+        "SUBJECT_CONTENT": "HP Application {{quotationNo}} | Think One Group",
+        "BODY_CONTENT": "Dear <strong>{{clientName}}</strong>,<br/> <div class='email-body-content'>We are pleased to offer our services to your esteemed organization. As per our discussions, please find below our quotation <strong>{{quotationNo}}</strong>.<br/>We assure you of the highest quality and timely delivery of our vehicles. Please let us know if you have any questions or concerns regarding the quotation or our services.<br/>Thank you for considering our offer.<br/>To proceed with your quotation, we kindly request you to reply to this email <strong>{{salesmanEmail}}</strong> with your acceptance or any modifications you would like to make to the quotation.</div><br/>Sincerely,<br/><strong>{{salesman}}</strong><br/><strong>Think One Group</strong>"
+      },
+      "RENTAL": {
+        "TO": "To",
+        "CC": "CC",
+        "SUBJECT": "Subject",
+        "SUBJECT_CONTENT": "Rental Quotation {{quotationNo}} | Think One Group",
+        "BODY_CONTENT": "Dear <strong>{{clientName}}</strong>,<br/> <div class='email-body-content'>We are pleased to offer our services to your esteemed organization. As per our discussions, please find below our quotation <strong>{{quotationNo}}</strong>.<br/>We assure you of the highest quality and timely delivery of our vehicles. Please let us know if you have any questions or concerns regarding the quotation or our services.<br/>Thank you for considering our offer.<br/>To proceed with your quotation, we kindly request you to reply to this email <strong>{{salesmanEmail}}</strong> with your acceptance or any modifications you would like to make to the quotation.</div><br/>Sincerely,<br/><strong>{{salesman}}</strong><br/><strong>Think One Group</strong>"
+      },
+      "INSURANCE": {
+        "TO": "To",
+        "CC": "CC",
+        "SUBJECT": "Subject",
+        "SUBJECT_CONTENT": "Insurance Quotation {{quotationNo}} | Think One Group",
+        "BODY_CONTENT": "Dear <strong>{{clientName}}</strong>,<br/> <div class='email-body-content'>We are pleased to offer our services to your esteemed organization. As per our discussions, please find below our quotation <strong>{{quotationNo}}</strong>.<br/>We assure you of the highest quality and timely delivery of our vehicles. Please let us know if you have any questions or concerns regarding the quotation or our services.<br/>Thank you for considering our offer.<br/>To proceed with your quotation, we kindly request you to reply to this email <strong>{{salesmanEmail}}</strong> with your acceptance or any modifications you would like to make to the quotation.</div><br/>Sincerely,<br/><strong>{{salesman}}</strong><br/><strong>Think One Group</strong>"
+      }
+    },
+    "SEND_TO_WHATSAPP":{
+      "SALES": {
+        "BODY_CONTENT": "Dear *{{clientName}}*,%0a%0aWe are pleased to offer our services to your esteemed organization. As per our discussions, please find below our quotation *{{quotationNo}}*.%0aWe assure you of the highest quality and timely delivery of our vehicles. Please let us know if you have any questions or concerns regarding the quotation or our services.%0aThank you for considering our offer.%0aTo proceed with your quotation, we kindly request you to reply to this email *{{salesmanEmail}}* with your acceptance or any modifications you would like to make to the quotation.%0aSincerely,%0a*{{salesman}}*%0a*Think One Group*"
+      },
+      "PURCHASE": {
+        "BODY_CONTENT": "Dear *{{clientName}}*,%0a%0aWe are pleased to offer our services to your esteemed organization. As per our discussions, please find below our quotation *{{quotationNo}}*.%0aWe assure you of the highest quality and timely delivery of our vehicles. Please let us know if you have any questions or concerns regarding the quotation or our services.%0aThank you for considering our offer.%0aTo proceed with your quotation, we kindly request you to reply to this email *{{salesmanEmail}}* with your acceptance or any modifications you would like to make to the quotation.%0aSincerely,%0a*{{salesman}}*%0a*Think One Group*"
+      },
+      "HP": {
+        "BODY_CONTENT": "Dear *{{clientName}}*,%0a%0aWe are pleased to offer our services to your esteemed organization. As per our discussions, please find below our quotation *{{quotationNo}}*.%0aWe assure you of the highest quality and timely delivery of our vehicles. Please let us know if you have any questions or concerns regarding the quotation or our services.%0aThank you for considering our offer.%0aTo proceed with your quotation, we kindly request you to reply to this email *{{salesmanEmail}}* with your acceptance or any modifications you would like to make to the quotation.%0aSincerely,%0a*{{salesman}}*%0a*Think One Group*"
+      },
+      "RENTAL": {
+        "BODY_CONTENT": "Dear *{{clientName}}*,%0a%0aWe are pleased to offer our services to your esteemed organization. As per our discussions, please find below our quotation *{{quotationNo}}*.%0aWe assure you of the highest quality and timely delivery of our vehicles. Please let us know if you have any questions or concerns regarding the quotation or our services.%0aThank you for considering our offer.%0aTo proceed with your quotation, we kindly request you to reply to this email *{{salesmanEmail}}* with your acceptance or any modifications you would like to make to the quotation.%0aSincerely,%0a*{{salesman}}*%0a*Think One Group*"
+      },
+      "INSURANCE": {
+        "BODY_CONTENT": "Dear *{{clientName}}*,%0a%0aWe are pleased to offer our services to your esteemed organization. As per our discussions, please find below our quotation *{{quotationNo}}*.%0aWe assure you of the highest quality and timely delivery of our vehicles. Please let us know if you have any questions or concerns regarding the quotation or our services.%0aThank you for considering our offer.%0aTo proceed with your quotation, we kindly request you to reply to this email *{{salesmanEmail}}* with your acceptance or any modifications you would like to make to the quotation.%0aSincerely,%0a*{{salesman}}*%0a*Think One Group*"
+      }
+    },
+    "PLACE_HOLDER": {
+      "INPUT": "Input Here",
+      "SELECT": "Select options",
+      "INPUT_AUTO_COMPLETE": "Input (auto complete)",
+      "DATE_PICKER": "Select Date",
+      "REGISTER_ADDRESS": {
+        "ST_NAME": "Street Name",
+        "BUILDING_NAME": "Building Name",
+        "FLOOR_NO": "Floor Unit No"
+      }
+    },
+    "CUSTOMER_DETAILS": {
+      "TITLE": "Customer Details",
+      "NAME": "Name",
+      "NRIC_ROC": "NRIC_ROC",
+      "CONTACT": "Contact No",
+      "EMAIL": "Email",
+      "INPUT_PLACEHOLDER": "Input Here"
+    },
+    "DRIVER_DETAILS": {
+      "TITLE": "Add New Driver",
+      "EDIT": {
+        "TITLE": "Edit Driver"
+      }
+    },
+    "SEARCH_HEADER": {
+      "STATUS_PLACEHOLDER": "Status All",
+      "DUE_DATE_PLACEHOLDER": "Due Date",
+      "FROM_PLACEHOLDER": "From",
+      "TO_PLACEHOLDER": "To",
+      "LEAD_TYPE_PLACEHOLDER": "Lead Type",
+      "ASSIGNED_TO_PLACEHOLDER": "Assigned To",
+      "QUOTATION": "Quotation No",
+      "LEAD_NO": "Lead No",
+      "ISSUED_BY": "Issued By",
+      "CUSTOMER_NAME": "Customer Name",
+      "SEARCH": "Search",
+      "INPUT_PLACEHOLDER": "Input Here"
+    },
+    "MESSAGE": {
+      "CUSTOMER": {
+        "ADD_SUCCESS": "Add customer successful",
+        "ADD_FAIL": "Add customer fail",
+        "CAN_NOT_FIND": "This contact does not exist, Please select the other contact!"
+      },
+      "ACTIVITY": {
+        "ADD_SUCCESS": "Add activity successful",
+        "ADD_FAIL": "Add activity fail",
+        "EDIT_SUCCESS": "Update activity successful",
+        "EDIT_FAIL": "Update activity fail",
+        "DELETE_SUCCESS": "Delete activity successful",
+        "DELETE_FAIL": "Delete activity fail"
+      },
+      "ASSIGN_LEAD": {
+        "ASSIGN_SUCCESS": "Assign successful",
+        "ASSIGN_FAIL": "Assign fail",
+        "UNASSIGN_SUCCESS": "Unassign successful",
+        "UNASSIGN_FAIL": "Unassign fail"
+      },
+      "VOID_LOSE": {
+        "SUCCESS": "successful",
+        "FAIL": "Fail"
+      },
+      "QUOTE": {
+        "SUCCESS": "Successful",
+        "FAIL": "Fail"
+      },
+      "LEAD_MASTER": {
+        "DETAILS": {
+          "UPDATE_SUCCESS": "Update Successful",
+          "UPDATE_FAIL": "Update Fail"
+        }
+      },
+      "INSURANCE": {
+        "INSURANCE_INFO": {
+          "UPDATE_SUCCESS": "Update Insurance Successful",
+          "UPDATE_FAIL": "Update Insurance Fail"
+        },
+        "INSURED_INFO": {
+          "UPDATE_SUCCESS": "Update Insured Successful",
+          "UPDATE_FAIL": "Update Insured Fail"
+        },
+        "VEHICLE": {
+          "SUCCESS": "Update Vehicle Successful",
+          "FAIL": "Update Vehicle Fail"
+        },
+        "VOID": {
+          "SUCCESS": "Void Successful",
+          "FAIL": "Void Fail"
+        },
+        "DRIVER": {
+          "ADD_SUCCESS": "Add driver successful",
+          "ADD_FAIL": "Add driver fail",
+          "EDIT_SUCCESS": "Update driver successful",
+          "EDIT_FAIL": "Update driver fail",
+          "DELETE_SUCCESS": "Delete driver successful",
+          "DELETE_FAIL": "Delete driver fail"
+        },
+        "QUOTE": {
+          "ADD_SUCCESS": "Add quote successful",
+          "ADD_FAIL": "Add quote fail",
+          "EDIT_SUCCESS": "Update quote successful",
+          "EDIT_FAIL": "Update quote fail",
+          "DELETE_SUCCESS": "Delete quote successful",
+          "DELETE_FAIL": "Delete quote fail"
+        },
+        "GENERATE_AGMT": {
+          "TITLE": "Generate Successful",
+          "SUB_TITLE": "HP Agreement no {{item}} has been created",
+          "CANCEL_BTN": "Close",
+          "FAIL": "Generate fail"
+        },
+        "DOCUMENTS": {
+          "DELETE_SUCCESS": "Delete Successful",
+          "DELETE_FAIL": "Delete Fail"
+        }
+      },
+      "HP_APPLICATION": {
+        "APPLICATION_INFO": {
+          "UPDATE_SUCCESS": "Update Application Successful",
+          "UPDATE_FAIL": "Update Application Fail"
+        },
+        "LOAN_INFO": {
+          "UPDATE_SUCCESS": "Update Loan details Successful",
+          "UPDATE_FAIL": "Update Loan details Fail"
+        },
+        "APPLICANT_INFO": {
+          "UPDATE_SUCCESS": "Update Applicant details Successful",
+          "UPDATE_FAIL": "Update Applicant details Fail"
+        },
+        "GUARANTOR": {
+          "ADD_SUCCESS": "Add Guarantor successful",
+          "ADD_FAIL": "Add Guarantor fail",
+          "EDIT_SUCCESS": "Update Guarantor successful",
+          "EDIT_FAIL": "Update Guarantor fail",
+          "DELETE_SUCCESS": "Delete Guarantor successful",
+          "DELETE_FAIL": "Delete Guarantor fail"
+        },
+        "DOCUMENTS": {
+          "DELETE_SUCCESS": "Delete Successful",
+          "DELETE_FAIL": "Delete Fail"
+        },
+        "VERIFICATION": {
+          "APPROVAL": "The HP Application has been approved",
+          "REJECT": "The HP Application has been rejected",
+          "UNDO_APPROVAL": "The HP Application has been re-opened",
+          "FAIL": "Verify HP Application fail"
+        },
+        "CONFIRMATION": {
+          "CONFIRMED": "The quotation have been confirmed",
+          "CONFIRM_FAIL": "Can't confirm the quotation",
+          "UNDO_CONFIRMED": "Undo Confirmation successful",
+          "UNDO_CONFIRM_FAIL": "Undo Confirmation error"
+        },
+        "GENERATE_AGMT": {
+          "TITLE": "Generate Successful",
+          "SUB_TITLE": "HP Agreement no {{item}} has been created",
+          "CANCEL_BTN": "Close",
+          "FAIL": "Generate fail"
+        },
+        "APPROVAL_ADVICE": {
+          "SUCCESS": "Update Approval Advice Successful",
+          "FAIL": "Update Approval Advice Fail"
+        },
+        "VOID_QUOTE": {
+          "SUCCESS": "Void Successful",
+          "FAIL": "Void Fail"
+        }
+      },
+      "SALES": {
+        "SALES_DETAILS": {
+          "SUCCESS": "Update Sales Details Successful",
+          "FAIL": "Update Sales Details Fail"
+        },
+        "CUSTOMER": {
+          "SUCCESS": "Update Customer Successful",
+          "FAIL": "Update Customer Fail"
+        },
+        "SALES_VEHICLE": {
+          "SUCCESS": "Update Vehicle Details Successful",
+          "FAIL": "Update Vehicle Details Fail",
+          "DELETE_SUCCESS": "Delete Successful",
+          "DELETE_FAIL": "Delete Fail",
+          "SELECT_AT_LEAST_1": "Please select the vehicle(s) in the Confirmation Section"
+        },
+        "TRADE_IN": {
+          "SUCCESS": "Update Trade In Successful",
+          "FAIL": "Update Trade In Fail"
+        },
+        "VOID": {
+          "SUCCESS": "Void Successful",
+          "FAIL": "Void Fail",
+          "UNVOID_SUCCESS": "The Quotation has been re-opened",
+          "UNVOID_FAIL": "Can not re-open this Quotation"
+        },
+        "LOSE": {
+          "SUCCESS": "Lose Successful",
+          "FAIL": "Lose Fail",
+          "UNLOSE_SUCCESS": "The Quotation has been lose",
+          "UNLOSE_FAIL": "Can not un-lose this Quotation"
+        },
+        "QUOTE": {
+          "SUCCESS": "Quote Successful",
+          "FAIL": "Quote Fail",
+          "UNDO_SUCCESS": "The Quotation has been undone quote",
+          "UNDO_FAIL": "Can not undo quote this Quotation"
+        },
+        "CONFIRM": {
+          "SUCCESS": "The Quotation has been confirmed",
+          "FAIL": "Can not confirm the Quotation",
+          "UNDO_SUCCESS": "The Quotation has been undone confirm",
+          "UNDO_FAIL": "Can not undo confirm this Quotation"
+        },
+        "REQUEST": {
+          "TITLE": "Request Successful",
+          "SUB_TITLE": "Lead master no {{item}} has been created",
+          "OKAY_BTN": "Go to lead master details",
+          "CANCEL_BTN": "Close",
+          "FAIL": "Request fail"
+        },
+        "GENERATE_AGMT": {
+          "TITLE": "Generate Successful",
+          "SUB_TITLE": "Sales Order no {{item}} has been created",
+          "CANCEL_BTN": "Close",
+          "FAIL": "Generate fail"
+        },
+        "DOCUMENTS": {
+          "DELETE_SUCCESS": "Delete Successful",
+          "DELETE_FAIL": "Delete Fail"
+        }
+      },
+      "PURCHASE": {
+        "PURCHASE_DETAILS": {
+          "SUCCESS": "Update Purchase Details Successful",
+          "FAIL": "Update Purchase Details Fail"
+        },
+        "CUSTOMER": {
+          "SUCCESS": "Update Customer Successful",
+          "FAIL": "Update Customer Fail"
+        },
+        "FULL_SETTLEMENT": {
+          "SUCCESS": "Update Full Settlement Successful",
+          "FAIL": "Update Full Settlement Fail"
+        },
+        "PURCHASE_VEHICLE": {
+          "CREATED_SUCCESS": "Create Vehicle Successful",
+          "CREATE_FAIL": "Create Vehicle Fail",
+          "UPDATE_SUCCESS": "Update Vehicle Successful",
+          "UPDATE_FAIL": "Update Vehicle Fail",
+          "DELETE_SUCCESS": "Delete Successful",
+          "DELETE_FAIL": "Delete Fail"
+        },
+        "VOID": {
+          "SUCCESS": "Void Successful",
+          "FAIL": "Void Fail",
+          "UNVOID_SUCCESS": "The Quotation has been re-opened",
+          "UNVOID_FAIL": "Can not re-open this Quotation"
+        },
+        "QUOTE": {
+          "SUCCESS": "Quote Successful",
+          "FAIL": "Quote Fail",
+          "UNDO_SUCCESS": "The Quotation has been undone quote",
+          "UNDO_FAIL": "Can not undo quote this Quotation"
+        },
+        "CONFIRM": {
+          "SUCCESS": "The Quotation has been confirmed",
+          "FAIL": "Can not confirm the Quotation",
+          "UNDO_SUCCESS": "The Quotation has been undone confirm",
+          "UNDO_FAIL": "Can not undo confirm this Quotation"
+        },
+        "GENERATE_AGMT": {
+          "TITLE": "Generate Successful",
+          "SUB_TITLE": "Purchase Agreement no {{item}} has been created",
+          "CANCEL_BTN": "Close",
+          "FAIL": "Generate fail"
+        }
+      },
+      "RENTAL": {
+        "DETAILS": {
+          "SUCCESS": "Update Purchase Details Successful",
+          "FAIL": "Update Purchase Details Fail"
+        },
+        "CUSTOMER": {
+          "SUCCESS": "Update Customer Successful",
+          "FAIL": "Update Customer Fail"
+        },
+        "VOID": {
+          "SUCCESS": "Void Successful",
+          "FAIL": "Void Fail",
+          "UNVOID_SUCCESS": "The Quotation has been re-opened",
+          "UNVOID_FAIL": "Can not re-open this Quotation"
+        },
+        "QUOTE": {
+          "CREATED_SUCCESS": "Add Successful",
+          "CREATE_FAIL": "Add Fail",
+          "UPDATE_SUCCESS": "Update Successful",
+          "UPDATE_FAIL": "Update Fail",
+          "DELETE_SUCCESS": "Delete Successful",
+          "DELETE_FAIL": "Delete Fail",
+          "SUCCESS": "Quote Successful",
+          "FAIL": "Quote Fail",
+          "UNDO_SUCCESS": "The Quotation has been undone quote",
+          "UNDO_FAIL": "Can not undo quote this Quotation"
+        },
+        "GENERATE_AGMT": {
+          "TITLE": "Generate Successful",
+          "SUB_TITLE": "Rental Agreement no {{item}} has been created",
+          "CANCEL_BTN": "Close",
+          "FAIL": "Generate fail"
+        },
+        "CONFIRM": {
+          "SUCCESS": "The Quotation has been confirmed",
+          "FAIL": "Can not confirm the Quotation",
+          "UNDO_SUCCESS": "The Quotation has been undone confirm",
+          "UNDO_FAIL": "Can not undo confirm this Quotation",
+          "SELECT_AT_LEAST_1": "Please select the vehicle(s) in the Confirmation Section"
+        },
+        "DOCUMENTS": {
+          "DELETE_SUCCESS": "Delete Successful",
+          "DELETE_FAIL": "Delete Fail"
+        }
+      },
+      "GENERAL": {
+        "RETRIEVE_VEHICLE_SUCCESS": "Vehicle Information has been retrieved successful",
+        "RETRIEVE_VEHICLE_FAIL": "Can not find vehicle, Please try again"
+      },
+      "SEND_EMAIL": {
+        "SUCCESS": "The Email has been sent",
+        "FAIL": "Can not send the email"
+      }
+    },
+    "LOGOUT_SUCCESS": "You are logged out",
+    "ERROR_VALIDATOR": {
+      "EMAIL": "Incorrect email address",
+      "REQUIRED": "Required",
+      "MAKE_REQUIRED": "Pleas select make first",
+      "SELECT_AN_REG_NO": "Please select a Reg No"
+    }
+  },
+  "AUTHORIZE": {
+    "LOGIN": {
+      "TITLE": "Welcome to Lead Portal",
+      "SUBTITLE": "One - Stop Commercial Vehicle & Car Dealer",
+      "EMAIL": "Email",
+      "LOGIN_ID": "User ID",
+      "PASSWORD": "Password",
+      "REMEMBER_ME": "Remember me",
+      "LOGIN_BTN": "Sign In",
+      "PLACEHOLDER": {
+        "EMAIL": "name@email.com",
+        "LOGIN_ID": "User ID",
+        "PASSWORD": "Password"
+      }
+    },
+    "MESSAGE": {
+      "LOGIN_FAIL": "Fail to login"
+    },
+    "FOOTER": "Think One Group | www.thinkone.com.sg"
+  }
+}
