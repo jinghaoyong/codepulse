@@ -7,6 +7,7 @@ import { CategoryService } from '../../category/services/category.service';
 import { Category } from '../../category/models/category.model';
 import { UpdateBlogPost } from '../models/update-blog-post.model';
 import { ImageService } from 'src/app/shared/components/image-selector/image.service';
+import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
 
 @Component({
   selector: 'app-edit-blogpost',
@@ -26,12 +27,17 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   deleteBlogPostSubscription?: Subscription;
   imageSelectSubscription?: Subscription;
 
+  //firebase
+  imageFileEventData?: any;
+  imageFileUrl?: any;
+
   constructor(
     private route: ActivatedRoute,
     private blogPostServ: BlogPostService,
     private categoryServ: CategoryService,
     private router: Router,
-    private imageServ: ImageService
+    private imageServ: ImageService,
+    private spinServ: SpinnerService
   ) {
 
   }
@@ -43,19 +49,27 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
         this.id = params.get('id');
 
         if (this.id) {
-          this.getBlogPostSubscription = this.blogPostServ.getBlogPostById(this.id).subscribe({
-            next: res => {
-              this.model = res
-              this.selectedCategories = res.categories.map(x => x.id);
+          this.blogPostServ.getPostByIdFromFirebase(this.id).then((postData) => {
+            if (postData) {
+              console.log("Post data:", postData);
+              this.model = postData
+              // this.selectedCategories = postData.categories.map(x => x.id);
+            } else {
+              console.log("Post not found!");
             }
           })
+            .catch((error) => {
+              console.error("Error retrieving post: ", error);
+            });
         }
 
-        this.imageSelectSubscription =  this.imageServ.onSelectImage()
+
+
+        this.imageSelectSubscription = this.imageServ.onSelectImage()
           .subscribe({
             next: (response) => {
               if (this.model) {
-                this.model.featuredImageUrl = response.url;
+                this.model.imageUrl = response.url;
                 this.isImageSelectorVisible = false;
               }
             }
@@ -66,36 +80,58 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   }
 
   onFormSubmit() {
+
     //convert this model to request object
     if (this.model && this.id) {
-      var updateBlogPost: UpdateBlogPost = {
-        author: this.model.author,
-        content: this.model.content,
-        shortDescription: this.model.shortDescription,
-        featuredImageUrl: this.model.featuredImageUrl,
-        isVisible: this.model.isVisible,
-        publishedDate: this.model.publishedDate,
-        title: this.model.title,
-        urlHandle: this.model.urlHandle,
-        categories: this.selectedCategories ?? []
-      };
+      this.blogPostServ.uploadImageToFireStore(this.imageFileEventData, this.id).then((imageUrl) => {
+        this.spinServ.requestStarted();
+        if (this.model) {
+          var updateBlogPost: UpdateBlogPost = {
+            content: this.model.content,
+            desc: this.model.desc,
+            imageUrl: imageUrl,
+            isVisible: this.model.isVisible,
+            publishedDate: this.model.publishedDate,
+            title: this.model.title,
+            categories: this.selectedCategories ?? [],
+            lastEditedDate: new Date(),
+            createdBy: this.model.createdBy,
+            createdById: this.model.createdById
+          };
+          console.log("this.id", this.id)
+          this.blogPostServ.updatePostToFirebase(this.id, updateBlogPost).then(() => {
 
-      this.updateBlogPostSubscription = this.blogPostServ.updateBlogPost(this.id, updateBlogPost).subscribe({
-        next: (res) => {
-          this.router.navigateByUrl('/admin/blogposts')
+            this.router.navigateByUrl('/admin/blogposts');
+            this.spinServ.requestEnded();
+
+          })
+            .catch((error) => {
+              this.spinServ.requestEnded();
+              console.error("Error retrieving post: ", error);
+            });
         }
-      })
+
+      });
+      // postData.imageUrl = imageUrl;
+      // console.log("postData.url", postData.url)
+      // await this.updatePostToFirebase(postId, postData);
     }
   }
 
   onDelete() {
     if (this.id) {
-      this.deleteBlogPostSubscription = this.blogPostServ.deleteBlogPost(this.id).subscribe({
-        next: (response) => {
+      this.spinServ.requestStarted();
+      this.blogPostServ.deletePostFromFirebase(this.id)
+        .then(() => {
           this.router.navigateByUrl('/admin/blogposts');
-        }
-      })
+          this.spinServ.requestEnded();
+        })
+        .catch((error) => {
+          console.error("Error deleting post: ", error);
+          this.spinServ.requestEnded();
+        });
     }
+
   }
 
   openImageSelector(): void {
@@ -110,5 +146,17 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
     this.getBlogPostSubscription?.unsubscribe();
     this.deleteBlogPostSubscription?.unsubscribe();
     this.imageSelectSubscription?.unsubscribe();
+  }
+
+  uploadImage(event: any) {
+    this.imageFileEventData = event;
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageFileUrl = reader.result;
+      };
+    }
   }
 }

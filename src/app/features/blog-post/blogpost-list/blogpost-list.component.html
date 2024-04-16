@@ -5,31 +5,31 @@
         <a [routerLink]="['/admin/blogposts/add']" class="btn btn-primary">Add BlogPost</a>
     </div>
 
-    <ng-container *ngIf="blogPost$ | async as blogPosts">
-        <table class="table table-bordered mt-3">
+    <ng-container *ngIf="blogsFromFirebase">
+        <table class="table table-bordered mt-3 table-responsive">
             <thead>
                 <tr>
                     <th>Title</th>
                     <th>Short Description</th>
                     <th>Is Visible?</th>
                     <th>Categories</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let blogPost of blogPosts">
-                    <td>{{blogPost.title}}</td>
-                    <td>{{blogPost.shortDescription}}</td>
-                    <td>{{blogPost.isVisible}}</td>
+                <tr *ngFor="let blogPost of blogsFromFirebase | async">
+                    <td>{{blogPost.payload.doc.data().title}}</td>
+                    <td>{{blogPost.payload.doc.data().desc}}</td>
+                    <td></td>
                     <td>
-                        <span *ngFor="let category of blogPost.categories">
+                        <!-- <span *ngFor="let category of blogPost.categories">
                             <span class="badge bg-secondary me-2"> {{category.name}}</span>
-                        </span>
+                        </span> -->
                     </td>
                     <td>
                         <div class="d-flex m-1">
-                            <a class="btn btn-light m-1" [routerLink]="['/admin/blogposts', blogPost.id]">Edit</a>
-                            <a class="btn btn-danger m-1" (click)="onDelete(blogPost.id)">Delete</a>
+                            <a class="btn btn-light m-1" [routerLink]="['/admin/blogposts', blogPost.payload.doc.id]">Edit</a>
+                            <a class="btn btn-danger m-1" (click)="onDelete(blogPost.payload.doc.id)">Delete</a>
                         </div>
                     </td>
                 </tr>

@@ -1,11 +1,13 @@
 export interface AddBlogPost {
     title: string;
-    shortDescription: string;
+    desc: string;
     content: string;
-    featuredImageUrl: string;
-    urlHandle: string;
+    imageUrl: string;
     author: string;
     publishedDate: Date;
+    lastEditedDate:Date;
     isVisible: boolean;
     categories: string[];
+    createdBy:string;
+    createdById:string;
 }

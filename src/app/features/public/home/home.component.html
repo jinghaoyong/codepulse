@@ -1,19 +1,31 @@
 <div class="container">
     <div class="my-5">
+        <!-- <ul>
+            <li *ngFor="let post of blogsFromFirebase | async">
+                {{ post.payload.doc.id }} - {{ post.payload.doc.data().title }} - {{ post.payload.doc.data().desc }}
+            </li>
+          </ul>
+          <ul>
+
+          </ul> -->
+          <div class="d-flex justify-content-end mt-3 mb-3">
+            <a [routerLink]="['/admin/blogposts/add']" class="btn btn-primary">Add BlogPost</a>
+        </div>
+        
         <div class="row align-items-stretch">
-            <ng-container *ngIf="blogs$ | async as blogs">
-                <div class="col-12 col-md-4 mb-3" *ngFor="let blog of blogs">
+            <ng-container *ngIf="blogsFromFirebase">
+                <div class="col-12 col-md-4 mb-3" *ngFor="let blog of blogsFromFirebase | async">
                     <div class="card h-100">
-                    <img [src]="blog.featuredImageUrl" [alt]="blog.title" class="card-img-top">
+                    <img [src]="blog.payload.doc.data().imageUrl" [alt]="blog.payload.doc.data().title" class="card-img-top">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">
-                            {{blog.title}}
+                            {{blog.payload.doc.data().title}}
                         </h5>
                         <p class="card-text">
-                            {{blog.shortDescription}}
+                            {{blog.payload.doc.data().desc}}
                         </p>
                         <span class="d-flex align-items-end" style="flex: 1;">
-                        <a [routerLink]="['/blog',blog.urlHandle]" class="btn btn-primary">Read More</a>
+                        <a [routerLink]="['/blog',blog.payload.doc.id]" class="btn btn-primary">Read More</a>
                     </span>
                     </div>
                     </div>

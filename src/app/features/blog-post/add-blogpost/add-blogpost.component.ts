@@ -6,6 +6,8 @@ import { CategoryService } from '../../category/services/category.service';
 import { Observable, Subscription } from 'rxjs';
 import { Category } from '../../category/models/category.model';
 import { ImageService } from 'src/app/shared/components/image-selector/image.service';
+import { AuthService } from '../../auth/services/auth.service';
+import { User } from '../../auth/models/user.model';
 
 @Component({
   selector: 'app-add-blogpost',
@@ -20,53 +22,89 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
 
   imageSelectorSubscription?: Subscription;
 
+  user?: User;
+
+  imageFileEventData ?: any;
+  imageFileUrl ?: any;
   constructor(
     private blogpostServ: BlogPostService,
     private router: Router,
     private categorySer: CategoryService,
-    private imageServ: ImageService
+    private imageServ: ImageService,
+    private authServ: AuthService
   ) {
     this.model = {
       title: "",
-      shortDescription: "",
-      urlHandle: "",
+      desc: "",
+      imageUrl: "",
       content: "",
-      featuredImageUrl: "",
       author: "",
       isVisible: true,
       publishedDate: new Date(),
-      categories: []
+      lastEditedDate: new Date(),
+      categories: [],
+      createdBy: '',
+      createdById:''
     }
   }
 
 
   ngOnInit(): void {
-    this.categories$ = this.categorySer.getAllCategories();
+    this.user = this.authServ.getUser();
 
-    this.imageSelectorSubscription = this.imageServ.onSelectImage()
-      .subscribe({
-        next: (selectedImage) => {
-          this.model.featuredImageUrl = selectedImage.url;
-          this.closeImageSelector();
-        }
-      })
+    // this.categories$ = this.categorySer.getAllCategories();
+
+    // this.imageSelectorSubscription = this.imageServ.onSelectImage()
+    //   .subscribe({
+    //     next: (selectedImage) => {
+    //       this.model.featuredImageUrl = selectedImage.url;
+    //       this.closeImageSelector();
+    //     }
+    //   })
   }
 
   onFormSubmit(): void {
-    console.log(this.model)
-    this.blogpostServ.createBlogPost(this.model).subscribe({
-      next: (res) => {
-        this.router.navigateByUrl('/admin/blogposts');
-      }
-    })
+    if(this.user){
+      console.log(this.model)
+      this.model.createdBy = this.user?.name;
+      this.model.createdById = this.user?.uid;
+
+      this.blogpostServ.createPostToFirebase(this.model,this.imageFileEventData)
+    }
+
+    
+
+
+
+
+
+    // this.blogpostServ.createBlogPost(this.model).subscribe({
+    //   next: (res) => {
+    //     this.router.navigateByUrl('/admin/blogposts');
+    //   }
+    // })
+    // this.blogpostServ.createPostToFirebase(this.model)
   }
 
-  openImageSelector(): void {
-    this.isImageSelectorVisible = true;
+  uploadImage(event: any) {
+    this.imageFileEventData = event;
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageFileUrl = reader.result;
+      };
+    }
   }
-  closeImageSelector(): void {
-    this.isImageSelectorVisible = false;
-  }
+
+
+  // openImageSelector(): void {
+  //   this.isImageSelectorVisible = true;
+  // }
+  // closeImageSelector(): void {
+  //   this.isImageSelectorVisible = false;
+  // }
 
   ngOnDestroy(): void {
     this.imageSelectorSubscription?.unsubscribe();

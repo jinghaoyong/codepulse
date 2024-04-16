@@ -11,15 +11,9 @@
                 </div>
 
                 <div class="mt-3">
-                    <label for="urlHandle" class="form-label">Url handle</label>
-                    <input type="text" id="urlHandle" name="urlHandle" class="form-control"
-                        [(ngModel)]="model.urlHandle" />
-                </div>
-
-                <div class="mt-3">
-                    <label for="shortDescription" class="form-label">Short Description</label>
-                    <input type="text" id="shortDescription" name="shortDescription" class="form-control"
-                        [(ngModel)]="model.shortDescription" />
+                    <label for="desc" class="form-label">Short Description</label>
+                    <input type="text" id="desc" name="desc" class="form-control"
+                        [(ngModel)]="model.desc" />
                 </div>
 
                 <div class="mt-3">
@@ -40,17 +34,19 @@
 
                 <div class="mt-3">
                     <label for="featuredImageUrl" class="form-label">Featured Image Url
-                        <button type="button" class="btn btn-light" (click)="openImageSelector()">Select Image</button>
+                        <input type="file" (change)="uploadImage($event)" accept="image/*">
+                    <img class="img-fluid" *ngIf="imageFileUrl" [src]="imageFileUrl" alt="Selected Image">
+                    <img class="img-fluid" *ngIf="model.imageUrl" [src]="model.imageUrl" alt="Selected Image">
                     </label>
 
-                    <ng-container *ngIf="model.featuredImageUrl !== ''">
+                    <!-- <ng-container *ngIf="model.featuredImageUrl !== ''">
                         <div>
                             <img [src]="model.featuredImageUrl" height="100" class="my-2" alt="">
                         </div>
                     </ng-container>
 
                     <input type="text" id="featuredImageUrl" name="featuredImageUrl" class="form-control"
-                        [(ngModel)]="model.featuredImageUrl" />
+                        [(ngModel)]="model.featuredImageUrl" /> -->
                 </div>
 
                 <div class="mt-3">
@@ -61,8 +57,8 @@
                 </div>
 
                 <div class="mt-3">
-                    <label for="author" class="form-label">Author</label>
-                    <input type="text" id="author" name="author" class="form-control" [(ngModel)]="model.author" />
+                    <label for="createdBy" class="form-label">createdBy</label>
+                    <input type="text" id="createdBy" name="createdBy" class="form-control" [(ngModel)]="model.createdBy" />
                 </div>
 
                 <div class="form-check mt-3">
@@ -75,12 +71,12 @@
 
                 <div class="mt-3">
                     <label for="categories" class="form-label">Categories</label>
-                    <ng-container *ngIf="categories$ | async as categories">
+                    <!-- <ng-container *ngIf="categories$ | async as categories">
                         <select [(ngModel)]="selectedCategories" class="form-control" name="categories" id="categories"
                             multiple>
                             <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
                         </select>
-                    </ng-container>
+                    </ng-container> -->
                 </div>
 
                 <div class="mt-3 d-flex">
@@ -94,7 +90,7 @@
 
 </div>
 
-<div class="images-container-modal" [ngClass]="{'d-block': isImageSelectorVisible, 'd-none': !isImageSelectorVisible}">
+<!-- <div class="images-container-modal" [ngClass]="{'d-block': isImageSelectorVisible, 'd-none': !isImageSelectorVisible}">
     <button type="button" class="btn btn-light" style="position: fixed; top: 10px; right: 10px;" (click)="closeImageSelector()">X</button>
     <app-image-selector></app-image-selector>
-</div>
+</div> -->

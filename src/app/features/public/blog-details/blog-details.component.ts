@@ -11,8 +11,8 @@ import { BlogPost } from '../../blog-post/models/blog-post.model';
 })
 export class BlogDetailsComponent implements OnInit {
 
-  url: string | null = null;
-  blogPost$?: Observable<BlogPost>;
+  id: string | null = null;
+  blogPost?: any;
   constructor(
     private route: ActivatedRoute,
     private blogPostServ: BlogPostService
@@ -25,13 +25,25 @@ export class BlogDetailsComponent implements OnInit {
     this.route.paramMap
       .subscribe({
         next: (params) => {
-          this.url = params.get('url');
+          this.id = params.get('id');
+          console.log(`this.id = params.get('id');`,this.id)
         }
       })
 
     //fetch blog details by url
-    if (this.url) {
-      this.blogPost$ = this.blogPostServ.getBlogPostByUrlHandle(this.url)
+    if (this.id) {
+      this.blogPostServ.getPostByIdFromFirebase(this.id).then((postData) => {
+        if (postData) {
+          console.log("Post data:", postData);
+          this.blogPost = postData
+          // this.selectedCategories = postData.categories.map(x => x.id);
+        } else {
+          console.log("Post not found!");
+        }
+      })
+        .catch((error) => {
+          console.error("Error retrieving post: ", error);
+        });
     }
 
 

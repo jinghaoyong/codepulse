@@ -1,11 +1,12 @@
 export interface UpdateBlogPost{
     title: string;
-    shortDescription: string;
+    desc: string;
     content: string;
-    featuredImageUrl: string;
-    urlHandle: string;
-    author: string;
+    imageUrl: string;
     publishedDate: Date;
+    lastEditedDate:Date;
     isVisible: boolean;
     categories: string[];
+    createdBy:string;
+    createdById:string;
 }
