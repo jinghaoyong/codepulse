@@ -8,6 +8,7 @@ import { Category } from '../../category/models/category.model';
 import { ImageService } from 'src/app/shared/components/image-selector/image.service';
 import { AuthService } from '../../auth/services/auth.service';
 import { User } from '../../auth/models/user.model';
+import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
 
 @Component({
   selector: 'app-add-blogpost',
@@ -31,7 +32,8 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
     private router: Router,
     private categorySer: CategoryService,
     private imageServ: ImageService,
-    private authServ: AuthService
+    private authServ: AuthService,
+    private spinServ: SpinnerService
   ) {
     this.model = {
       title: "",
@@ -68,8 +70,15 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
       console.log(this.model)
       this.model.createdBy = this.user?.name;
       this.model.createdById = this.user?.uid;
+      this.spinServ.requestStarted();
+      this.blogpostServ.createPostToFirebase(this.model,this.imageFileEventData).then(()=>{
+        this.spinServ.requestEnded();
+        this.router.navigate(['/']);
 
-      this.blogpostServ.createPostToFirebase(this.model,this.imageFileEventData)
+      }).catch((error) => {
+        this.spinServ.requestEnded();
+        console.error("Error retrieving post: ", error);
+      });
     }
 
     

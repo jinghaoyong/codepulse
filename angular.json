@@ -45,7 +45,7 @@
               "node_modules/prismjs/components/prism-csharp.min.js",
               "node_modules/prismjs/components/prism-css.min.js"
             ],
-            "baseHref": "/codepulse/"
+            "baseHref": "\/"
           },
           "configurations": {
             "production": {

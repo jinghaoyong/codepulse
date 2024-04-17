@@ -69,9 +69,11 @@ export class BlogPostService {
       const docRef = await this.firestore.collection('posts').add(postData);
       const postId = docRef.id;
       console.log("Post created successfully! > postId", postId);
-      const imageUrl = await this.uploadImageToFireStore(event, postId);
-      postData.imageUrl = imageUrl;
-      console.log("postData.url", postData.url)
+      if(event){
+        const imageUrl = await this.uploadImageToFireStore(event, postId);
+        postData.imageUrl = imageUrl;
+        console.log("postData.url", postData.url)
+      }
       await this.updatePostToFirebase(postId, postData);
 
       return postId;
