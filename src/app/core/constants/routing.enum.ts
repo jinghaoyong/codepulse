@@ -1,5 +1,5 @@
 export enum ROUTING {
-  HOME = '/codepulse',
+  HOME = '/',
   DASHBOARD = 'dashboard',
   CATEGORY = 'category',
   ADMIN = 'admin',

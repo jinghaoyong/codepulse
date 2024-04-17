@@ -26,11 +26,19 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+to push code & deploy  to firebase : 
+1> firebase login (for device which didn;t sign in yet)
+2> firebase init
+3> ng build
+4> firebase deploy
+
 
 to push code to github : 
 1: ng build --base-href "https://jinghaoyong.github.io/codepulse/"
 
 2: ngh --dir dist/codepulse
 
-3: go github and re-build it go click something like `deployed` and go click refresh icon something
+3: go github and re-build it go click something like `deployed` and go click `refresh/ re-run`  something
+
+
 
