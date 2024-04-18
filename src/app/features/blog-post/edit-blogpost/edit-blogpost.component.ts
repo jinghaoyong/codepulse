@@ -18,7 +18,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   id: string | null = null;
   model?: BlogPost;
   categories$?: Observable<Category[]>;
-  selectedCategories?: string[];
+  selectedCategories?: string;
   isImageSelectorVisible: boolean = false;
 
   routeSubscription?: Subscription;
@@ -93,7 +93,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
             isVisible: this.model.isVisible,
             publishedDate: this.model.publishedDate,
             title: this.model.title,
-            categories: this.selectedCategories ?? [],
+            category: this.model.category,
             lastEditedDate: new Date(),
             createdBy: this.model.createdBy,
             createdById: this.model.createdById

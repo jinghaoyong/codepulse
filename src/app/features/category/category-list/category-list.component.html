@@ -4,22 +4,23 @@
         <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add category</a>
     </div>
 
-    <ng-container *ngIf="categories$ | async as categories">
+    <ng-container>
         <table class=" table table-bordered mt-3">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Url handle</th>
-                    <th></th>
+                    <th>categoryName</th>
+                    <th>categoryDescription</th>
+                    <th>categoryImage</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let category of categories">
-                    <td>{{category.id}}</td>
-                    <td>{{category.name}}</td>
-                    <td>{{category.urlHandle}}</td>
-                    <td><a class="btn btn-light" [routerLink]="['/admin/categories', category.id]">Edit</a></td>
+                <tr *ngFor="let category of categories  | async">
+                    <td>{{category.payload.doc.data().categoryName}}</td>
+                    <td>{{category.payload.doc.data().categoryDescription}}</td>
+                    <td><img class="img-fluid" *ngIf="category.payload.doc.data().categoryImage" [src]="category.payload.doc.data().categoryImage" alt="Selected Image"></td>
+                    
+                    <td><a class="btn btn-light" [routerLink]="['/admin/categories', category.payload.doc.id]">Edit</a></td>
                 </tr>
             </tbody>
         </table>

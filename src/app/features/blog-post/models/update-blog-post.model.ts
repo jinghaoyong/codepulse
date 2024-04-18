@@ -6,7 +6,7 @@ export interface UpdateBlogPost{
     publishedDate: Date;
     lastEditedDate:Date;
     isVisible: boolean;
-    categories: string[];
+    category: string;
     createdBy:string;
     createdById:string;
 }

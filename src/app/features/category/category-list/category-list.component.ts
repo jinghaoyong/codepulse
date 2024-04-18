@@ -16,18 +16,21 @@ export class CategoryListComponent implements OnInit {
 
   // categories?: Category[];
   categories$?: Observable<Category[]>;
-
+  categories?: any;
   subscription = new Subscription();
 
   constructor(
-    private categorySer: CategoryService,
+    private categoryServ: CategoryService,
     private modalService: ModalService,
     private spinService: SpinnerService
   ) {
 
   }
   ngOnInit(): void {
-    this.categories$ = this.categorySer.getAllCategories();
+    this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
+      console.log("data",data)
+      this.categories = data;
+    });
     // .subscribe({
     //   next: (res) => {
     //     console.log("res here", res)
@@ -36,10 +39,10 @@ export class CategoryListComponent implements OnInit {
     // });
 
     // this.openBanModal("hahaha");
-    this.spinService.requestStarted();
-    setTimeout(() => {
-      this.spinService.requestEnded();
-    }, 3000);
+    // this.spinService.requestStarted();
+    // setTimeout(() => {
+    //   this.spinService.requestEnded();
+    // }, 3000);
   }
 
   openBanModal(id: string): void {

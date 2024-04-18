@@ -25,12 +25,14 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
 
   user?: User;
 
+  categories?:any
+
   imageFileEventData ?: any;
   imageFileUrl ?: any;
   constructor(
     private blogpostServ: BlogPostService,
     private router: Router,
-    private categorySer: CategoryService,
+    private categoryServ: CategoryService,
     private imageServ: ImageService,
     private authServ: AuthService,
     private spinServ: SpinnerService
@@ -44,7 +46,7 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
       isVisible: true,
       publishedDate: new Date(),
       lastEditedDate: new Date(),
-      categories: [],
+      category: '',
       createdBy: '',
       createdById:''
     }
@@ -53,7 +55,10 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.user = this.authServ.getUser();
-
+    this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
+      console.log("data",data)
+      this.categories = data;
+    });
     // this.categories$ = this.categorySer.getAllCategories();
 
     // this.imageSelectorSubscription = this.imageServ.onSelectImage()

@@ -4,6 +4,7 @@
     <div class="d-flex justify-content-end mt-3">
         <a [routerLink]="['/admin/blogposts/add']" class="btn btn-primary">Add BlogPost</a>
     </div>
+    
 
     <ng-container *ngIf="blogsFromFirebase">
         <table class="table table-bordered mt-3 table-responsive">
