@@ -15,16 +15,16 @@ export class HomeComponent implements OnInit {
 
   blogs$?: Observable<BlogPost[]>;
   blogsFromFirebase?: any;
-  categories?:any;
-  
-  selectedCategoryId?:string;
-  selectedCategoryName?:string;
-  selectedCategoryDescription?:string;
-  selectedCategoryImage?:string;
+  categories?: any;
+
+  selectedCategoryId?: string;
+  selectedCategoryName?: string;
+  selectedCategoryDescription?: string;
+  selectedCategoryImage?: string;
   constructor(
     private blogPostServ: BlogPostService,
     private spinServ: SpinnerService,
-    private categoryServ : CategoryService
+    private categoryServ: CategoryService
   ) {
 
   }
@@ -32,9 +32,9 @@ export class HomeComponent implements OnInit {
     this.spinServ.requestStarted();
 
     // this.blogs$ = this.blogPostServ.getAllBlogPosts()
-   
+
     this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
-      console.log("data",data)
+      console.log("data", data)
       this.categories = data;
     });
 
@@ -53,16 +53,23 @@ export class HomeComponent implements OnInit {
     this.blogPostServ.uploadImageToFireStore(event, id)
   }
 
-  selectCategory(id:any){
-    
-    this.categoryServ.getCategoryByIdFromFirebase(id).subscribe((category:any) => {
+  selectCategory(id: any) {
+
+    this.categoryServ.getCategoryByIdFromFirebase(id).subscribe((category: any) => {
       category; // Assign the retrieved category to the component variable
-      console.log("category",category); // Use the category object retrieved from Firebase
+      console.log("category", category); // Use the category object retrieved from Firebase
       this.selectedCategoryId = category?.id;
       this.selectedCategoryName = category?.categoryName;
       this.selectedCategoryDescription = category?.categoryDescription;
       this.selectedCategoryImage = category?.categoryImage;
       // Now you can access this.category.id and this.category.data to get the id and data
+      this.blogPostServ.getPostsByCategoryIdFromFirebase(id).then((data) => {
+        this.blogsFromFirebase = data;
+        this.spinServ.requestEnded();
+      })
+        .catch((error) => {
+          this.spinServ.requestEnded();
+        });
     });
   }
 

@@ -31,6 +31,8 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   imageFileEventData?: any;
   imageFileUrl?: any;
 
+  categories?: any;
+
   constructor(
     private route: ActivatedRoute,
     private blogPostServ: BlogPostService,
@@ -43,7 +45,10 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.categories$ = this.categoryServ.getAllCategories();
-
+    this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
+      console.log("data", data)
+      this.categories = data;
+    });
     this.route.paramMap.subscribe({
       next: (params) => {
         this.id = params.get('id');
@@ -83,17 +88,49 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
 
     //convert this model to request object
     if (this.model && this.id) {
-      this.blogPostServ.uploadImageToFireStore(this.imageFileEventData, this.id).then((imageUrl) => {
-        this.spinServ.requestStarted();
+      console.log(`(this.model && this.id)`, this.model && this.id)
+      if (this.imageFileEventData) {
+        // got image changed 
+        this.blogPostServ.uploadImageToFireStore(this.imageFileEventData, this.id).then((imageUrl) => {
+          this.spinServ.requestStarted();
+          if (this.model) {
+            var updateBlogPost: UpdateBlogPost = {
+              content: this.model.content,
+              desc: this.model.desc,
+              imageUrl: imageUrl,
+              isVisible: this.model.isVisible,
+              publishedDate: this.model.publishedDate,
+              title: this.model.title,
+              categoryId: this.model.categoryId,
+              lastEditedDate: new Date(),
+              createdBy: this.model.createdBy,
+              createdById: this.model.createdById
+            };
+            console.log("this.id", this.id)
+            this.blogPostServ.updatePostToFirebase(this.id, updateBlogPost).then(() => {
+
+              this.router.navigateByUrl('/admin/blogposts');
+              this.spinServ.requestEnded();
+
+            })
+              .catch((error) => {
+                this.spinServ.requestEnded();
+                console.error("Error retrieving post: ", error);
+              });
+          }
+
+        });
+      } else {
+        // no image change
         if (this.model) {
           var updateBlogPost: UpdateBlogPost = {
             content: this.model.content,
             desc: this.model.desc,
-            imageUrl: imageUrl,
+            imageUrl: this.model.imageUrl,
             isVisible: this.model.isVisible,
             publishedDate: this.model.publishedDate,
             title: this.model.title,
-            category: this.model.category,
+            categoryId: this.model.categoryId,
             lastEditedDate: new Date(),
             createdBy: this.model.createdBy,
             createdById: this.model.createdById
@@ -110,8 +147,8 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
               console.error("Error retrieving post: ", error);
             });
         }
+      }
 
-      });
       // postData.imageUrl = imageUrl;
       // console.log("postData.url", postData.url)
       // await this.updatePostToFirebase(postId, postData);

@@ -25,10 +25,10 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
 
   user?: User;
 
-  categories?:any
+  categories?: any
 
-  imageFileEventData ?: any;
-  imageFileUrl ?: any;
+  imageFileEventData?: any;
+  imageFileUrl?: any;
   constructor(
     private blogpostServ: BlogPostService,
     private router: Router,
@@ -42,13 +42,12 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
       desc: "",
       imageUrl: "",
       content: "",
-      author: "",
       isVisible: true,
       publishedDate: new Date(),
       lastEditedDate: new Date(),
-      category: '',
+      categoryId: '',
       createdBy: '',
-      createdById:''
+      createdById: ''
     }
   }
 
@@ -56,7 +55,7 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.user = this.authServ.getUser();
     this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
-      console.log("data",data)
+      console.log("data", data)
       this.categories = data;
     });
     // this.categories$ = this.categorySer.getAllCategories();
@@ -71,12 +70,13 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
   }
 
   onFormSubmit(): void {
-    if(this.user){
-      console.log(this.model)
+    if (this.user) {
+      this.spinServ.requestStarted();
       this.model.createdBy = this.user?.name;
       this.model.createdById = this.user?.uid;
-      this.spinServ.requestStarted();
-      this.blogpostServ.createPostToFirebase(this.model,this.imageFileEventData).then(()=>{
+      console.log("this.model", this.model)
+
+      this.blogpostServ.createPostToFirebase(this.model, this.imageFileEventData).then(() => {
         this.spinServ.requestEnded();
         this.router.navigate(['/']);
 
@@ -86,7 +86,7 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
       });
     }
 
-    
+
 
 
 

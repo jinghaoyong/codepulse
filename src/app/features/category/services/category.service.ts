@@ -49,7 +49,7 @@ export class CategoryService {
   getCategoryByIdFromFirebase(categoryId: string): Observable<any> {
     return this.firestore.collection('categories').doc(categoryId).snapshotChanges()
       .pipe(
-        map((snapshot:any) => {
+        map((snapshot: any) => {
           const data = snapshot.payload.data();
           const id = snapshot.payload.id;
           return { id, ...data };

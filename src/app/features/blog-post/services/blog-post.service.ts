@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AddBlogPost } from '../models/add-blog-post.model';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { BlogPost } from '../models/blog-post.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -69,7 +69,7 @@ export class BlogPostService {
       const docRef = await this.firestore.collection('posts').add(postData);
       const postId = docRef.id;
       console.log("Post created successfully! > postId", postId);
-      if(event){
+      if (event) {
         const imageUrl = await this.uploadImageToFireStore(event, postId);
         postData.imageUrl = imageUrl;
         console.log("postData.url", postData.url)
@@ -107,6 +107,19 @@ export class BlogPostService {
         console.error("Error getting document:", error);
         throw error;
       });
+  }
+
+  async getPostsByCategoryIdFromFirebase(categoryId: string): Promise<any> {
+    return this.firestore.collection('posts', ref => ref.where('categoryId', '==', categoryId)).snapshotChanges();
+    // .pipe(
+    //   switchMap((actions: any) => {
+    //     return actions.map((a: any) => {
+    //       const data = a.payload.doc.data();
+    //       const id = a.payload.doc.id;
+    //       return { id, ...data };
+    //     });
+    //   })
+    // );
   }
 
 }
