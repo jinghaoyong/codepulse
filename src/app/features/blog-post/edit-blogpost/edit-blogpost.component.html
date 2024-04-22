@@ -72,9 +72,11 @@
                 <div class="mt-3">
                     <label for="categories" class="form-label">Categories</label>
                     <div *ngIf="categories">
-                        <select [(ngModel)]="model.categoryId" class="form-select" name="category" id="category">
-                            <option *ngFor="let category of categories | async" [ngValue]="category.payload.doc"
+                        <select [(ngModel)]="model.categoryId" class="form-select" name="categoryId" id="categoryId">
+                            <option *ngFor="let category of categories | async" [ngValue]="category.payload.doc.id"
                                 [selected]="model.categoryId">
+                                model.categoryId{{model.categoryId}}
+                                category.payload.doc.id{{category.payload.doc.id}}
                                 {{ category.payload.doc.data().categoryName }}
                             </option>
                         </select>
