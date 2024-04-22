@@ -64,6 +64,17 @@ export class BlogPostService {
       return '';
     }
   }
+  async deleteImageFromFirebase(imageUrl: string): Promise<void> {
+    try {
+      console.log("want to delete > ", imageUrl);
+      const imageRef = this.storage.refFromURL(imageUrl);
+      await imageRef.delete().toPromise(); // Convert Observable to Promise
+      console.log('Image deleted successfully.');
+    } catch (error) {
+      console.error('Error deleting image:', error);
+    }
+  }
+
   async createPostToFirebase(postData: any, event: any): Promise<any> {
     try {
       const docRef = await this.firestore.collection('posts').add(postData);

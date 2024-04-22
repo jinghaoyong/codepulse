@@ -43,9 +43,8 @@ const routes: Routes = [
     },
     { path: 'login', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
     {
-        path: 'admin/blogposts',
-        loadChildren: () => import('./blog-post/blog-post.module').then(m => m.BlogPostModule),
-        canActivate: [authGuard]
+        path: 'blogposts',
+        loadChildren: () => import('./blog-post/blog-post.module').then(m => m.BlogPostModule)
     }
 ];
 

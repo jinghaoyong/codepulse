@@ -3,5 +3,5 @@ export interface User {
     name: string;
     photoUrl:string;
     uid:string;
-    // roles: string[];
+    role: string;
 }

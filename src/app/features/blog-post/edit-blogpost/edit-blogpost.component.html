@@ -35,7 +35,7 @@
                     <label for="featuredImageUrl" class="form-label">Featured Image Url
                         <input type="file" (change)="uploadImage($event)" accept="image/*">
                         <img class="img-fluid" *ngIf="imageFileUrl" [src]="imageFileUrl" alt="Selected Image">
-                        <img class="img-fluid" *ngIf="model.imageUrl" [src]="model.imageUrl" alt="Selected Image">
+                        <img class="img-fluid" *ngIf="model.imageUrl && !imageFileUrl" [src]="model.imageUrl" alt="Selected Image">
                     </label>
 
                     <!-- <ng-container *ngIf="model.featuredImageUrl !== ''">
@@ -74,9 +74,9 @@
                     <div *ngIf="categories">
                         <select [(ngModel)]="model.categoryId" class="form-select" name="categoryId" id="categoryId">
                             <option *ngFor="let category of categories | async" [ngValue]="category.payload.doc.id"
-                                [selected]="model.categoryId">
-                                model.categoryId{{model.categoryId}}
-                                category.payload.doc.id{{category.payload.doc.id}}
+                                [selected]="category.payload.doc.id == model.categoryId ? model.categoryId : ''">
+                                <!-- model.categoryId{{model.categoryId}}
+                                category.payload.doc.id{{category.payload.doc.id}} -->
                                 {{ category.payload.doc.data().categoryName }}
                             </option>
                         </select>

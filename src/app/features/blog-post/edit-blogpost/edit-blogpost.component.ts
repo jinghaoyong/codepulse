@@ -91,6 +91,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
       console.log(`(this.model && this.id)`, this.model && this.id)
       if (this.imageFileEventData) {
         // got image changed 
+        this.blogPostServ.deleteImageFromFirebase(this.model.imageUrl);
         this.blogPostServ.uploadImageToFireStore(this.imageFileEventData, this.id).then((imageUrl) => {
           this.spinServ.requestStarted();
           if (this.model) {
@@ -109,7 +110,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
             console.log("this.id", this.id)
             this.blogPostServ.updatePostToFirebase(this.id, updateBlogPost).then(() => {
 
-              this.router.navigateByUrl('/admin/blogposts');
+              this.router.navigateByUrl('/blogposts');
               this.spinServ.requestEnded();
 
             })
@@ -138,7 +139,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
           console.log("this.id", this.id)
           this.blogPostServ.updatePostToFirebase(this.id, updateBlogPost).then(() => {
 
-            this.router.navigateByUrl('/admin/blogposts');
+            this.router.navigateByUrl('/blogposts');
             this.spinServ.requestEnded();
 
           })
@@ -160,7 +161,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
       this.spinServ.requestStarted();
       this.blogPostServ.deletePostFromFirebase(this.id)
         .then(() => {
-          this.router.navigateByUrl('/admin/blogposts');
+          this.router.navigateByUrl('/blogposts');
           this.spinServ.requestEnded();
         })
         .catch((error) => {

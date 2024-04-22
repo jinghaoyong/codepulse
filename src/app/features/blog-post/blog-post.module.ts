@@ -7,11 +7,12 @@ import { BlogPostRoutingModule } from './blog-post.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentModule } from "../../shared/components/component.module";
 import { MarkdownModule } from 'ngx-markdown';
+import { MyBlogpostsComponent } from './my-blogposts/my-blogposts.component';
 
 
 
 @NgModule({
-    declarations: [AddBlogpostComponent, BlogpostListComponent, EditBlogpostComponent],
+    declarations: [AddBlogpostComponent, BlogpostListComponent, EditBlogpostComponent, MyBlogpostsComponent],
     imports: [
         BlogPostRoutingModule,
         CommonModule,

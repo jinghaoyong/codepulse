@@ -38,7 +38,12 @@ export const authGuard: CanActivateFn = (route, state) => {
   //   return router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } })
   // }
   if (user) {
-    return true;
+    if (user?.role === 'admin') {
+      return true;
+    } else {
+      alert('Unauthorized');
+      return false;
+    }
   } else {
     authServ.googleLogout();
     return router.createUrlTree(['/login'], { queryParams: { returnUrl: state.url } })

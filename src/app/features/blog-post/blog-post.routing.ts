@@ -4,17 +4,23 @@ import { authGuard } from "../auth/guards/auth.guard";
 import { BlogpostListComponent } from "./blogpost-list/blogpost-list.component";
 import { AddBlogpostComponent } from "./add-blogpost/add-blogpost.component";
 import { EditBlogpostComponent } from "./edit-blogpost/edit-blogpost.component";
+import { MyBlogpostsComponent } from "./my-blogposts/my-blogposts.component";
 
 const routes: Routes = [
     {
         path: '',
+        component: MyBlogpostsComponent,
+        canActivate: []
+    },
+    {
+        path: 'admin',
         component: BlogpostListComponent,
         canActivate: [authGuard]
     },
     {
         path: 'add',
         component: AddBlogpostComponent,
-        canActivate: [authGuard]
+        canActivate: []
     },
     {
         path: ':id',
