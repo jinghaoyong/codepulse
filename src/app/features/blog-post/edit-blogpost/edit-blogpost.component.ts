@@ -8,6 +8,8 @@ import { Category } from '../../category/models/category.model';
 import { UpdateBlogPost } from '../models/update-blog-post.model';
 import { ImageService } from 'src/app/shared/components/image-selector/image.service';
 import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
+import { User } from '../../auth/models/user.model';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-edit-blogpost',
@@ -32,18 +34,21 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   imageFileUrl?: any;
 
   categories?: any;
-
+  user?: User;
   constructor(
     private route: ActivatedRoute,
     private blogPostServ: BlogPostService,
     private categoryServ: CategoryService,
     private router: Router,
     private imageServ: ImageService,
-    private spinServ: SpinnerService
+    private spinServ: SpinnerService,
+    private authServ: AuthService
   ) {
 
   }
   ngOnInit(): void {
+    this.spinServ.requestStarted();
+    this.user = this.authServ.getUser();
     this.categories$ = this.categoryServ.getAllCategories();
     this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
       console.log("data", data)
@@ -55,12 +60,12 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
 
         if (this.id) {
           this.blogPostServ.getPostByIdFromFirebase(this.id).then((postData) => {
-            if (postData) {
+            if (postData && postData?.createdById == this.user?.uid) {
               console.log("Post data:", postData);
               this.model = postData
               // this.selectedCategories = postData.categories.map(x => x.id);
             } else {
-              console.log("Post not found!");
+              alert("Post not found!");
             }
           })
             .catch((error) => {
@@ -77,11 +82,13 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
                 this.model.imageUrl = response.url;
                 this.isImageSelectorVisible = false;
               }
+              this.spinServ.requestEnded();
             }
           })
 
       }
     })
+
   }
 
   onFormSubmit() {

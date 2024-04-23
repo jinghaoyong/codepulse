@@ -8,19 +8,21 @@
           <ul>
 
           </ul> -->
-          <div class="d-flex justify-content-end mt-3 mb-3">
+        <div class="d-flex justify-content-end mt-3 mb-3">
             <a [routerLink]="['/blogposts/add']" class="btn btn-primary">Add BlogPost</a>
         </div>
         <div class="row">
             <!-- Dropdown Column -->
             <div class="col-md-2">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Categories
                     </button>
                     <ul class="dropdown-menu">
                         <li *ngFor="let category of categories | async">
-                            <a class="dropdown-item" href="#" (click)="selectCategory(category.payload.doc.id)">{{category.payload.doc.data().categoryName}}</a>
+                            <a class="dropdown-item" href="#"
+                                (click)="selectCategory(category.payload.doc.id)">{{category.payload.doc.data().categoryName}}</a>
                         </li>
                     </ul>
                 </div>
@@ -37,27 +39,31 @@
             <div class="col">
                 <!-- Display selected category name and image here -->
                 <div *ngIf="selectedCategoryId">
-                    <img [src]="selectedCategoryImage" width="50px" height="50px" alt="{{ selectedCategoryDescription }} Image">
+                    <img [src]="selectedCategoryImage" width="50px" height="50px"
+                        alt="{{ selectedCategoryDescription }} Image">
                 </div>
             </div>
         </div>
-        
+
         <div class="row align-items-stretch">
             <ng-container *ngIf="blogsFromFirebase">
                 <div class="col-12 col-md-4 mb-3" *ngFor="let blog of blogsFromFirebase | async">
                     <div class="card h-100">
-                    <img [src]="blog.payload.doc.data().imageUrl" [alt]="blog.payload.doc.data().title" class="card-img-top">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">
-                            {{blog.payload.doc.data().title}}
-                        </h5>
-                        <p class="card-text">
-                            {{blog.payload.doc.data().desc}}
-                        </p>
-                        <span class="d-flex align-items-end" style="flex: 1;">
-                        <a [routerLink]="['/blog',blog.payload.doc.id]" class="btn btn-primary">Read More</a>
-                    </span>
-                    </div>
+                        <img [src]="blog.payload.doc.data().imageUrl" [alt]="blog.payload.doc.data().title"
+                            class="card-img-top">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">
+                                {{blog.payload.doc.data().title}}
+                            </h5>
+                            <p class="card-text">
+                                {{blog.payload.doc.data().desc}}
+                            </p>
+                            <span class="d-flex align-items-end" style="flex: 1; justify-content: space-between;">
+                                <a [routerLink]="['/blog',blog.payload.doc.id]" class="btn btn-primary">Read More</a>
+                                <a *ngIf="blog.payload.doc.data().createdById == user?.uid"
+                                    [routerLink]="['/blogposts',blog.payload.doc.id]" class="btn btn-danger">Edit </a>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </ng-container>

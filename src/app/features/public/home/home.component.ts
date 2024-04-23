@@ -5,6 +5,8 @@ import { BlogPost } from '../../blog-post/models/blog-post.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
 import { CategoryService } from '../../category/services/category.service';
+import { AuthService } from '../../auth/services/auth.service';
+import { User } from '../../auth/models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -21,16 +23,19 @@ export class HomeComponent implements OnInit {
   selectedCategoryName?: string;
   selectedCategoryDescription?: string;
   selectedCategoryImage?: string;
+
+  user?: User;
   constructor(
     private blogPostServ: BlogPostService,
     private spinServ: SpinnerService,
-    private categoryServ: CategoryService
+    private categoryServ: CategoryService,
+    private authServ: AuthService
   ) {
 
   }
   ngOnInit(): void {
     this.spinServ.requestStarted();
-
+    this.user = this.authServ.getUser();
     // this.blogs$ = this.blogPostServ.getAllBlogPosts()
 
     this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
