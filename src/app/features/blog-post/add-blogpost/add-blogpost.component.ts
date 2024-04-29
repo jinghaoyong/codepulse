@@ -9,6 +9,7 @@ import { ImageService } from 'src/app/shared/components/image-selector/image.ser
 import { AuthService } from '../../auth/services/auth.service';
 import { User } from '../../auth/models/user.model';
 import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-blogpost',
@@ -35,7 +36,8 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
     private categoryServ: CategoryService,
     private imageServ: ImageService,
     private authServ: AuthService,
-    private spinServ: SpinnerService
+    private spinServ: SpinnerService,
+    private location: Location
   ) {
     this.model = {
       title: "",
@@ -78,7 +80,8 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
 
       this.blogpostServ.createPostToFirebase(this.model, this.imageFileEventData).then(() => {
         this.spinServ.requestEnded();
-        this.router.navigate(['/']);
+        // this.router.navigate(['/']);
+        this.location.back();
 
       }).catch((error) => {
         this.spinServ.requestEnded();

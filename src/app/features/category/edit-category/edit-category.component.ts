@@ -5,6 +5,9 @@ import { CategoryService } from '../services/category.service';
 import { Category } from '../models/category.model';
 import { UpdateCategoryRequest } from '../models/update-category-request.model';
 import { ToastService } from 'src/app/shared/services/toast/toast.service';
+import { BlogPostService } from '../../blog-post/services/blog-post.service';
+import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-category',
@@ -17,13 +20,21 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
   paramsSubscription?: Subscription;
   editCategorySubscription?: Subscription;
   deleteCategorySubscription?: Subscription;
-  category?: Category;
+  category?: any;
+
+
+  //firebase
+  imageFileEventData?: any;
+  imageFileUrl?: any;
 
   constructor(
     private route: ActivatedRoute,
     private categoryServ: CategoryService,
     private router: Router,
-    private toastServ: ToastService
+    private toastServ: ToastService,
+    private blogPostServ: BlogPostService,
+    private spinServ: SpinnerService,
+    private location: Location
   ) {
 
   }
@@ -34,7 +45,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
         this.id = params.get('id');
 
         if (this.id) {
-          this.categoryServ.getCategoryById(this.id).subscribe({
+          this.categoryServ.getCategoryByIdFromFirebase(this.id).subscribe({
             next: (res) => {
               this.category = res;
             }
@@ -45,30 +56,84 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
   }
 
   onFormSubmit(): void {
-    console.log(this.category);
-    // const updateCategoryRequest: UpdateCategoryRequest = {
-    //   name: this.category?.name ?? '',
-    //   urlHandle: this.category?.urlHandle ?? ''
-    // }
+    //convert this model to request object
+    if (this.category && this.id) {
+      console.log(`(this.category && this.id)`, this.category && this.id)
+      if (this.imageFileEventData) {
+        // got image changed 
+        this.blogPostServ.deleteImageFromFirebase(this.category.categoryImage);
+        this.blogPostServ.uploadImageToFireStore(this.imageFileEventData, this.id).then((imageUrl) => {
+          this.spinServ.requestStarted();
+          if (this.category) {
+            var updateCategoryPost: any = {
+              categoryDescription: this.category.categoryDescription,
+              categoryImage: imageUrl,
+              categoryName: this.category.categoryName
+            };
+            console.log("this.id", this.id)
+            this.categoryServ.updateCategoryToFirebase(this.id, updateCategoryPost).then(() => {
 
-    // // pass this object to service
-    // if (this.id) {
-    //   this.editCategorySubscription = this.categoryServ.updateCategory(this.id, updateCategoryRequest).subscribe({
-    //     next: (res) => {
-    //       this.router.navigateByUrl('/admin/categories');
-    //     }
-    //   })
-    // }
+              // this.router.navigateByUrl('/blogposts');
+              this.location.back();
+              this.spinServ.requestEnded();
 
+            })
+              .catch((error) => {
+                this.spinServ.requestEnded();
+                console.error("Error retrieving category: ", error);
+              });
+          }
+
+        });
+      } else {
+        // no image change
+        if (this.category) {
+          var updateCategoryPost: any = {
+            categoryDescription: this.category.categoryDescription,
+            categoryImage: this.category.categoryImage,
+            categoryName: this.category.categoryName
+          };
+          console.log("this.id", this.id)
+          this.blogPostServ.updatePostToFirebase(this.id, updateCategoryPost).then(() => {
+
+            // this.router.navigateByUrl('/blogposts');
+            this.location.back();
+            this.spinServ.requestEnded();
+
+          })
+            .catch((error) => {
+              this.spinServ.requestEnded();
+              console.error("Error retrieving category: ", error);
+            });
+        }
+      }
+
+      // postData.imageUrl = imageUrl;
+      // console.log("postData.url", postData.url)
+      // await this.updatePostToFirebase(postId, postData);
+    }
+  }
+
+  uploadImage(event: any) {
+    this.imageFileEventData = event;
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageFileUrl = reader.result;
+      };
+    }
   }
 
   onDelete(): void {
     if (this.id) {
-      this.deleteCategorySubscription = this.categoryServ.deleteCategory(this.id).subscribe({
-        next: (res) => {
-          this.toastServ.showToast('error', "Deleted !!", 'top-left', true)
-          this.router.navigateByUrl('/admin/categories');
-        }
+      this.categoryServ.deletePostFromFirebase(this.id).then(() => {
+        this.toastServ.showToast('error', "Deleted !!", 'top-left', true)
+        this.location.back();
+      }).catch((error) => {
+        this.spinServ.requestEnded();
+        console.error("Error when delete category: ", error);
       })
     }
   }

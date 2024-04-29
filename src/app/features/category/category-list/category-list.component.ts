@@ -6,6 +6,8 @@ import { ToastComponent } from 'src/app/shared/components/toast/toast.component'
 import { ModalService } from 'src/app/shared/services/modal/modal.service';
 import { ModalConfirmComponent } from 'src/app/shared/components/modal-confirm/modal-confirm.component';
 import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
+import { ToastService } from 'src/app/shared/services/toast/toast.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-category-list',
@@ -22,13 +24,16 @@ export class CategoryListComponent implements OnInit {
   constructor(
     private categoryServ: CategoryService,
     private modalService: ModalService,
-    private spinService: SpinnerService
+    private spinService: SpinnerService,
+    private toastServ: ToastService,
+    private location: Location,
+    private spinServ: SpinnerService
   ) {
 
   }
   ngOnInit(): void {
     this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
-      console.log("data",data)
+      console.log("data", data)
       this.categories = data;
     });
     // .subscribe({
@@ -52,19 +57,30 @@ export class CategoryListComponent implements OnInit {
         '',
         ModalConfirmComponent,
         {
-          title: 'haha',
-          subTitle: 'haha',
+          title: 'Are you sure you want to delete this category?',
+          subTitle: '',
         },
         {
           nzClosable: false,
           nzOkText: 'Yes, I Confirm',
           nzOnOk: () => {
-            console.log("haha")
+            this.onDelete(id)
           },
         },
         'confirm'
       )
     );
+  }
+
+  onDelete(id: string): void {
+    if (id) {
+      this.categoryServ.deletePostFromFirebase(id).then(() => {
+        this.toastServ.showToast('error', "Deleted !!", 'top-left', true)
+      }).catch((error) => {
+        this.spinServ.requestEnded();
+        console.error("Error when delete category: ", error);
+      })
+    }
   }
 
 

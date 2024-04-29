@@ -10,6 +10,7 @@ import { ImageService } from 'src/app/shared/components/image-selector/image.ser
 import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
 import { User } from '../../auth/models/user.model';
 import { AuthService } from '../../auth/services/auth.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-blogpost',
@@ -42,7 +43,8 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
     private router: Router,
     private imageServ: ImageService,
     private spinServ: SpinnerService,
-    private authServ: AuthService
+    private authServ: AuthService,
+    private location: Location
   ) {
 
   }
@@ -117,7 +119,8 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
             console.log("this.id", this.id)
             this.blogPostServ.updatePostToFirebase(this.id, updateBlogPost).then(() => {
 
-              this.router.navigateByUrl('/blogposts');
+              // this.router.navigateByUrl('/blogposts');
+              this.location.back();
               this.spinServ.requestEnded();
 
             })
@@ -146,7 +149,8 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
           console.log("this.id", this.id)
           this.blogPostServ.updatePostToFirebase(this.id, updateBlogPost).then(() => {
 
-            this.router.navigateByUrl('/blogposts');
+            // this.router.navigateByUrl('/blogposts');
+            this.location.back();
             this.spinServ.requestEnded();
 
           })

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AddBlogPost } from '../models/add-blog-post.model';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 import { BlogPost } from '../models/blog-post.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -131,6 +131,20 @@ export class BlogPostService {
     //     });
     //   })
     // );
+  }
+
+  getPostsByCreatorIdFromFirebase(creatorId: string): Observable<any[]> {
+    return this.firestore.collection('posts', ref => ref.where('createdById', '==', creatorId))
+      .snapshotChanges()
+      .pipe(
+        map((actions: any) => {
+          return actions.map((action: any) => {
+            const data = action.payload.doc.data();
+            const id = action.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );
   }
 
 }

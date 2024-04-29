@@ -8,6 +8,7 @@ import { UpdateCategoryRequest } from '../models/update-category-request.model';
 import { CookieService } from 'ngx-cookie-service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { BlogPostService } from '../../blog-post/services/blog-post.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class CategoryService {
     private http: HttpClient,
     private cookieServ: CookieService,
     private firestore: AngularFirestore,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private blogServ: BlogPostService
   ) { }
 
   getAllCategories(): Observable<Category[]> {
@@ -56,4 +58,35 @@ export class CategoryService {
         })
       );
   }
+
+  async createCategoryToFirebase(categoryData: any, event: any): Promise<any> {
+    try {
+      const docRef = await this.firestore.collection('categories').add(categoryData);
+      const categoryId = docRef.id;
+      console.log("categories created successfully! > categoryId", categoryId);
+      if (event) {
+        const imageUrl = await this.blogServ.uploadImageToFireStore(event, categoryId);
+        categoryData.categoryImage = imageUrl;
+        console.log("categoryData.categoryImage", categoryData)
+      }
+      await this.updateCategoryToFirebase(categoryId, categoryData);
+
+      return categoryId;
+    } catch (error) {
+      console.error("Error creating post:", error);
+      throw error; // Propagate the error to the caller
+    }
+  }
+
+  updateCategoryToFirebase(categoryId: any, newData: any): Promise<any> {
+    const postPromise = this.firestore.collection('categories').doc(categoryId).update(newData);
+    console.log("updateCategoryToFirebase > postPromise", postPromise)
+    return postPromise;
+  }
+
+  deletePostFromFirebase(categoryId: string): Promise<void> {
+    return this.firestore.collection('categories').doc(categoryId).delete();
+  }
+
+
 }
