@@ -11,7 +11,7 @@ export class ModalService {
   constructor(
     private modal: NzModalService,
     private translateServ: TranslateService
-  ) {}
+  ) { }
 
   public open<T, D>(
     title: string,

@@ -1,4 +1,4 @@
-<div class="toastcontainer" *ngIf="showToast" [ngClass]="{
+<!-- <div class="toastcontainer" *ngIf="showToast" [ngClass]="{
   success : toastrType == 'success',
   error : toastrType == 'error',
   warn : toastrType == 'warn',
@@ -16,6 +16,30 @@
     <span class="icon" *ngIf="toastrType == 'error'">X</span>
     <span class="icon" *ngIf="toastrType == 'warn'">!</span>
     <span class="icon" *ngIf="toastrType == 'info'">i</span>
+    <span>{{toastrMessage}}</span>
+  </div>
+</div> -->
+
+
+<div *ngIf="showToast" class="alert" [ngClass]="{
+  'alert-success' : toastrType === 'success',
+  'alert-danger' : toastrType === 'error',
+  'alert-warning' : toastrType === 'warn',
+  'alert-info' : toastrType === 'info',
+  'm-5 p-2': true
+}" role="alert" style=" 
+margin: 10px;
+padding: 20px 25px;
+z-index: 1001;
+box-shadow: 0 0 12px #999;
+display: flex;
+position: fixed;
+left: 45%;
+transform: translateX(-50%);
+top: 30px;
+">
+  <div>
+    <i class="bx bxs-error-circle"></i>
     <span>{{toastrMessage}}</span>
   </div>
 </div>

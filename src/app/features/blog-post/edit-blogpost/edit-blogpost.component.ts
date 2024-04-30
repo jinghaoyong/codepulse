@@ -62,7 +62,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
 
         if (this.id) {
           this.blogPostServ.getPostByIdFromFirebase(this.id).then((postData) => {
-            if (postData && postData?.createdById == this.user?.uid) {
+            if ((postData && postData?.createdById == this.user?.uid) || this.user?.role === 'admin') {
               console.log("Post data:", postData);
               this.model = postData
               // this.selectedCategories = postData.categories.map(x => x.id);
@@ -207,5 +207,9 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
         this.imageFileUrl = reader.result;
       };
     }
+  }
+
+  onBack(): void {
+    this.location.back()
   }
 }

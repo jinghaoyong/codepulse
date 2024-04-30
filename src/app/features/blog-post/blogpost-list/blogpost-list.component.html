@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-end mt-3">
         <a [routerLink]="['blogposts/add']" class="btn btn-primary">Add BlogPost</a>
     </div>
-    
+
 
     <ng-container *ngIf="blogsFromFirebase">
         <table class="table table-bordered mt-3 table-responsive">
@@ -12,6 +12,7 @@
                 <tr>
                     <th>Title</th>
                     <th>Short Description</th>
+                    <th>Image</th>
                     <th>Is Visible?</th>
                     <th>Categories</th>
                     <th>Actions</th>
@@ -21,6 +22,9 @@
                 <tr *ngFor="let blogPost of blogsFromFirebase | async">
                     <td>{{blogPost.payload.doc.data().title}}</td>
                     <td>{{blogPost.payload.doc.data().desc}}</td>
+                    <td><img class="img-fluid" *ngIf="blogPost.payload.doc.data().imageUrl"
+                            [src]="blogPost.payload.doc.data().imageUrl" alt="Selected Image" width="50" height="50"
+                            style="cursor: pointer;" (click)="openImage(blogPost.payload.doc.data().imageUrl)"></td>
                     <td></td>
                     <td>
                         <!-- <span *ngFor="let category of blogPost.categories">

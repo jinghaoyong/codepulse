@@ -136,15 +136,15 @@ export class BlogPostService {
   getPostsByCreatorIdFromFirebase(creatorId: string): Observable<any[]> {
     return this.firestore.collection('posts', ref => ref.where('createdById', '==', creatorId))
       .snapshotChanges()
-      .pipe(
-        map((actions: any) => {
-          return actions.map((action: any) => {
-            const data = action.payload.doc.data();
-            const id = action.payload.doc.id;
-            return { id, ...data };
-          });
-        })
-      );
+    // .pipe(
+    //   map((actions: any) => {
+    //     return actions.map((action: any) => {
+    //       const data = action.payload.doc.data();
+    //       const id = action.payload.doc.id;
+    //       return { id, ...data };
+    //     });
+    //   })
+    // );
   }
 
 }

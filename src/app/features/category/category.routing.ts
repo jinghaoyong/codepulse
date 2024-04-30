@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CategoryListComponent } from "./category-list/category-list.component";
-import { authGuard } from "../auth/guards/auth.guard";
+import { authGuard, onlyAdmin } from "../auth/guards/auth.guard";
 import { AddCategoryComponent } from "./add-category/add-category.component";
 import { EditCategoryComponent } from "./edit-category/edit-category.component";
 
@@ -15,17 +15,17 @@ const routes: Routes = [
             {
                 path: '',
                 component: CategoryListComponent,
-                canActivate: [authGuard]
+                canActivate: [onlyAdmin]
             },
             {
                 path: 'add',
                 component: AddCategoryComponent,
-                canActivate: [authGuard]
+                canActivate: [onlyAdmin]
             },
             {
                 path: ':id',
                 component: EditCategoryComponent,
-                canActivate: [authGuard]
+                canActivate: [onlyAdmin]
             },
         ],
     },

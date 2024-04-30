@@ -8,6 +8,7 @@ import { ModalConfirmComponent } from 'src/app/shared/components/modal-confirm/m
 import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
 import { ToastService } from 'src/app/shared/services/toast/toast.service';
 import { Location } from '@angular/common';
+import { ImageModalComponent } from 'src/app/shared/components/image-modal/image-modal.component';
 
 @Component({
   selector: 'app-category-list',
@@ -74,8 +75,8 @@ export class CategoryListComponent implements OnInit {
 
   onDelete(id: string): void {
     if (id) {
-      this.categoryServ.deletePostFromFirebase(id).then(() => {
-        this.toastServ.showToast('error', "Deleted !!", 'top-left', true)
+      this.categoryServ.deleteCategoryFromFirebase(id).then(() => {
+        this.toastServ.showToast('success', "Category Successfully Deleted !!", 'top-left', true)
       }).catch((error) => {
         this.spinServ.requestEnded();
         console.error("Error when delete category: ", error);
@@ -83,5 +84,31 @@ export class CategoryListComponent implements OnInit {
     }
   }
 
+  openImage(content: any): void {
+    console.log("content", content)
+    this.subscription.add(
+      this.modalService.createModalMD<ImageModalComponent, any>(
+        '',
+        ImageModalComponent,
+        {
+          imageUrl: content
+        },
+        {
+          nzClosable: false,
+          nzFooter: null,
+          nzBodyStyle: {
+            height: 'max-content',
+          },
+        }
+      )
+        .subscribe({
+          next: res => {
+            // if (res) {
+            //   this.getHpDetail(this.appNo ?? '', this.appRev);
+            // }
+          },
+        })
+    )
+  }
 
 }

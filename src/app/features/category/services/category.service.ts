@@ -84,7 +84,7 @@ export class CategoryService {
     return postPromise;
   }
 
-  deletePostFromFirebase(categoryId: string): Promise<void> {
+  deleteCategoryFromFirebase(categoryId: string): Promise<void> {
     return this.firestore.collection('categories').doc(categoryId).delete();
   }
 

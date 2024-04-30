@@ -11,6 +11,7 @@ export class ToastService {
   constructor() { }
 
   showToast(type: string, msg: string, position: string, autoClose: boolean) {
+    console.log("type sky", type)
     localStorage.setItem("toastrType", type)
     localStorage.setItem("toastrPosition", position)
     this.status.next(msg)

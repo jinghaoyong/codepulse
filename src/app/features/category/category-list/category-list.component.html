@@ -4,8 +4,8 @@
         <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add category</a>
     </div>
 
-    <ng-container>
-        <table class=" table table-bordered mt-3">
+    <ng-container class="table-responsive">
+        <table class="table table-bordered mt-3">
             <thead>
                 <tr>
                     <th>categoryName</th>
@@ -19,7 +19,9 @@
                     <td>{{category.payload.doc.data().categoryName}}</td>
                     <td>{{category.payload.doc.data().categoryDescription}}</td>
                     <td><img class="img-fluid" *ngIf="category.payload.doc.data().categoryImage"
-                            [src]="category.payload.doc.data().categoryImage" alt="Selected Image"></td>
+                            [src]="category.payload.doc.data().categoryImage" alt="Selected Image" width="50"
+                            height="50" (click)="openImage(category.payload.doc.data().categoryImage)"
+                            style="cursor: pointer;"></td>
 
                     <td>
 

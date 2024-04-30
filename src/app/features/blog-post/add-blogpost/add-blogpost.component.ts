@@ -89,12 +89,6 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
       });
     }
 
-
-
-
-
-
-
     // this.blogpostServ.createBlogPost(this.model).subscribe({
     //   next: (res) => {
     //     this.router.navigateByUrl('/admin/blogposts');
@@ -122,6 +116,10 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
   // closeImageSelector(): void {
   //   this.isImageSelectorVisible = false;
   // }
+
+  onBack(): void {
+    this.location.back();
+  }
 
   ngOnDestroy(): void {
     this.imageSelectorSubscription?.unsubscribe();

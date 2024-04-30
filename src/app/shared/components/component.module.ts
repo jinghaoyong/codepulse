@@ -6,13 +6,15 @@ import { ToastComponent } from './toast/toast.component';
 import { ImageSelectorComponent } from './image-selector/image-selector.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ImageModalComponent } from './image-modal/image-modal.component';
 
 @NgModule({
     declarations: [
         ModalConfirmComponent,
         SpinnerComponent,
         ToastComponent,
-        ImageSelectorComponent
+        ImageSelectorComponent,
+        ImageModalComponent
     ],
     imports: [
         NzDrawerModule,

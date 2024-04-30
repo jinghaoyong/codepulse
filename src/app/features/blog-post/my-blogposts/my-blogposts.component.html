@@ -1,1 +1,45 @@
-<p>my-blogposts works!</p>
+<div class="container">
+    <h1 class="mt-3">My BlogPosts</h1>
+    <div class="my-5">
+        <div class="row align-items-stretch">
+            <ng-container *ngIf="blogsFromFirebase">
+                <table class="table table-bordered mt-3 table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Short Description</th>
+                            <th>Image</th>
+                            <th>Is Visible?</th>
+                            <th>Categories</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let blogPost of blogsFromFirebase">
+                            <td>{{blogPost.payload.doc.data().title}}</td>
+                            <td>{{blogPost.payload.doc.data().desc}}</td>
+                            <td><img class="img-fluid" *ngIf="blogPost.payload.doc.data().imageUrl"
+                                    [src]="blogPost.payload.doc.data().imageUrl" alt="Selected Image" width="50"
+                                    height="50" style="cursor: pointer;"
+                                    (click)="openImage(blogPost.payload.doc.data().imageUrl)"></td>
+                            <td></td>
+                            <td>
+                                <!-- <span *ngFor="let category of blogPost.categories">
+                                    <span class="badge bg-secondary me-2"> {{category.name}}</span>
+                                </span> -->
+                            </td>
+                            <td>
+                                <div class="d-flex m-1">
+                                    <a class="btn btn-light m-1"
+                                        [routerLink]="['/blogposts', blogPost.payload.doc.id]">Edit</a>
+                                    <a class="btn btn-danger m-1"
+                                        (click)="openBanModal(blogPost.payload.doc.id)">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-container>
+        </div>
+    </div>
+</div>

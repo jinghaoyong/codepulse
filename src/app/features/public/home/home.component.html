@@ -20,6 +20,9 @@
                         Categories
                     </button>
                     <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#" (click)="selectAll()">All</a>
+                        </li>
                         <li *ngFor="let category of categories | async">
                             <a class="dropdown-item" href="#"
                                 (click)="selectCategory(category.payload.doc.id)">{{category.payload.doc.data().categoryName}}</a>

@@ -71,6 +71,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
               categoryName: this.category.categoryName
             };
             console.log("this.id", this.id)
+            console.log("updateCategoryPost", updateCategoryPost)
             this.categoryServ.updateCategoryToFirebase(this.id, updateCategoryPost).then(() => {
 
               // this.router.navigateByUrl('/blogposts');
@@ -94,7 +95,8 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
             categoryName: this.category.categoryName
           };
           console.log("this.id", this.id)
-          this.blogPostServ.updatePostToFirebase(this.id, updateCategoryPost).then(() => {
+          console.log("updateCategoryPost", updateCategoryPost)
+          this.categoryServ.updateCategoryToFirebase(this.id, updateCategoryPost).then(() => {
 
             // this.router.navigateByUrl('/blogposts');
             this.location.back();
@@ -128,14 +130,18 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
 
   onDelete(): void {
     if (this.id) {
-      this.categoryServ.deletePostFromFirebase(this.id).then(() => {
-        this.toastServ.showToast('error', "Deleted !!", 'top-left', true)
+      this.categoryServ.deleteCategoryFromFirebase(this.id).then(() => {
+        this.toastServ.showToast('success', "Deletedddd !!", 'top-left', true)
         this.location.back();
       }).catch((error) => {
         this.spinServ.requestEnded();
         console.error("Error when delete category: ", error);
       })
     }
+  }
+
+  onBack(): void {
+    this.location.back();
   }
 
   ngOnDestroy(): void {

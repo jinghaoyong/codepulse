@@ -58,6 +58,21 @@ export class HomeComponent implements OnInit {
     this.blogPostServ.uploadImageToFireStore(event, id)
   }
 
+  selectAll(): void {
+    this.selectedCategoryId = '';
+    this.selectedCategoryName = '';
+    this.selectedCategoryDescription = '';
+    this.selectedCategoryImage = '';
+
+    this.blogPostServ.getAllBlogPostsFromFirebase().then((data) => {
+      this.blogsFromFirebase = data;
+      this.spinServ.requestEnded();
+    })
+      .catch((error) => {
+        this.spinServ.requestEnded();
+      });
+  }
+
   selectCategory(id: any) {
 
     this.categoryServ.getCategoryByIdFromFirebase(id).subscribe((category: any) => {
