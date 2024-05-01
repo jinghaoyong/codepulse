@@ -10,6 +10,9 @@ import { AuthService } from '../../auth/services/auth.service';
 import { User } from '../../auth/models/user.model';
 import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
 import { Location } from '@angular/common';
+import { ToastService } from 'src/app/shared/services/toast/toast.service';
+import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { markValidateAllField } from 'src/app/shared/services/utilities';
 
 @Component({
   selector: 'app-add-blogpost',
@@ -18,7 +21,7 @@ import { Location } from '@angular/common';
 })
 export class AddBlogpostComponent implements OnInit, OnDestroy {
 
-  model: AddBlogPost;
+  model: any;
   categories$?: Observable<Category[]>;
   isImageSelectorVisible: boolean = false;
 
@@ -30,6 +33,12 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
 
   imageFileEventData?: any;
   imageFileUrl?: any;
+  isAnyFieldEmpty: boolean = false; // Add this property
+
+  emptyFields?: any;
+
+  addBlogPostForm!: UntypedFormGroup;
+
   constructor(
     private blogpostServ: BlogPostService,
     private router: Router,
@@ -37,20 +46,23 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
     private imageServ: ImageService,
     private authServ: AuthService,
     private spinServ: SpinnerService,
-    private location: Location
+    private location: Location,
+    private toastServ: ToastService,
+    private fb: FormBuilder
   ) {
-    this.model = {
-      title: "",
-      desc: "",
-      imageUrl: "",
-      content: "",
+
+    this.addBlogPostForm = this.fb.group({
+      title: ['', Validators.required],
+      desc: ['', Validators.required],
+      imageUrl: [''],
+      content: ['', Validators.required],
       isVisible: true,
-      publishedDate: new Date(),
-      lastEditedDate: new Date(),
-      categoryId: '',
-      createdBy: '',
-      createdById: ''
-    }
+      publishedDate: [new Date().toISOString().slice(0, 10), Validators.required],
+      lastEditedDate: [new Date().toISOString().slice(0, 10), Validators.required],
+      categoryId: ['', Validators.required],
+      createdBy: ['', Validators.required],
+      createdById: ['', Validators.required],
+    });
   }
 
 
@@ -71,20 +83,48 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
     //   })
   }
 
+  // // Function to check if any field is empty
+  // checkEmptyFields() {
+  //   const fieldsToCheck = Object.keys(this.model).filter(key => key !== 'imageUrl');
+
+  //   const emptyFields = fieldsToCheck
+  //     .filter((key) => !this.model[key])
+  //     .map(key => key);
+
+  //   if (emptyFields.length > 0) {
+  //     console.log("Empty fields:", emptyFields.join(", "));
+  //     this.emptyFields = emptyFields.join(", ");
+  //     this.isAnyFieldEmpty = true;
+  //   } else {
+  //     this.isAnyFieldEmpty = false;
+  //   }
+  // }
+
+
+
   onFormSubmit(): void {
     if (this.user) {
       this.spinServ.requestStarted();
-      this.model.createdBy = this.user?.name;
-      this.model.createdById = this.user?.uid;
-      console.log("this.model", this.model)
+      this.addBlogPostForm.get('createdBy')?.patchValue(this.user?.name);
+      this.addBlogPostForm.get('createdById')?.patchValue(this.user?.uid);
+      console.log("this.addBlogPostForm", this.addBlogPostForm.getRawValue())
 
-      this.blogpostServ.createPostToFirebase(this.model, this.imageFileEventData).then(() => {
+      if (this.addBlogPostForm.invalid) {
+        this.toastServ.showToast('error', `Please fill in all the details`, '', true);
+        markValidateAllField(this.addBlogPostForm);
+        this.spinServ.requestEnded();
+        return;
+      }
+
+      this.blogpostServ.createPostToFirebase(this.addBlogPostForm.getRawValue(), this.imageFileEventData).then(() => {
+        this.toastServ.showToast('success', `Successfully Posted !`, '', true);
         this.spinServ.requestEnded();
         // this.router.navigate(['/']);
         this.location.back();
 
       }).catch((error) => {
         this.spinServ.requestEnded();
+        this.toastServ.showToast('error', `Fail to Post !`, '', true);
         console.error("Error retrieving post: ", error);
       });
     }

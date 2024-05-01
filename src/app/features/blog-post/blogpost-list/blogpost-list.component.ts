@@ -5,6 +5,7 @@ import { BlogPost } from '../models/blog-post.model';
 import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
 import { ImageModalComponent } from 'src/app/shared/components/image-modal/image-modal.component';
 import { ModalService } from 'src/app/shared/services/modal/modal.service';
+import { ToastService } from 'src/app/shared/services/toast/toast.service';
 
 @Component({
   selector: 'app-blogpost-list',
@@ -21,7 +22,8 @@ export class BlogpostListComponent implements OnInit, OnDestroy {
   constructor(
     private blogPostServ: BlogPostService,
     private spinServ: SpinnerService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private toastServ: ToastService
   ) {
 
   }
@@ -40,7 +42,7 @@ export class BlogpostListComponent implements OnInit, OnDestroy {
       this.spinServ.requestStarted();
       this.blogPostServ.deletePostFromFirebase(id)
         .then(() => {
-          console.log("Post deleted successfully!");
+          this.toastServ.showToast('success', `Post deleted successfully!`, '', true);
           this.blogPostServ.getAllBlogPostsFromFirebase().then((data) => {
             this.blogsFromFirebase = data;
             this.spinServ.requestEnded();

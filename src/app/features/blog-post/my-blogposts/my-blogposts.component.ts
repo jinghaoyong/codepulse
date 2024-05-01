@@ -7,6 +7,7 @@ import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service'
 import { ModalService } from 'src/app/shared/services/modal/modal.service';
 import { ModalConfirmComponent } from 'src/app/shared/components/modal-confirm/modal-confirm.component';
 import { ImageModalComponent } from 'src/app/shared/components/image-modal/image-modal.component';
+import { ToastService } from 'src/app/shared/services/toast/toast.service';
 
 @Component({
   selector: 'app-my-blogposts',
@@ -16,14 +17,15 @@ import { ImageModalComponent } from 'src/app/shared/components/image-modal/image
 export class MyBlogpostsComponent implements OnInit, OnDestroy {
   user?: User;
   getBlogPostsSubscription?: Subscription;
-  blogsFromFirebase: any;
+  blogsFromFirebase?: any;
   subscription = new Subscription();
 
   constructor(
     private blogPostServ: BlogPostService,
     private authServ: AuthService,
     private spinServ: SpinnerService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private toastServ: ToastService
   ) {
     this.user = this.authServ.getUser();
   }
@@ -75,12 +77,17 @@ export class MyBlogpostsComponent implements OnInit, OnDestroy {
       this.spinServ.requestStarted();
       this.blogPostServ.deletePostFromFirebase(id)
         .then(() => {
-          console.log("Post deleted successfully!");
+          console.log(`1   this.toastServ.showToast('success', '', true);`)
+          this.toastServ.showToast('success', `Post deleted successfully!`, '', true);
+          console.log(`2   this.toastServ.showToast('success', '', true);`)
           this.blogPostServ.getAllBlogPostsFromFirebase().then((data) => {
+            console.log(`this.blogPostServ.getAllBlogPostsFromFirebase().then`)
             this.blogsFromFirebase = data;
+            console.log(`   this.blogsFromFirebase = data;`)
             this.spinServ.requestEnded();
           })
             .catch((error) => {
+              alert("An error occurred while getAllBlogPostsFromFirebase");
               this.spinServ.requestEnded();
             });
         })
