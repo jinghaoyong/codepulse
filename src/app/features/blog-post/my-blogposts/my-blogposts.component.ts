@@ -80,16 +80,16 @@ export class MyBlogpostsComponent implements OnInit, OnDestroy {
           console.log(`1   this.toastServ.showToast('success', '', true);`)
           this.toastServ.showToast('success', `Post deleted successfully!`, '', true);
           console.log(`2   this.toastServ.showToast('success', '', true);`)
-          this.blogPostServ.getAllBlogPostsFromFirebase().then((data) => {
-            console.log(`this.blogPostServ.getAllBlogPostsFromFirebase().then`)
-            this.blogsFromFirebase = data;
-            console.log(`   this.blogsFromFirebase = data;`)
-            this.spinServ.requestEnded();
-          })
-            .catch((error) => {
-              alert("An error occurred while getAllBlogPostsFromFirebase");
-              this.spinServ.requestEnded();
-            });
+          if (this.user?.uid) {
+            this.getBlogPostsSubscription = this.blogPostServ.getPostsByCreatorIdFromFirebase(this.user?.uid)
+              .subscribe({
+                next: (data: any) => {
+                  console.log("data", data)
+                  this.blogsFromFirebase = data;
+                  this.spinServ.requestEnded();
+                }
+              })
+          }
         })
         .catch((error) => {
           console.error("Error deleting post: ", error);
