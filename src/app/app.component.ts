@@ -12,9 +12,9 @@ import { AuthService } from './features/auth/services/auth.service';
 
 export class AppComponent {
   constructor(
-    private authServ : AuthService
-  ){
-    
+    private authServ: AuthService,
+  ) {
+
   }
   ngOnInit() {
     this.authServ.startSessionTimeout();
