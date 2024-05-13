@@ -35,7 +35,9 @@
     padding-top: 10px;
   }
 }
+
 .header__breadcrumb {
+
   // flex: 1 1 80px;
   nz-breadcrumb {
     @apply p-6 font-semibold text-2xl;
@@ -57,14 +59,21 @@
   height: 38px;
   border-radius: 4px;
 }
+
 strong.singpass {
   @apply text-red-error;
 }
 
 .ant-drawer-header {
-  background-color: #135726;
+  background-color: #ff6e42;
   padding: 15px;
+
   & .ant-drawer-title {
     color: #ffffff;
   }
+}
+
+.btn-primary {
+  background-color: #ff6e42;
+  border-color: #ff6e42;
 }
