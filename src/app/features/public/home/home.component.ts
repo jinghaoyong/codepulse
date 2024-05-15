@@ -16,13 +16,13 @@ import { User } from '../../auth/models/user.model';
 export class HomeComponent implements OnInit {
 
   blogs$?: Observable<BlogPost[]>;
+  top3blogsFromFirebase?: any
   blogsFromFirebase?: any;
   categories?: any;
+  activeCategory: string = '';  // Default active category
 
-  selectedCategoryId?: string;
-  selectedCategoryName?: string;
-  selectedCategoryDescription?: string;
-  selectedCategoryImage?: string;
+  displayedPosts: any[] = [];
+  postsToShow: number = 6; // Number of posts to show initially
 
   user?: User;
   constructor(
@@ -38,59 +38,73 @@ export class HomeComponent implements OnInit {
     this.user = this.authServ.getUser();
     // this.blogs$ = this.blogPostServ.getAllBlogPosts()
 
-    this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
-      console.log("data", data)
-      this.categories = data;
-    });
+    this.categoryServ.getAllCategoriesFromFirebase().subscribe({
+      next: (res) => {
+        this.categories = res;
 
-    this.blogPostServ.getAllBlogPostsFromFirebase().then((data) => {
-      this.blogsFromFirebase = data;
+        if (this.categories.length > 0) {
+          this.activeCategory = this.categories[0].id;
+          console.log("this.categories[0].id", this.categories[0].id)
+          this.blogPostServ.getPostsByCategoryIdFromFirebase(this.categories[0].id).subscribe({
+            next: (data: any) => {
+
+              console.log("    this.blogsFromFirebase = data;',", data)
+              this.blogsFromFirebase = data;
+              this.displayPosts(data);
+              this.spinServ.requestEnded();
+
+            }
+          })
+
+        }
+      }
+    })
+
+
+
+    console.log("this.blogsFromFirebase", this.blogsFromFirebase)
+
+    this.blogPostServ.getTop3BlogPostsFromFirebase().then((data: any) => {
+      console.log("this.blogPostServ.getTop3BlogPostsFromFirebase data > ", data)
+      this.top3blogsFromFirebase = data;
       this.spinServ.requestEnded();
     })
       .catch((error) => {
         this.spinServ.requestEnded();
       });
 
-    console.log("this.blogsFromFirebase", this.blogsFromFirebase)
+
+  }
+
+  displayPosts(blogsFromFirebase: any) {
+    this.displayedPosts = blogsFromFirebase.slice(0, this.postsToShow);
+  }
+
+  showMore() {
+    this.postsToShow += 6; // Increase the number of posts to show by 6
+    this.displayPosts(this.blogsFromFirebase);
   }
 
   uploadImage(event: any, id: any) {
     this.blogPostServ.uploadImageToFireStore(event, id)
   }
 
-  selectAll(): void {
-    this.selectedCategoryId = '';
-    this.selectedCategoryName = '';
-    this.selectedCategoryDescription = '';
-    this.selectedCategoryImage = '';
 
-    this.blogPostServ.getAllBlogPostsFromFirebase().then((data) => {
-      this.blogsFromFirebase = data;
-      this.spinServ.requestEnded();
-    })
-      .catch((error) => {
-        this.spinServ.requestEnded();
-      });
-  }
+  setActiveCategory(categoryId: string) {
+    console.log("selected categoryId", categoryId)
+    this.activeCategory = categoryId;
 
-  selectCategory(id: any) {
+    this.blogPostServ.getPostsByCategoryIdFromFirebase(categoryId).subscribe({
+      next: (data: any) => {
 
-    this.categoryServ.getCategoryByIdFromFirebase(id).subscribe((category: any) => {
-      category; // Assign the retrieved category to the component variable
-      console.log("category", category); // Use the category object retrieved from Firebase
-      this.selectedCategoryId = category?.id;
-      this.selectedCategoryName = category?.categoryName;
-      this.selectedCategoryDescription = category?.categoryDescription;
-      this.selectedCategoryImage = category?.categoryImage;
-      // Now you can access this.category.id and this.category.data to get the id and data
-      this.blogPostServ.getPostsByCategoryIdFromFirebase(id).then((data) => {
+        console.log("    this.blogsFromFirebase = data;',", data)
         this.blogsFromFirebase = data;
+        this.displayPosts(data);
         this.spinServ.requestEnded();
-      })
-        .catch((error) => {
-          this.spinServ.requestEnded();
-        });
-    });
+
+      }
+    })
+
   }
 
 }

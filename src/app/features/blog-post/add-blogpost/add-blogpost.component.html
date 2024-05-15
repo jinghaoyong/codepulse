@@ -43,8 +43,8 @@
                 <label for="categoryId" class="form-label">Categories</label>
                 <select class="form-select" formControlName="categoryId" name="categoryId" id="categoryId"
                     [class.is-invalid]="addBlogPostForm.get('categoryId')?.invalid && addBlogPostForm.get('categoryId')?.touched">
-                    <option *ngFor="let category of categories | async" [value]="category.payload.doc.id">
-                        {{category.payload.doc.data().categoryName}}</option>
+                    <option *ngFor="let category of categories | async" [value]="category.id">
+                        {{category.categoryName}}</option>
                 </select>
                 <div class="invalid-feedback"
                     *ngIf="addBlogPostForm.get('categoryId')?.invalid && addBlogPostForm.get('categoryId')?.touched">

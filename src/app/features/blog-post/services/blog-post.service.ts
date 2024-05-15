@@ -120,17 +120,17 @@ export class BlogPostService {
       });
   }
 
-  async getPostsByCategoryIdFromFirebase(categoryId: string): Promise<any> {
-    return this.firestore.collection('posts', ref => ref.where('categoryId', '==', categoryId)).snapshotChanges();
-    // .pipe(
-    //   switchMap((actions: any) => {
-    //     return actions.map((a: any) => {
-    //       const data = a.payload.doc.data();
-    //       const id = a.payload.doc.id;
-    //       return { id, ...data };
-    //     });
-    //   })
-    // );
+  getPostsByCategoryIdFromFirebase(categoryId: string): Observable<any[]> {
+    return this.firestore.collection('posts', ref => ref.where('categoryId', '==', categoryId)).snapshotChanges()
+      .pipe(
+        map((actions: any[]) => {
+          return actions.map((snapshot: any) => {
+            const data = snapshot.payload.doc.data();
+            const id = snapshot.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );
   }
 
   getPostsByCreatorIdFromFirebase(creatorId: string): Observable<any[]> {
@@ -145,6 +145,13 @@ export class BlogPostService {
     //     });
     //   })
     // );
+  }
+
+  async getTop3BlogPostsFromFirebase(): Promise<any> {
+    return this.firestore.collection('posts', ref => ref
+      .orderBy('views', 'desc')
+      .limit(3)
+    ).snapshotChanges();
   }
 
 }

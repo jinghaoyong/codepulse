@@ -26,9 +26,8 @@
                     <td>
 
                         <div class="d-flex m-1">
-                            <a class="btn btn-light"
-                                [routerLink]="['/admin/categories', category.payload.doc.id]">Edit</a>
-                            <a class="btn btn-danger m-1" (click)="openBanModal(category.payload.doc.id)">Delete</a>
+                            <a class="btn btn-light" [routerLink]="['/admin/categories', category.id]">Edit</a>
+                            <a class="btn btn-danger m-1" (click)="openBanModal(category.id)">Delete</a>
                         </div>
                     </td>
 

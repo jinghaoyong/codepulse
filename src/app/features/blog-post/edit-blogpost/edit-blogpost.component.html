@@ -74,11 +74,9 @@
                     <label for="categories" class="form-label">Categories</label>
                     <div *ngIf="categories">
                         <select [(ngModel)]="model.categoryId" class="form-select" name="categoryId" id="categoryId">
-                            <option *ngFor="let category of categories | async" [ngValue]="category.payload.doc.id"
-                                [selected]="category.payload.doc.id == model.categoryId ? model.categoryId : ''">
-                                <!-- model.categoryId{{model.categoryId}}
-                                category.payload.doc.id{{category.payload.doc.id}} -->
-                                {{ category.payload.doc.data().categoryName }}
+                            <option *ngFor="let category of categories | async" [ngValue]="category.id"
+                                [selected]="category.id == model.categoryId ? model.categoryId : ''">
+                                {{ category.categoryName }}
                             </option>
                         </select>
                     </div>

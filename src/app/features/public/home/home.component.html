@@ -3,6 +3,7 @@
     <div class="overlay">
         <h1 class="subtitle" style="color: white;">zenApp</h1>
         <h1 class="title" style="color: white;">We Sharing All Minds</h1>
+        <button type="submit" class="btn btn-primary rounded w-md mt-3">Create Your Own Article</button>
     </div>
     <div class="shape">
         <svg viewBox="0 0 1500 200">
@@ -17,7 +18,7 @@
 <!-- End Of Page Header -->
 
 <!-- Service Section -->
-<section id="service" class="section pt-0">
+<!-- <section id="service" class="section pt-0">
     <div class="container">
         <h6 class="section-title text-center">Our Service</h6>
         <h6 class="section-subtitle text-center mb-5 pb-3">Voluptates architecto provident deserunt.</h6>
@@ -64,48 +65,49 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- End OF Service Section -->
 
 <!-- About Section -->
-<section class="section" id="about">
+<section class="section" id="blog">
     <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
-                <h6 class="section-title mb-0">About Company</h6>
-                <h6 class="section-subtitle mb-4">Architecto provident deserunt</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate molestiae temporibus et tenetur
-                    unde
-                    quasi, cum nemo quo, molestias architecto alias voluptatibus corrupti corporis earum. Necessitatibus
-                    maxime
-                    modi ipsam, quod!</p>
-                <img src="assets/imgs/about.jpg" alt="" class="w-100 mt-3 shadow-sm">
-            </div>
-            <div class="col-md-6 pl-md-5">
-                <div class="row">
-                    <div class="col-6">
-                        <img src="assets/imgs/about-1.jpg" alt="" class="w-100 shadow-sm">
-                    </div>
-                    <div class="col-6">
-                        <img src="assets/imgs/about-2.jpg" alt="" class="w-100 shadow-sm">
-                    </div>
-                    <div class="col-12 mt-4">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo iusto quidem laborum atque,
-                            sapiente
-                            ipsa excepturi fuga cum sed in assumenda eos quasi harum culpa laboriosam nulla, incidunt
-                            quae.
-                            Voluptatum.</p>
-                        <p><b>Aliquid fuga sunt velit, temporibus molestias ab. Ipsa nesciunt totam, aliquid
-                                dignissimos.</b><br>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ut a dolorem, consectetur,
-                            eos
-                            suscipit consequatur magnam est dolore obcaecati adipisci expedita, vero, iste ducimus qui
-                            numquam animi
-                            facilis officia?</p>
+        <h6 class="section-title mb-0 text-center">Most View Articles</h6>
+        <h6 class="section-subtitle mb-5 text-center">Architecto provident deserunt eveniet libero</h6>
+
+        <div class="row">
+            <div class="col-md-4" *ngFor="let blogPost of top3blogsFromFirebase | async">
+                <div class="card border-0 mb-4">
+                    <img [src]="blogPost.payload.doc.data().imageUrl" alt="" class="card-img-top w-100" height="300px">
+                    <div class="card-body">
+                        <h6 class="card-title">{{blogPost.payload.doc.data().title}}</h6>
+                        <p>{{blogPost.payload.doc.data().desc}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="javascript:void(0)" class="small text-muted">Go To The Article</a>
+                            <span class="small text-muted">{{blogPost.payload.doc.data().views}} views</span>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- <div class="col-md-4">
+                <div class="card border-0 mb-4">
+                    <img src="assets/imgs/blog-2.jpg" alt="" class="card-img-top w-100">
+                    <div class="card-body">
+                        <h5 class="card-title"> Harum Quae Porro</h5>
+                        <p>Fuga quae ratione inventore Perferendis porro.</p>
+                        <a href="javascript:void(0)" class="small text-muted">Go To The Article</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 mb-4">
+                    <img src="assets/imgs/blog-3.jpg" alt="" class="card-img-top w-100">
+                    <div class="card-body">
+                        <h6 class="card-title">Qui optio neque alias</h6>
+                        <p>Fuga quae ratione inventore Perferendis porro.</p>
+                        <a href="javascript:void(0)" class="small text-muted">Go To The Article</a>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 </section>
@@ -114,36 +116,35 @@
 <!-- Portfolio Section -->
 <section id="portfolio" class="section portfolio-section">
     <div class="container">
-        <h6 class="section-title text-center">Our Portfolio</h6>
+        <h6 class="section-title text-center">Articles Categories</h6>
         <h6 class="section-subtitle mb-5 text-center">New stunning projects for our amazing clients</h6>
         <div class="filters">
-            <a href="#" data-filter=".new" class="active">
-                New
-            </a>
-            <a href="#" data-filter=".advertising">
-                Advertising
-            </a>
-            <a href="#" data-filter=".branding">
-                Branding
-            </a>
-            <a href="#" data-filter=".web">
-                Web
+            <a *ngFor="let category of categories" href="#"
+                (click)="setActiveCategory(category.id); $event.preventDefault()" [attr.data-filter]="category.filter"
+                [class.active]="category.id === activeCategory">
+                {{ category.categoryName }}
             </a>
         </div>
-        <div class="portfolio-container">
-            <div class="col-md-6 col-lg-4 web new">
-                <div class="portfolio-item">
-                    <img src="assets/imgs/web-1.jpg" class="img-fluid"
-                        alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
-                    <div class="content-holder">
-                        <a class="img-popup" href="assets/imgs/web-1.jpg"></a>
-                        <div class="text-holder">
-                            <h6 class="title">WEB</h6>
-                            <p class="subtitle">Expedita corporis doloremque velit in totam!</p>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let blogPost of displayedPosts">
+                <div class="card border-0 mb-4">
+                    <img [src]="blogPost.imageUrl" alt="" class="card-img-top w-100" height="300px">
+                    <div class="card-body">
+                        <h6 class="card-title">{{blogPost.title}}</h6>
+                        <p>{{blogPost.desc}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="javascript:void(0)" class="small text-muted">Go To The Article</a>
+                            <span class="small text-muted">{{blogPost.views}} views</span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="text-center" *ngIf="postsToShow < blogsFromFirebase?.length">
+            <button (click)="showMore()" class="btn btn-primary">Show More</button>
+        </div>
+
+        <!-- <div class="portfolio-container">
             <div class="col-md-6 col-lg-4 web new">
                 <div class="portfolio-item">
                     <img src="assets/imgs/web-2.jpg" class="img-fluid"
@@ -302,13 +303,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 <!-- End of portfolio section -->
 
 <!-- Blog Section -->
-<section class="section" id="blog">
+<!-- <section class="section" id="blog">
     <div class="container">
         <h6 class="section-title mb-0 text-center">Latest Articles</h6>
         <h6 class="section-subtitle mb-5 text-center">Architecto provident deserunt eveniet libero</h6>
@@ -346,7 +347,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- End of Blog Section -->
 
 <!-- Testmonial Section -->

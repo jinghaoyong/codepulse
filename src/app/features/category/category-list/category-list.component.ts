@@ -33,10 +33,13 @@ export class CategoryListComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
-      console.log("data", data)
-      this.categories = data;
-    });
+    this.categoryServ.getAllCategoriesFromFirebase().subscribe({
+      next: (res) => {
+        this.categories = res;
+
+        console.log("this.categories", this.categories)
+      }
+    })
     // .subscribe({
     //   next: (res) => {
     //     console.log("res here", res)

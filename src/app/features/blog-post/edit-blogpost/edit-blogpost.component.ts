@@ -52,10 +52,13 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
     this.spinServ.requestStarted();
     this.user = this.authServ.getUser();
     this.categories$ = this.categoryServ.getAllCategories();
-    this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
-      console.log("data", data)
-      this.categories = data;
-    });
+    this.categoryServ.getAllCategoriesFromFirebase().subscribe({
+      next: (res) => {
+        this.categories = res;
+
+        console.log("this.categories", this.categories)
+      }
+    })
     this.route.paramMap.subscribe({
       next: (params) => {
         this.id = params.get('id');

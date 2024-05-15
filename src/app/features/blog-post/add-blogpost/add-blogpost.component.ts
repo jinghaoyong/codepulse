@@ -68,10 +68,13 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.user = this.authServ.getUser();
-    this.categoryServ.getAllCategoriesFromFirebase().then((data: any) => {
-      console.log("data", data)
-      this.categories = data;
-    });
+    this.categoryServ.getAllCategoriesFromFirebase().subscribe({
+      next: (res) => {
+        this.categories = res;
+
+        console.log("this.categories", this.categories)
+      }
+    })
     // this.categories$ = this.categorySer.getAllCategories();
 
     // this.imageSelectorSubscription = this.imageServ.onSelectImage()

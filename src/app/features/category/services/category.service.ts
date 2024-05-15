@@ -44,8 +44,17 @@ export class CategoryService {
   }
 
   // *********** Firebase ***********
-  async getAllCategoriesFromFirebase(): Promise<any> {
-    return this.firestore.collection('categories').snapshotChanges();
+  getAllCategoriesFromFirebase(): Observable<any[]> {
+    return this.firestore.collection('categories').snapshotChanges()
+      .pipe(
+        map((actions: any[]) => {
+          return actions.map((snapshot: any) => {
+            const data = snapshot.payload.doc.data();
+            const id = snapshot.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );
   }
 
   getCategoryByIdFromFirebase(categoryId: string): Observable<any> {
