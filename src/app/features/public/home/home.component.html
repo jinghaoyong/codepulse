@@ -3,7 +3,8 @@
     <div class="overlay">
         <h1 class="subtitle" style="color: white;">zenApp</h1>
         <h1 class="title" style="color: white;">We Sharing All Minds</h1>
-        <button type="submit" class="btn btn-primary rounded w-md mt-3">Create Your Own Article</button>
+        <button [routerLink]="['blogposts/add']" type="submit" class="btn btn-primary rounded w-md mt-3">Create Your Own
+            Article</button>
     </div>
     <div class="shape">
         <svg viewBox="0 0 1500 200">
@@ -75,15 +76,21 @@
         <h6 class="section-subtitle mb-5 text-center">Architecto provident deserunt eveniet libero</h6>
 
         <div class="row">
-            <div class="col-md-4" *ngFor="let blogPost of top3blogsFromFirebase | async">
-                <div class="card border-0 mb-4">
-                    <img [src]="blogPost.payload.doc.data().imageUrl" alt="" class="card-img-top w-100" height="300px">
+            <div class="col-md-4" *ngFor="let blogPost of displayedMostViewsPosts">
+                <div class="card border-0 mb-4" style="cursor: pointer;" [routerLink]="['/blog',blogPost.id]">
+                    <img [src]="blogPost.imageUrl" alt="" class="card-img-top w-100" height="300px">
                     <div class="card-body">
-                        <h6 class="card-title">{{blogPost.payload.doc.data().title}}</h6>
-                        <p>{{blogPost.payload.doc.data().desc}}</p>
+                        <h6 class="card-title">{{blogPost.title}}</h6>
+                        <p>{{blogPost.desc}}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="javascript:void(0)" class="small text-muted">Go To The Article</a>
-                            <span class="small text-muted">{{blogPost.payload.doc.data().views}} views</span>
+                            <a href="javascript:void(0)" class="small text-muted"
+                                [routerLink]="['/blog',blogPost.id]">Go To The Article</a>
+                            <div>
+                                <i class="uil-eye text-muted "></i>
+                                <span class="small text-muted"> {{blogPost.views}} views</span>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -109,6 +116,9 @@
                 </div>
             </div> -->
         </div>
+        <div class="text-center" *ngIf="mostViewspostsToShow < top3blogsFromFirebase?.length">
+            <button (click)="showMoreMostViews()" class="btn btn-primary">Show More</button>
+        </div>
     </div>
 </section>
 <!-- End OF About Section -->
@@ -127,14 +137,20 @@
         </div>
         <div class="row">
             <div class="col-md-4" *ngFor="let blogPost of displayedPosts">
-                <div class="card border-0 mb-4">
+                <div class="card border-0 mb-4" style="cursor: pointer;" [routerLink]="['/blog',blogPost.id]">
                     <img [src]="blogPost.imageUrl" alt="" class="card-img-top w-100" height="300px">
                     <div class="card-body">
                         <h6 class="card-title">{{blogPost.title}}</h6>
                         <p>{{blogPost.desc}}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="javascript:void(0)" class="small text-muted">Go To The Article</a>
-                            <span class="small text-muted">{{blogPost.views}} views</span>
+                            <a href="javascript:void(0)" class="small text-muted"
+                                [routerLink]="['/blog',blogPost.id]">Go To The Article</a>
+                            <div>
+                                <i class="uil-eye text-muted "></i>
+                                <span class="small text-muted"> {{blogPost.views}} views</span>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>

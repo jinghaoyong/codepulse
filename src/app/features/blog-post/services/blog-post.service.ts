@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { UpdateBlogPost } from '../models/update-blog-post.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import * as firebase from 'firebase/compat';
 
 @Injectable({
   providedIn: 'root'
@@ -121,7 +122,10 @@ export class BlogPostService {
   }
 
   getPostsByCategoryIdFromFirebase(categoryId: string): Observable<any[]> {
-    return this.firestore.collection('posts', ref => ref.where('categoryId', '==', categoryId)).snapshotChanges()
+    return this.firestore.collection('posts', ref => ref
+      .where('isVisible', '==', true)
+      .where('categoryId', '==', categoryId)
+    ).snapshotChanges()
       .pipe(
         map((actions: any[]) => {
           return actions.map((snapshot: any) => {
@@ -147,11 +151,25 @@ export class BlogPostService {
     // );
   }
 
-  async getTop3BlogPostsFromFirebase(): Promise<any> {
+  getTop3BlogPostsFromFirebase(): Observable<any[]> {
     return this.firestore.collection('posts', ref => ref
       .orderBy('views', 'desc')
-      .limit(3)
-    ).snapshotChanges();
+    ).snapshotChanges()
+      .pipe(
+        map((actions: any[]) => {
+          return actions.map((snapshot: any) => {
+            const data = snapshot.payload.doc.data();
+            const id = snapshot.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );
   }
+
+  // incrementViewCount(postId: string): Promise<void> {
+  //   return this.firestore.collection('posts').doc(postId).update({
+  //     views: this.firestore.
+  //   });
+  // }
 
 }

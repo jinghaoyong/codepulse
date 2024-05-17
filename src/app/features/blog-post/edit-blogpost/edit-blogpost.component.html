@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-4 mt-5">
     <h1 class="mt-3">Edit BlogPost</h1>
 
     <ng-container *ngIf="model">
@@ -16,7 +16,13 @@
                 </div>
 
                 <div class="mt-3">
-                    <label for="content" class="form-label">Content</label>
+                    <div class="NgxEditor__Wrapper">
+                        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+                        </ngx-editor-menu>
+                        <ngx-editor [editor]="editor" [(ngModel)]="model.content" id="content" name="content">
+                        </ngx-editor>
+                    </div>
+                    <!-- <label for="content" class="form-label">Content</label>
 
                     <div class="d-flex flex-row">
                         <div class="col-6 p-2">
@@ -26,7 +32,7 @@
                         <div class="col-6 p-2" style="max-height: 350px; overflow-y: scroll;">
                             <markdown [data]="model.content"></markdown>
                         </div>
-                    </div>
+                    </div> -->
 
 
                 </div>
@@ -74,7 +80,7 @@
                     <label for="categories" class="form-label">Categories</label>
                     <div *ngIf="categories">
                         <select [(ngModel)]="model.categoryId" class="form-select" name="categoryId" id="categoryId">
-                            <option *ngFor="let category of categories | async" [ngValue]="category.id"
+                            <option *ngFor="let category of categories" [ngValue]="category.id"
                                 [selected]="category.id == model.categoryId ? model.categoryId : ''">
                                 {{ category.categoryName }}
                             </option>

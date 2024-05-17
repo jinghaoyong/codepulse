@@ -8,8 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentModule } from "../../shared/components/component.module";
 import { MarkdownModule } from 'ngx-markdown';
 import { MyBlogpostsComponent } from './my-blogposts/my-blogposts.component';
-
-
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
     declarations: [AddBlogpostComponent, BlogpostListComponent, EditBlogpostComponent, MyBlogpostsComponent],
@@ -19,7 +18,8 @@ import { MyBlogpostsComponent } from './my-blogposts/my-blogposts.component';
         FormsModule,
         ReactiveFormsModule,
         ComponentModule,
-        MarkdownModule
+        MarkdownModule,
+        NgxEditorModule
     ]
 })
 export class BlogPostModule { }

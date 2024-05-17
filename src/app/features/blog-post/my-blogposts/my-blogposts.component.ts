@@ -8,6 +8,7 @@ import { ModalService } from 'src/app/shared/services/modal/modal.service';
 import { ModalConfirmComponent } from 'src/app/shared/components/modal-confirm/modal-confirm.component';
 import { ImageModalComponent } from 'src/app/shared/components/image-modal/image-modal.component';
 import { ToastService } from 'src/app/shared/services/toast/toast.service';
+import { CategoryService } from '../../category/services/category.service';
 
 @Component({
   selector: 'app-my-blogposts',
@@ -18,14 +19,18 @@ export class MyBlogpostsComponent implements OnInit, OnDestroy {
   user?: User;
   getBlogPostsSubscription?: Subscription;
   blogsFromFirebase?: any;
+  categories?: any;
+
   subscription = new Subscription();
+
 
   constructor(
     private blogPostServ: BlogPostService,
     private authServ: AuthService,
     private spinServ: SpinnerService,
     private modalService: ModalService,
-    private toastServ: ToastService
+    private toastServ: ToastService,
+    private categoryServ: CategoryService
   ) {
     this.user = this.authServ.getUser();
   }
@@ -40,6 +45,23 @@ export class MyBlogpostsComponent implements OnInit, OnDestroy {
         })
     }
 
+    this.categoryServ.getAllCategoriesFromFirebase().subscribe({
+      next: (res) => {
+        this.spinServ.requestStarted();
+        this.categories = res;
+        this.spinServ.requestEnded();
+      }
+    })
+
+  }
+  getCategoryNameById(categoryId: string): string {
+    console.log("categoryId", categoryId);
+    const category = this.categories?.find((cat: any) => {
+      console.log("cat.id", cat.id);
+      return cat.id === categoryId;  // Added return statement here
+    });
+    console.log("category", category);
+    return category ? category?.categoryName : 'Unknown Category';  // Ensure 'name' is the correct property
   }
 
   openBanModal(id: string): void {

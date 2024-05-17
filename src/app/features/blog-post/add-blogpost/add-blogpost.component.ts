@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
 import { ToastService } from 'src/app/shared/services/toast/toast.service';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { markValidateAllField } from 'src/app/shared/services/utilities';
+import { Editor, Toolbar } from 'ngx-editor';
 
 @Component({
   selector: 'app-add-blogpost',
@@ -20,6 +21,18 @@ import { markValidateAllField } from 'src/app/shared/services/utilities';
   styleUrls: ['./add-blogpost.component.css']
 })
 export class AddBlogpostComponent implements OnInit, OnDestroy {
+  editor = new Editor();
+  toolbar: Toolbar = [
+    // default value
+    ["bold", "italic"],
+    ["underline", "strike"],
+    ["code", "blockquote"],
+    ["ordered_list", "bullet_list"],
+    [{ heading: ["h1", "h2", "h3", "h4", "h5", "h6"] }],
+
+    ["text_color", "background_color"],
+    ["align_left", "align_center", "align_right", "align_justify"],
+  ];
 
   model: any;
   categories$?: Observable<Category[]>;
@@ -152,7 +165,9 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
     }
   }
 
-
+  deleteImage() {
+    this.imageFileUrl = null;
+  }
   // openImageSelector(): void {
   //   this.isImageSelectorVisible = true;
   // }
@@ -166,6 +181,7 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.imageSelectorSubscription?.unsubscribe();
+    this.editor.destroy();
   }
 
 }

@@ -26,7 +26,18 @@ export class BlogDetailsComponent implements OnInit {
       .subscribe({
         next: (params) => {
           this.id = params.get('id');
-          console.log(`this.id = params.get('id');`,this.id)
+          console.log(`this.id = params.get('id');`, this.id)
+          if (this.id) {
+            // this.blogPostServ.incrementViewCount(this.id)
+            //   .then(() => {
+            //     console.log('View count incremented successfully');
+            //   })
+            //   .catch(error => {
+            //     console.error('Error incrementing view count: ', error);
+            //   });
+          }
+
+
         }
       })
 

@@ -11,6 +11,8 @@ import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service'
 import { User } from '../../auth/models/user.model';
 import { AuthService } from '../../auth/services/auth.service';
 import { Location } from '@angular/common';
+import { Editor, Toolbar } from 'ngx-editor';
+import { ToastService } from 'src/app/shared/services/toast/toast.service';
 
 @Component({
   selector: 'app-edit-blogpost',
@@ -18,6 +20,19 @@ import { Location } from '@angular/common';
   styleUrls: ['./edit-blogpost.component.css']
 })
 export class EditBlogpostComponent implements OnInit, OnDestroy {
+  editor = new Editor();
+  toolbar: Toolbar = [
+    // default value
+    ["bold", "italic"],
+    ["underline", "strike"],
+    ["code", "blockquote"],
+    ["ordered_list", "bullet_list"],
+    [{ heading: ["h1", "h2", "h3", "h4", "h5", "h6"] }],
+
+    ["text_color", "background_color"],
+    ["align_left", "align_center", "align_right", "align_justify"],
+  ];
+
   id: string | null = null;
   model?: BlogPost;
   categories$?: Observable<Category[]>;
@@ -44,7 +59,8 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
     private imageServ: ImageService,
     private spinServ: SpinnerService,
     private authServ: AuthService,
-    private location: Location
+    private location: Location,
+    private toastServ: ToastService
   ) {
 
   }
@@ -68,7 +84,6 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
             if ((postData && postData?.createdById == this.user?.uid) || this.user?.role === 'admin') {
               console.log("Post data:", postData);
               this.model = postData
-              // this.selectedCategories = postData.categories.map(x => x.id);
             } else {
               alert("Post not found!");
             }
@@ -97,7 +112,6 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   }
 
   onFormSubmit() {
-
     //convert this model to request object
     if (this.model && this.id) {
       console.log(`(this.model && this.id)`, this.model && this.id)
@@ -125,10 +139,11 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
               // this.router.navigateByUrl('/blogposts');
               this.location.back();
               this.spinServ.requestEnded();
-
+              this.toastServ.showToast('success', `Successfully edited !`, '', true);
             })
               .catch((error) => {
                 this.spinServ.requestEnded();
+                this.toastServ.showToast('error', `Fail to edit !`, '', true);
                 console.error("Error retrieving post: ", error);
               });
           }
@@ -136,6 +151,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
         });
       } else {
         // no image change
+        this.spinServ.requestStarted();
         if (this.model) {
           var updateBlogPost: UpdateBlogPost = {
             content: this.model.content,
@@ -151,13 +167,14 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
           };
           console.log("this.id", this.id)
           this.blogPostServ.updatePostToFirebase(this.id, updateBlogPost).then(() => {
-
+            this.toastServ.showToast('success', `Successfully edited !`, '', true);
             // this.router.navigateByUrl('/blogposts');
             this.location.back();
             this.spinServ.requestEnded();
 
           })
             .catch((error) => {
+              this.toastServ.showToast('error', `Fail to edit !`, '', true);
               this.spinServ.requestEnded();
               console.error("Error retrieving post: ", error);
             });

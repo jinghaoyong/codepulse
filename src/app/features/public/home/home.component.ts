@@ -22,7 +22,10 @@ export class HomeComponent implements OnInit {
   activeCategory: string = '';  // Default active category
 
   displayedPosts: any[] = [];
-  postsToShow: number = 6; // Number of posts to show initially
+  postsToShow: number = 6;
+
+  displayedMostViewsPosts: any[] = [];
+  mostViewspostsToShow: number = 3;
 
   user?: User;
   constructor(
@@ -36,10 +39,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.spinServ.requestStarted();
     this.user = this.authServ.getUser();
+    this.spinServ.requestEnded();
     // this.blogs$ = this.blogPostServ.getAllBlogPosts()
 
     this.categoryServ.getAllCategoriesFromFirebase().subscribe({
       next: (res) => {
+        this.spinServ.requestStarted();
         this.categories = res;
 
         if (this.categories.length > 0) {
@@ -51,12 +56,13 @@ export class HomeComponent implements OnInit {
               console.log("    this.blogsFromFirebase = data;',", data)
               this.blogsFromFirebase = data;
               this.displayPosts(data);
-              this.spinServ.requestEnded();
+
 
             }
           })
 
         }
+        this.spinServ.requestEnded();
       }
     })
 
@@ -64,14 +70,15 @@ export class HomeComponent implements OnInit {
 
     console.log("this.blogsFromFirebase", this.blogsFromFirebase)
 
-    this.blogPostServ.getTop3BlogPostsFromFirebase().then((data: any) => {
-      console.log("this.blogPostServ.getTop3BlogPostsFromFirebase data > ", data)
-      this.top3blogsFromFirebase = data;
-      this.spinServ.requestEnded();
-    })
-      .catch((error) => {
+    this.blogPostServ.getTop3BlogPostsFromFirebase().subscribe({
+      next: (data: any) => {
+        this.spinServ.requestStarted();
+        console.log("this.blogPostServ.getTop3BlogPostsFromFirebase data > ", data)
+        this.top3blogsFromFirebase = data;
+        this.displayMostViewsPosts(data);
         this.spinServ.requestEnded();
-      });
+      }
+    })
 
 
   }
@@ -87,6 +94,15 @@ export class HomeComponent implements OnInit {
 
   uploadImage(event: any, id: any) {
     this.blogPostServ.uploadImageToFireStore(event, id)
+  }
+
+  displayMostViewsPosts(blogsFromFirebase: any) {
+    this.displayedMostViewsPosts = blogsFromFirebase.slice(0, this.mostViewspostsToShow);
+  }
+
+  showMoreMostViews() {
+    this.mostViewspostsToShow += 3; // Increase the number of posts to show by 6
+    this.displayMostViewsPosts(this.top3blogsFromFirebase);
   }
 
 

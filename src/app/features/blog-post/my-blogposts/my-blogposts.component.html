@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container mt-4 pt-5">
     <h1 class="mt-3">My BlogPosts</h1>
     <div class="my-5">
         <div class="row align-items-stretch">
             <ng-container *ngIf="blogsFromFirebase">
-                <table class="table table-bordered mt-3 table-responsive">
+                <table class="table table-bordered table-responsive-sm">
                     <thead>
                         <tr>
                             <th>Title</th>
@@ -22,11 +22,9 @@
                                     [src]="blogPost.payload.doc.data().imageUrl" alt="Selected Image" width="50"
                                     height="50" style="cursor: pointer;"
                                     (click)="openImage(blogPost.payload.doc.data().imageUrl)"></td>
-                            <td></td>
+                            <td><span>{{blogPost.payload.doc.data().isVisible == true ? 'Yes' :'No'}}</span></td>
                             <td>
-                                <!-- <span *ngFor="let category of blogPost.categories">
-                                    <span class="badge bg-secondary me-2"> {{category.name}}</span>
-                                </span> -->
+                                <span>{{ getCategoryNameById(blogPost.payload.doc.data().categoryId) }}</span>
                             </td>
                             <td>
                                 <div class="d-flex m-1">
