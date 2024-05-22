@@ -1,0 +1,14 @@
+/* In your component's CSS file */
+.responsive-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .responsive-image {
+      width: 100%;
+      height: auto;
+      max-width: 300px; /* You can adjust this value as needed */
+    }
+  }
+  

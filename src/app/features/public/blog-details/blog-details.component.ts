@@ -7,6 +7,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 // import * as firebase from 'firebase/compat';
 import firebase from 'firebase/compat/app'
+import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service';
+import { ToastService } from 'src/app/shared/services/toast/toast.service';
 
 @Component({
   selector: 'app-blog-details',
@@ -21,12 +23,16 @@ export class BlogDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private blogPostServ: BlogPostService,
     private firestore: AngularFirestore,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private spinServ: SpinnerService,
+    private toastServ: ToastService
   ) {
 
   }
 
   ngOnInit(): void {
+    this.spinServ.requestStarted();
+
     console.log("got come in")
     this.route.paramMap
       .subscribe({
@@ -37,9 +43,11 @@ export class BlogDetailsComponent implements OnInit {
             this.blogPostServ.incrementViewCount(this.id)
               .then(() => {
                 console.log('View count incremented successfully');
+                this.spinServ.requestEnded();
               })
               .catch((error: any) => {
-                console.error('Error incrementing view count: ', error);
+                this.toastServ.showToast('error', `Error incrementing view count!`, '', true);
+                this.spinServ.requestEnded();
               });
           }
 
@@ -49,20 +57,24 @@ export class BlogDetailsComponent implements OnInit {
 
     //fetch blog details by url
     if (this.id) {
+      this.spinServ.requestStarted();
       this.blogPostServ.getPostByIdFromFirebase(this.id).then((postData) => {
         if (postData) {
           console.log("Post data:", postData);
-          this.blogPost = {
-            ...postData,
-            publishedDate: (postData.publishedDate as firebase.firestore.Timestamp).toDate()
-          };
+          this.blogPost = postData;
+          // this.blogPost = {
+          //   ...postData,
+          //   publishedDate: (postData.publishedDate as firebase.firestore.Timestamp).toDate()
+          // };
           // this.selectedCategories = postData.categories.map(x => x.id);
+          this.spinServ.requestEnded();
         } else {
-          console.log("Post not found!");
+          this.toastServ.showToast('error', `Post not found!`, '', true);
+          this.spinServ.requestEnded();
         }
       })
         .catch((error) => {
-          console.error("Error retrieving post: ", error);
+          this.toastServ.showToast('error', `Error retrieving post!`, '', true);
         });
     }
 

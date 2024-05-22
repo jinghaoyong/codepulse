@@ -85,6 +85,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
               console.log("Post data:", postData);
               this.model = postData
             } else {
+              this.toastServ.showToast('error', `You have no right to edit this post !`, '', true);
               alert("Post not found!");
             }
           })

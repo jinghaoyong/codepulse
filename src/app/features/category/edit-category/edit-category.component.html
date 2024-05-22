@@ -1,14 +1,14 @@
-<div class="container">
+<div class="container mt-5 pt-4">
     <h1 class="mt-3">Edit Category</h1>
 
     <ng-container *ngIf="category?.categoryName;else notFound">
         <form #form="ngForm" (ngSubmit)="onFormSubmit()">
             <div class="mt-2  pb-3">
-                <div class="mt-3">
+                <!-- <div class="mt-3">
                     <label class="form-label" for="categoryId">Category Id</label>
                     <input type="text" disabled id="categoryId" class="form-control" name="categoryId"
                         value="{{category}}">
-                </div>
+                </div> -->
 
                 <div class="mt-3">
                     <label for="categoryDescription">Category Description</label>
@@ -26,10 +26,10 @@
                 <div class="mt-3">
                     <label for="featuredImageUrl" class="form-label">Category Image Url
                         <input type="file" (change)="uploadImage($event)" accept="image/*">
-                        <img class="img-fluid" *ngIf="imageFileUrl" [src]="imageFileUrl" alt="Selected Image">
-                        <img class="img-fluid" *ngIf="category.categoryImage && !imageFileUrl"
-                            [src]="category.categoryImage" alt="Selected Image" [(ngModel)]="category.categoryImage">
                     </label>
+                    <img class="img-fluid" *ngIf="imageFileUrl" [src]="imageFileUrl" alt="Selected Image">
+                    <img class="img-fluid" *ngIf="category.categoryImage && !imageFileUrl"
+                        [src]="category.categoryImage" alt="Selected Image" [(ngModel)]="category.categoryImage">
                 </div>
 
 

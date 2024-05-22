@@ -40,11 +40,11 @@
                 <div class="mt-3">
                     <label for="featuredImageUrl" class="form-label">Featured Image Url
                         <input type="file" (change)="uploadImage($event)" accept="image/*">
-                        <img class="img-fluid" *ngIf="imageFileUrl" [src]="imageFileUrl" alt="Selected Image">
-                        <img class="img-fluid" *ngIf="model.imageUrl && !imageFileUrl" [src]="model.imageUrl"
-                            alt="Selected Image">
-                    </label>
 
+                    </label>
+                    <img class="img-fluid" *ngIf="imageFileUrl" [src]="imageFileUrl" alt="Selected Image">
+                    <img class="img-fluid" *ngIf="model.imageUrl && !imageFileUrl" [src]="model.imageUrl"
+                        alt="Selected Image">
                     <!-- <ng-container *ngIf="model.featuredImageUrl !== ''">
                         <div>
                             <img [src]="model.featuredImageUrl" height="100" class="my-2" alt="">

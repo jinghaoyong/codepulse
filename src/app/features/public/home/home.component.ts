@@ -7,6 +7,7 @@ import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service'
 import { CategoryService } from '../../category/services/category.service';
 import { AuthService } from '../../auth/services/auth.service';
 import { User } from '../../auth/models/user.model';
+import { ToastService } from 'src/app/shared/services/toast/toast.service';
 
 @Component({
   selector: 'app-home',
@@ -28,47 +29,29 @@ export class HomeComponent implements OnInit {
   mostViewspostsToShow: number = 3;
 
   user?: User;
+
+  //send email
+  emailData = {
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  };
+
   constructor(
     private blogPostServ: BlogPostService,
     private spinServ: SpinnerService,
     private categoryServ: CategoryService,
-    private authServ: AuthService
+    private authServ: AuthService,
+    private toastServ: ToastService
   ) {
 
   }
   ngOnInit(): void {
     this.spinServ.requestStarted();
     this.user = this.authServ.getUser();
-    this.spinServ.requestEnded();
+
     // this.blogs$ = this.blogPostServ.getAllBlogPosts()
-
-    this.categoryServ.getAllCategoriesFromFirebase().subscribe({
-      next: (res) => {
-        this.spinServ.requestStarted();
-        this.categories = res;
-
-        if (this.categories.length > 0) {
-          this.activeCategory = this.categories[0].id;
-          console.log("this.categories[0].id", this.categories[0].id)
-          this.blogPostServ.getPostsByCategoryIdFromFirebase(this.categories[0].id).subscribe({
-            next: (data: any) => {
-
-              console.log("    this.blogsFromFirebase = data;',", data)
-              this.blogsFromFirebase = data;
-              this.displayPosts(data);
-
-
-            }
-          })
-
-        }
-        this.spinServ.requestEnded();
-      }
-    })
-
-
-
-    console.log("this.blogsFromFirebase", this.blogsFromFirebase)
 
     this.blogPostServ.getTop3BlogPostsFromFirebase().subscribe({
       next: (data: any) => {
@@ -80,7 +63,32 @@ export class HomeComponent implements OnInit {
       }
     })
 
+    this.categoryServ.getAllCategoriesFromFirebase().subscribe({
+      next: (res) => {
 
+        this.categories = res;
+
+        if (this.categories.length > 0) {
+          this.activeCategory = this.categories[0].id;
+          console.log("this.categories[0].id", this.categories[0].id)
+          this.blogPostServ.getPostsByCategoryIdFromFirebase(this.categories[0].id).subscribe({
+            next: (data: any) => {
+
+              console.log("    this.blogsFromFirebase = data;',", data)
+              this.blogsFromFirebase = data;
+              this.displayPosts(data);
+              this.spinServ.requestEnded();
+
+            }
+          })
+
+        } else {
+          this.spinServ.requestEnded();
+          this.toastServ.showToast('error', `Error when loading categories!`, '', true);
+        }
+
+      }
+    })
   }
 
   displayPosts(blogsFromFirebase: any) {
@@ -121,6 +129,11 @@ export class HomeComponent implements OnInit {
       }
     })
 
+  }
+
+  sendEmail() {
+    const mailtoLink = `mailto:jinghao0958@gmail.com?subject=${encodeURIComponent(this.emailData.subject)}&body=${encodeURIComponent('Name: ' + this.emailData.name + '\n\nMessage: ' + this.emailData.message)}`;
+    window.location.href = mailtoLink;
   }
 
 }

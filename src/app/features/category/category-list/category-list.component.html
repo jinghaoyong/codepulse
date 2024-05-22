@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5 pt-3">
     <h1 class="mt-3">Category List</h1>
     <div class="d-flex justify-content-end mt-3">
         <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add category</a>
@@ -15,12 +15,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let category of categories  | async">
-                    <td>{{category.payload.doc.data().categoryName}}</td>
-                    <td>{{category.payload.doc.data().categoryDescription}}</td>
-                    <td><img class="img-fluid" *ngIf="category.payload.doc.data().categoryImage"
-                            [src]="category.payload.doc.data().categoryImage" alt="Selected Image" width="50"
-                            height="50" (click)="openImage(category.payload.doc.data().categoryImage)"
+                <tr *ngFor="let category of categories">
+                    <td>{{category.categoryName}}</td>
+                    <td>{{category.categoryDescription}}</td>
+                    <td><img class="img-fluid" *ngIf="category.categoryImage" [src]="category.categoryImage"
+                            alt="Selected Image" width="50" height="50" (click)="openImage(category.categoryImage)"
                             style="cursor: pointer;"></td>
 
                     <td>

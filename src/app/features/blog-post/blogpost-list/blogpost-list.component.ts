@@ -6,6 +6,7 @@ import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service'
 import { ImageModalComponent } from 'src/app/shared/components/image-modal/image-modal.component';
 import { ModalService } from 'src/app/shared/services/modal/modal.service';
 import { ToastService } from 'src/app/shared/services/toast/toast.service';
+import { CategoryService } from '../../category/services/category.service';
 
 @Component({
   selector: 'app-blogpost-list',
@@ -19,11 +20,14 @@ export class BlogpostListComponent implements OnInit, OnDestroy {
   blogsFromFirebase?: any
   deleteBlogPostSubscription?: Subscription;
   subscription = new Subscription();
+
+  categories?: any;
   constructor(
     private blogPostServ: BlogPostService,
     private spinServ: SpinnerService,
     private modalService: ModalService,
-    private toastServ: ToastService
+    private toastServ: ToastService,
+    private categoryServ: CategoryService
   ) {
 
   }
@@ -52,7 +56,7 @@ export class BlogpostListComponent implements OnInit, OnDestroy {
             });
         })
         .catch((error) => {
-          console.error("Error deleting post: ", error);
+          this.toastServ.showToast('error', `Error when deleting post!`, '', true);
           this.spinServ.requestEnded();
         });
     }
@@ -69,6 +73,14 @@ export class BlogpostListComponent implements OnInit, OnDestroy {
       .catch((error) => {
         this.spinServ.requestEnded();
       });
+
+    this.categoryServ.getAllCategoriesFromFirebase().subscribe({
+      next: (res) => {
+        this.spinServ.requestStarted();
+        this.categories = res;
+        this.spinServ.requestEnded();
+      }
+    })
   }
 
   openImage(content: any): void {
@@ -96,6 +108,16 @@ export class BlogpostListComponent implements OnInit, OnDestroy {
           },
         })
     )
+  }
+
+  getCategoryNameById(categoryId: string): string {
+    console.log("categoryId", categoryId);
+    const category = this.categories?.find((cat: any) => {
+      console.log("cat.id", cat.id);
+      return cat.id === categoryId;  // Added return statement here
+    });
+    console.log("category", category);
+    return category ? category?.categoryName : 'Unknown Category';  // Ensure 'name' is the correct property
   }
 
   ngOnDestroy(): void {

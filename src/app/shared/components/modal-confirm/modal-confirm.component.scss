@@ -1,40 +1,46 @@
-::ng-deep
-  .cdk-overlay-container
-  .modal-confirm
-  .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm {
+::ng-deep .cdk-overlay-container .modal-confirm .ant-modal.ant-modal-confirm.ant-modal-confirm-confirm {
   top: calc(100vh - 60vh);
   padding-bottom: 0;
   height: 286px;
+
   & .ant-modal-content {
     height: 100%;
     border-radius: 6px;
+
     & .ant-modal-body {
       height: 100%;
       padding: 24px;
+
       & .ant-modal-confirm-body-wrapper {
         display: flex;
         height: 100%;
         flex-direction: column;
         justify-content: space-between;
+
         & .ant-modal-confirm-body {
           & .anticon-question-circle {
             display: none;
           }
+
           display: flex;
           flex-grow: 1;
           flex-direction: column;
           justify-content: center;
+
           & .ant-modal-confirm-content {
             margin: 0;
+
             & app-modal-confirm {
               & p {
                 font-weight: 500;
                 margin-bottom: 16px;
+
                 &:first-of-type {
                   font-size: 24px;
                   line-height: 30px;
                   color: #15243c;
                 }
+
                 &:last-of-type {
                   font-size: 16px;
                   line-height: 24px;
@@ -44,11 +50,14 @@
             }
           }
         }
+
         & .ant-modal-confirm-btns {
           display: flex;
           justify-content: flex-end;
+
           & button {
             height: 48px;
+
             &:first-of-type {
               font-weight: 500;
               font-size: 16px;
@@ -57,13 +66,14 @@
               border: 0;
               box-shadow: none;
             }
+
             &:last-of-type {
               //width: 139px;
               font-weight: 500;
               font-size: 16px;
               line-height: 24px;
               color: #edf3fb;
-              background: #135726;
+              background: #ff6e42;
               border-radius: 6px;
             }
           }

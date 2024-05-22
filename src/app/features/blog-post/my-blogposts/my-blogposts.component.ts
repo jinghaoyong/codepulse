@@ -76,6 +76,7 @@ export class MyBlogpostsComponent implements OnInit, OnDestroy {
         },
         {
           nzClosable: false,
+          nzCancelText: 'Cancel',
           nzOkText: 'Yes, I Confirm',
           nzOnOk: () => {
             this.onDelete(id)

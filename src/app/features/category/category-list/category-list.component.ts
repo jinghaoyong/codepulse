@@ -66,6 +66,7 @@ export class CategoryListComponent implements OnInit {
         },
         {
           nzClosable: false,
+          nzCancelText: 'Cancel',
           nzOkText: 'Yes, I Confirm',
           nzOnOk: () => {
             this.onDelete(id)

@@ -3,7 +3,8 @@
     <div class="overlay">
         <h1 class="subtitle" style="color: white;">zenApp</h1>
         <h1 class="title" style="color: white;">We Sharing All Minds</h1>
-        <button [routerLink]="['blogposts/add']" type="submit" class="btn btn-primary rounded w-md mt-3">Create Your Own
+        <button [routerLink]="['blogposts/add']" type="submit" class="btn btn-primary rounded w-md mt-3">
+            <i class="uil uil-pen"></i> Create Your Own
             Article</button>
     </div>
     <div class="shape">
@@ -87,7 +88,7 @@
                                 [routerLink]="['/blog',blogPost.id]">Go To The Article</a>
                             <div>
                                 <i class="uil-eye text-muted "></i>
-                                <span class="small text-muted"> {{blogPost.views}} views</span>
+                                <span class="small text-muted"> {{blogPost?.views ?? '0'}} views</span>
 
                             </div>
 
@@ -369,22 +370,23 @@
 <!-- Testmonial Section -->
 <section class="section" id="testmonial">
     <div class="container">
-        <h6 class="section-title text-center mb-0">Testmonials</h6>
-        <h6 class="section-subtitle mb-5 text-center">What Our Clients Says</h6>
+        <h6 class="section-title text-center mb-0">How reading blogs can be helpful</h6>
+        <!-- <h6 class="section-subtitle mb-5 text-center">What People Says</h6> -->
         <div class="row">
             <div class="col-md-4 my-3 my-md-0">
                 <div class="card">
                     <div class="card-body">
                         <div class="media align-items-center mb-3">
-                            <img class="mr-3" src="assets/imgs/avatar.jpg" alt="">
+                            <img class="mr-3"
+                                src="https://qph.cf2.quoracdn.net/main-thumb-20157936-200-FdohtjRzbYzUjfRs6u6eHxRfAPEwtA8r.jpeg"
+                                alt="">
                             <div class="media-body">
-                                <h6 class="mt-1 mb-0">John Doe</h6>
-                                <small class="text-muted mb-0">Business Analyst</small>
+                                <h6 class="mt-1 mb-0">Dinesh Sharma</h6>
+                                <small class="text-muted mb-0">Tech blogger</small>
                             </div>
                         </div>
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim modi, id
-                            dicta
-                            reiciendis itaque.</p>
+                        <p class="mb-0">Every individual has their own experience and learning in life. And reading
+                            though other writing, you always gain their knowledge and experiences.</p>
                     </div>
                 </div>
             </div>
@@ -392,15 +394,17 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="media align-items-center mb-3">
-                            <img class="mr-3" src="assets/imgs/avatar-1.jpg" alt="">
+                            <img class="mr-3"
+                                src="https://qph.cf2.quoracdn.net/main-thumb-111082632-50-mszoyssligqlbgegcnhybzeceddeqzyp.jpeg"
+                                alt="">
                             <div class="media-body">
-                                <h6 class="mt-1 mb-0">Maria Garcia</h6>
-                                <small class="text-muted mb-0">Insurance Agent</small>
+                                <h6 class="mt-1 mb-0">Saurav Kumar
+                                </h6>
+                                <small class="text-muted mb-0">Founder and Ceo at Www.uthegaindia.com</small>
                             </div>
                         </div>
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim modi, id
-                            dicta
-                            reiciendis itaque.</p>
+                        <p class="mb-0">Blogs are the best way to learn things quickly and efficiently from the person
+                            who has experienced your problem or who has knowledge about your problem.</p>
                     </div>
                 </div>
             </div>
@@ -408,15 +412,16 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="media align-items-center mb-3">
-                            <img class="mr-3" src="assets/imgs/avatar-2.jpg" alt="">
+                            <img class="mr-3"
+                                src="https://qph.cf2.quoracdn.net/main-thumb-35896914-50-mrgvwivqcysavoxjuyuotcwlhprvnocv.jpeg"
+                                alt="">
                             <div class="media-body">
-                                <h6 class="mt-1 mb-0">Mason Miller</h6>
-                                <small class="text-muted mb-0">Residential Appraiser</small>
+                                <h6 class="mt-1 mb-0">Mahaveer Verma</h6>
+                                <small class="text-muted mb-0">Electronics engineer sharing his bits & bytes</small>
                             </div>
                         </div>
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim modi, id
-                            dicta
-                            reiciendis itaque.</p>
+                        <p class="mb-0">Most of the sites that you land on whenever googling anything, chances are, they
+                            are blogs started by people like you and me.</p>
                     </div>
                 </div>
             </div>
@@ -430,37 +435,36 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-5 my-3">
-                <h6 class="mb-0">Phone</h6>
-                <p class="mb-4">+ 123-456-7890</p>
+                <h6 class="mb-0 text-white">Phone</h6>
+                <p class="mb-4">+60149868706</p>
 
-                <h6 class="mb-0">Address</h6>
-                <p class="mb-4">12345 Fake ST NoWhere AB Country</p>
+                <h6 class="mb-0 text-white">Address</h6>
+                <p class="mb-4">Singapore | Malaysia</p>
 
-                <h6 class="mb-0">Email</h6>
-                <p class="mb-0">info@website.com</p>
+                <h6 class="mb-0 text-white">Email</h6>
+                <p class="mb-0">jinghao0958@gmail.com</p>
                 <p></p>
             </div>
             <div class="col-md-7">
-                <form>
-                    <h4 class="mb-4">Drop Us A Line</h4>
+                <form (ngSubmit)="sendEmail()">
+                    <h4 class="mb-4 text-white">Drop Us A Line</h4>
                     <div class="form-row">
                         <div class="form-group col-sm-4">
                             <input type="text" class="form-control text-white rounded-0 bg-transparent" name="name"
-                                placeholder="Name">
+                                [(ngModel)]="emailData.name" placeholder="Name" required>
                         </div>
                         <div class="form-group col-sm-4">
-                            <input type="email" class="form-control text-white rounded-0 bg-transparent" name="Email"
-                                placeholder="Email">
+                            <input type="email" class="form-control text-white rounded-0 bg-transparent" name="email"
+                                [(ngModel)]="emailData.email" placeholder="Email" required>
                         </div>
                         <div class="form-group col-sm-4">
                             <input type="text" class="form-control text-white rounded-0 bg-transparent" name="subject"
-                                placeholder="Subject">
+                                [(ngModel)]="emailData.subject" placeholder="Subject" required>
                         </div>
                         <div class="form-group col-12">
                             <textarea name="message" id="" cols="30" rows="4"
-                                class="form-control text-white rounded-0 bg-transparent"
-                                placeholder="Message"></textarea>
-
+                                class="form-control text-white rounded-0 bg-transparent" [(ngModel)]="emailData.message"
+                                placeholder="Message" required></textarea>
                         </div>
                         <div class="form-group col-12 mb-0">
                             <button type="submit" class="btn btn-primary rounded w-md mt-3">Send</button>
