@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { BlogPostService } from '../../blog-post/services/blog-post.service';
 import { Observable } from 'rxjs';
 import { BlogPost } from '../../blog-post/models/blog-post.model';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+// import * as firebase from 'firebase/compat';
+import firebase from 'firebase/compat/app'
 
 @Component({
   selector: 'app-blog-details',
@@ -15,7 +19,9 @@ export class BlogDetailsComponent implements OnInit {
   blogPost?: any;
   constructor(
     private route: ActivatedRoute,
-    private blogPostServ: BlogPostService
+    private blogPostServ: BlogPostService,
+    private firestore: AngularFirestore,
+    private storage: AngularFireStorage
   ) {
 
   }
@@ -28,13 +34,13 @@ export class BlogDetailsComponent implements OnInit {
           this.id = params.get('id');
           console.log(`this.id = params.get('id');`, this.id)
           if (this.id) {
-            // this.blogPostServ.incrementViewCount(this.id)
-            //   .then(() => {
-            //     console.log('View count incremented successfully');
-            //   })
-            //   .catch(error => {
-            //     console.error('Error incrementing view count: ', error);
-            //   });
+            this.blogPostServ.incrementViewCount(this.id)
+              .then(() => {
+                console.log('View count incremented successfully');
+              })
+              .catch((error: any) => {
+                console.error('Error incrementing view count: ', error);
+              });
           }
 
 
@@ -46,7 +52,10 @@ export class BlogDetailsComponent implements OnInit {
       this.blogPostServ.getPostByIdFromFirebase(this.id).then((postData) => {
         if (postData) {
           console.log("Post data:", postData);
-          this.blogPost = postData
+          this.blogPost = {
+            ...postData,
+            publishedDate: (postData.publishedDate as firebase.firestore.Timestamp).toDate()
+          };
           // this.selectedCategories = postData.categories.map(x => x.id);
         } else {
           console.log("Post not found!");

@@ -7,8 +7,8 @@ import { environment } from 'src/environments/environment';
 import { UpdateBlogPost } from '../models/update-blog-post.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import * as firebase from 'firebase/compat';
-
+// import * as firebase from 'firebase/compat';
+import firebase from 'firebase/compat/app'
 @Injectable({
   providedIn: 'root'
 })
@@ -166,10 +166,10 @@ export class BlogPostService {
       );
   }
 
-  // incrementViewCount(postId: string): Promise<void> {
-  //   return this.firestore.collection('posts').doc(postId).update({
-  //     views: this.firestore.
-  //   });
-  // }
+  incrementViewCount(postId: string): Promise<void> {
+    return this.firestore.collection('posts').doc(postId).update({
+      views: firebase.firestore.FieldValue.increment(1)
+    });
+  }
 
 }
