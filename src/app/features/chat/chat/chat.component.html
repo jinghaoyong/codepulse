@@ -1,0 +1,131 @@
+<div class="container-fluid mt-5 pt-5">
+    <div class="d-lg-flex mb-4">
+        <div class="chat-leftsidebar card">
+            <div class="p-3 px-4">
+                <div class="d-flex align-items-start">
+                    <div class="flex-shrink-0 me-3 align-self-center">
+                        <img src="assets/images/users/avatar-4.jpg" class="avatar-xs rounded-circle" alt="">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="font-size-16 mb-1"><a href="javascript:void(0);" class="text-reset">Marcus <i
+                                    class="mdi mdi-circle text-success align-middle font-size-10 ms-1"></i></a></h5>
+                        <p class="text-muted mb-0">Available</p>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <div class="dropdown chat-noti-dropdown" ngbDropdown>
+                            <button class="btn dropdown-toggle py-0" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+                                <i class="uil uil-ellipsis-h"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                                <a class="dropdown-item" href="javascript: void(0);">Profile</a>
+                                <a class="dropdown-item" href="javascript: void(0);">Edit</a>
+                                <a class="dropdown-item" href="javascript: void(0);">Add Contact</a>
+                                <a class="dropdown-item" href="javascript: void(0);">Setting</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3">
+                <div class="search-box chat-search-box">
+                    <div class="position-relative">
+                        <input type="text" class="form-control bg-light border-light rounded" placeholder="Search...">
+                        <i class="uil uil-search search-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pb-3">
+
+            </div>
+
+        </div>
+        <!-- end chat-leftsidebar -->
+
+        <div class="w-100 user-chat mt-4 mt-sm-0 ms-lg-1">
+            <div class="card">
+                <div class="p-3 px-lg-4 border-bottom">
+                    <div class="row">
+                        <div class="col-md-4 col-6">
+                            <h5 class="font-size-16 mb-1 text-truncate"><a href="javascript:void(0);"
+                                    class="text-reset">{{username}}</a></h5>
+                            <p class="text-muted text-truncate mb-0"><i
+                                    class="mdi mdi-circle text-success align-middle font-size-10 ms-1">
+                                    <!--    [ngClass]="{'text-warning': status === 'away'}"-->
+                                </i> {{status}}
+                            </p>
+                        </div>
+                        <div class="col-md-8 col-6">
+                            <ul class="list-inline user-chat-nav text-end mb-0">
+                                <li class="list-inline-item">
+                                    <div class="dropdown" ngbDropdown>
+                                        <button class="btn nav-btn dropdown-toggle" type="button" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+                                            <i class="uil uil-search"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-md" ngbDropdownMenu>
+                                            <form class="p-2">
+                                                <div>
+                                                    <input type="text" class="form-control rounded"
+                                                        placeholder="Search...">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+
+
+                                <li class="list-inline-item">
+                                    <div class="dropdown" ngbDropdown>
+                                        <button class="btn nav-btn dropdown-toggle" type="button" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+                                            <i class="uil uil-ellipsis-h"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                                            <a class="dropdown-item" href="javascript: void(0);">Profile</a>
+                                            <a class="dropdown-item" href="javascript: void(0);">Archive</a>
+                                            <a class="dropdown-item" href="javascript: void(0);">Muted</a>
+                                            <a class="dropdown-item" href="javascript: void(0);"
+                                                (click)="deleteAllMessage($event)">Delete</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-lg-2">
+                    <div class="chat-conversation p-3">
+
+                    </div>
+                </div>
+
+                <div class="p-3 chat-input-section">
+                    <form (ngSubmit)="messageSave()" formGroup="formData" class="row">
+                        <div class="col">
+                            <div class="position-relative">
+                                <input type="text" class="form-control chat-input rounded"
+                                    placeholder="Enter Message..." formControlName="message">
+                                <!--       [ngClass]="{'is-invalid': chatSubmit && form.message.errors}"-->
+                                <!-- <div *ngIf="chatSubmit && form.message.errors" class="invalid-feedback">
+                                    <span *ngIf="form.message.errors.required">This value is required.</span>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary chat-send w-md waves-effect waves-light"><span
+                                    class="d-none d-sm-inline-block me-2">Send</span> <i
+                                    class="mdi mdi-send float-end"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End d-lg-flex  -->
+
+</div> <!-- container-fluid -->

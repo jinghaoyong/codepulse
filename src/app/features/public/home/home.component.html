@@ -78,14 +78,17 @@
 
         <div class="row">
             <div class="col-md-4" *ngFor="let blogPost of displayedMostViewsPosts">
-                <div class="card border-0 mb-4" style="cursor: pointer;" [routerLink]="['/blog',blogPost.id]">
-                    <img [src]="blogPost.imageUrl" alt="" class="card-img-top w-100" height="300px">
+                <div class="card border-1 mb-4">
+                    <img [src]="blogPost.imageUrl" alt="" class="card-img-top w-100" height="300px"
+                        style="cursor: pointer;" [routerLink]="['/blog',blogPost.id]">
                     <div class="card-body">
                         <h6 class="card-title">{{blogPost.title}}</h6>
                         <p>{{blogPost.desc}}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="javascript:void(0)" class="small text-muted"
-                                [routerLink]="['/blog',blogPost.id]">Go To The Article</a>
+                            <button type="button" class="btn btn-light btn-sm"
+                                [routerLink]="['/chat',blogPost.createdById]">
+                                {{blogPost?.createdBy}} <i class="uil uil-envelope-alt me-2"></i>
+                            </button>
                             <div>
                                 <i class="uil-eye text-muted "></i>
                                 <span class="small text-muted"> {{blogPost?.views ?? '0'}} views</span>
@@ -138,14 +141,18 @@
         </div>
         <div class="row">
             <div class="col-md-4" *ngFor="let blogPost of displayedPosts">
-                <div class="card border-0 mb-4" style="cursor: pointer;" [routerLink]="['/blog',blogPost.id]">
-                    <img [src]="blogPost.imageUrl" alt="" class="card-img-top w-100" height="300px">
+                <div class="card border-1 mb-4">
+                    <img style="cursor: pointer;" [src]="blogPost.imageUrl" alt="" class="card-img-top w-100"
+                        height="300px" [routerLink]="['/blog',blogPost.id]">
                     <div class="card-body">
                         <h6 class="card-title">{{blogPost.title}}</h6>
                         <p>{{blogPost.desc}}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="javascript:void(0)" class="small text-muted"
-                                [routerLink]="['/blog',blogPost.id]">Go To The Article</a>
+
+                            <button type="button" class="btn btn-light btn-sm"
+                                [routerLink]="['/chat',blogPost.createdById]">
+                                {{blogPost?.createdBy}} <i class="uil uil-envelope-alt me-2"></i>
+                            </button>
                             <div>
                                 <i class="uil-eye text-muted "></i>
                                 <span class="small text-muted"> {{blogPost.views}} views</span>
