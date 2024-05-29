@@ -8,6 +8,7 @@ import { CategoryService } from '../../category/services/category.service';
 import { AuthService } from '../../auth/services/auth.service';
 import { User } from '../../auth/models/user.model';
 import { ToastService } from 'src/app/shared/services/toast/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -43,7 +44,8 @@ export class HomeComponent implements OnInit {
     private spinServ: SpinnerService,
     private categoryServ: CategoryService,
     private authServ: AuthService,
-    private toastServ: ToastService
+    private toastServ: ToastService,
+    private router: Router
   ) {
 
   }
@@ -128,6 +130,15 @@ export class HomeComponent implements OnInit {
 
       }
     })
+
+  }
+
+  chatThisPerson(targetId: string): void {
+    if (targetId !== this.user?.uid) {
+      if (targetId) this.router.navigate(['/chat', targetId]);
+    } else {
+      this.toastServ.showToast('error', `Cannot chat with self!`, '', true);
+    }
 
   }
 

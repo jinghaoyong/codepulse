@@ -7,10 +7,13 @@ export interface ChatUser {
     unread?: string;
 }
 
+export interface ChatRoom {
+    chatRoomId: string;
+
+}
+
 export interface ChatMessage {
-    align?: string;
-    name?: string;
+    senderId?: string;
     message: string;
-    time: string;
-    files?: any;
+    createdAt: string;
 }

@@ -2,6 +2,10 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ChatMessage, ChatUser } from '../models/chat.model';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { chatData, chatMessagesData } from '../models/data-chat';
+import { ChatService } from '../services/chat.service';
+import { ActivatedRoute } from '@angular/router';
+import { User } from '../../auth/models/user.model';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-chat',
@@ -24,15 +28,42 @@ export class ChatComponent implements OnInit, AfterViewInit {
   status: string = 'Online';
   usermessage?: string;
 
-  constructor(public formBuilder: UntypedFormBuilder) { }
+  targetUserId?: string;
+  chatroomId?: string;
 
-  ngOnInit() {
+  targetUser?: any;
 
+  constructor(
+    public formBuilder: UntypedFormBuilder,
+    private chatServ: ChatService,
+    private route: ActivatedRoute,
+    private authServ: AuthService
+  ) {
     this.formData = this.formBuilder.group({
       message: ['', [Validators.required]],
     });
+  }
 
-    this._fetchData();
+  ngOnInit() {
+
+    this.route.paramMap.subscribe({
+      next: async (params: any) => {
+        this.targetUserId = params.get('id');
+
+        if (this.targetUserId) {
+          this.authServ.getUserProfile(this.targetUserId).then((userProfile: any) => {
+            if (userProfile) {
+              this.targetUser = userProfile;
+            }
+          });
+          console.log("targetUserId", this.targetUserId)
+          this.chatroomId = await this.chatServ.createOrGetChatroom(this.targetUserId);
+          console.log("chatroomId", this.chatroomId)
+        }
+      }
+    })
+
+    // this.chatServ.getMessages();
   }
 
   ngAfterViewInit() {
@@ -47,11 +78,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
     return this.formData.controls;
   }
 
-  private _fetchData() {
-    this.chatData = chatData;
-    this.chatMessagesData = chatMessagesData;
-    this.onListScroll();
-  }
+  // private _fetchData() {
+  //   this.chatData = chatData;
+  //   this.chatMessagesData = chatMessagesData;
+  //   this.onListScroll();
+  // }
 
   onListScroll() {
     if (this.scrollRef !== undefined) {
@@ -62,20 +93,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
     }
   }
 
-  chatUsername(name: any, status: any) {
-    this.username = name;
-    this.status = status;
-    this.usermessage = 'Hello';
-    this.chatMessagesData = [];
-    const currentDate = new Date();
-
-    this.chatMessagesData.push({
-      name: this.username,
-      message: this.usermessage,
-      time: currentDate.getHours() + ':' + currentDate.getMinutes(),
-    });
-  }
-
   /**
    * Save the message in chat
    */
@@ -84,12 +101,12 @@ export class ChatComponent implements OnInit, AfterViewInit {
     const currentDate = new Date();
     if (this.formData.valid && message) {
       // Message Push in Chat
-      this.chatMessagesData?.push({
-        align: 'right',
-        name: 'Henry Wells',
-        message,
-        time: currentDate.getHours() + ':' + currentDate.getMinutes(),
-      });
+      // this.chatMessagesData?.push({
+      //   align: 'right',
+      //   name: 'Henry Wells',
+      //   message,
+      //   time: currentDate.getHours() + ':' + currentDate.getMinutes(),
+      // });
       setTimeout(() => {
         this.onListScroll();
       });

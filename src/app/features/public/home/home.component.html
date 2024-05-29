@@ -150,7 +150,7 @@
                         <div class="d-flex justify-content-between align-items-center">
 
                             <button type="button" class="btn btn-light btn-sm"
-                                [routerLink]="['/chat',blogPost.createdById]">
+                                (click)="chatThisPerson(blogPost.createdById)">
                                 {{blogPost?.createdBy}} <i class="uil uil-envelope-alt me-2"></i>
                             </button>
                             <div>

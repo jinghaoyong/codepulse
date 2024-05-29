@@ -1,10 +1,10 @@
 <div class="container-fluid mt-5 pt-5">
     <div class="d-lg-flex mb-4">
-        <div class="chat-leftsidebar card">
+        <!-- <div class="chat-leftsidebar card">
             <div class="p-3 px-4">
                 <div class="d-flex align-items-start">
                     <div class="flex-shrink-0 me-3 align-self-center">
-                        <img src="assets/images/users/avatar-4.jpg" class="avatar-xs rounded-circle" alt="">
+                        img
                     </div>
                     <div class="flex-grow-1">
                         <h5 class="font-size-16 mb-1"><a href="javascript:void(0);" class="text-reset">Marcus <i
@@ -41,7 +41,7 @@
 
             </div>
 
-        </div>
+        </div> -->
         <!-- end chat-leftsidebar -->
 
         <div class="w-100 user-chat mt-4 mt-sm-0 ms-lg-1">
@@ -50,14 +50,14 @@
                     <div class="row">
                         <div class="col-md-4 col-6">
                             <h5 class="font-size-16 mb-1 text-truncate"><a href="javascript:void(0);"
-                                    class="text-reset">{{username}}</a></h5>
-                            <p class="text-muted text-truncate mb-0"><i
-                                    class="mdi mdi-circle text-success align-middle font-size-10 ms-1">
-                                    <!--    [ngClass]="{'text-warning': status === 'away'}"-->
-                                </i> {{status}}
-                            </p>
+                                    class="text-reset">{{targetUser?.displayName}}</a></h5>
+                            <!-- <p class="text-muted text-truncate mb-0"><i
+                                    class="mdi mdi-circle text-success align-middle font-size-10 ms-1"> -->
+                            <!--    [ngClass]="{'text-warning': status === 'away'}"-->
+                            <!-- </i> {{status}}
+                            </p> -->
                         </div>
-                        <div class="col-md-8 col-6">
+                        <!-- <div class="col-md-8 col-6">
                             <ul class="list-inline user-chat-nav text-end mb-0">
                                 <li class="list-inline-item">
                                     <div class="dropdown" ngbDropdown>
@@ -94,7 +94,7 @@
                                 </li>
 
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
