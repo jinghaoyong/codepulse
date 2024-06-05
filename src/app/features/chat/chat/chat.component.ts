@@ -16,8 +16,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
   // bread crumb items
   @ViewChild('componentRef') scrollRef: any;
 
-  chatData?: ChatUser[];
-  chatMessagesData?: ChatMessage[];
+  // chatData?: ChatUser[];
+  // chatMessagesData?: ChatMessage[];
 
   formData!: UntypedFormGroup;
 
@@ -32,6 +32,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
   chatroomId?: string;
 
   targetUser?: any;
+
+  chatData?: any[];
+  chatMessagesData?: any[];
 
   constructor(
     public formBuilder: UntypedFormBuilder,
@@ -136,5 +139,23 @@ export class ChatComponent implements OnInit, AfterViewInit {
       item.remove();
     })
   }
+
+  chatUsername(): void {
+
+  }
+
+  // const firestore1: Firestore = this.firebaseServ.getApp1Firestore();
+  // const firestore2: Firestore = this.firebaseServ.getApp2Firestore();
+
+  // const querySnapshot1 = await getDocs(collection(firestore1, 'posts'));
+  // const querySnapshot2 = await getDocs(collection(firestore2, 'posts'));
+
+  // querySnapshot1.forEach(doc => {
+  //   console.log(`${doc.id} => ${doc.data()}`);
+  // });
+
+  // querySnapshot2.forEach(doc => {
+  //   console.log(`${doc.id} => ${doc.data()}`);
+  // });
 
 }

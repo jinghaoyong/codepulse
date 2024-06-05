@@ -56,6 +56,11 @@ export function createTranslateLoader(http: HttpClient) {
     NzModalModule,
     AntdDesignModule,
     BrowserAnimationsModule,
+    // Firebase1Module,
+    // AngularFireModule,
+    // AngularFirestoreModule,
+    // AngularFireModule.initializeApp(environment.firebaseProject_message, 'zenApp'),
+    // AngularFireModule.initializeApp(environment.firebaseProject_notification, 'zenShop'),
     ComponentModule,
     TranslateModule.forRoot({
       loader: {
@@ -67,7 +72,11 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     MarkdownModule.forRoot(),
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    // { provide: FIREBASE_OPTIONS, useValue: environment.firebaseProject_message },
+    // { provide: FIREBASE_OPTIONS, useValue: environment.firebaseProject_notification },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

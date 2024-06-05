@@ -85,10 +85,11 @@
                         <h6 class="card-title">{{blogPost.title}}</h6>
                         <p>{{blogPost.desc}}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <button type="button" class="btn btn-light btn-sm"
+                            <span><i class="uil uil-user"></i> {{blogPost?.createdBy}}</span>
+                            <!-- <button type="button" class="btn btn-light btn-sm"
                                 [routerLink]="['/chat',blogPost.createdById]">
                                 {{blogPost?.createdBy}} <i class="uil uil-envelope-alt me-2"></i>
-                            </button>
+                            </button> -->
                             <div>
                                 <i class="uil-eye text-muted "></i>
                                 <span class="small text-muted"> {{blogPost?.views ?? '0'}} views</span>
@@ -149,10 +150,11 @@
                         <p>{{blogPost.desc}}</p>
                         <div class="d-flex justify-content-between align-items-center">
 
-                            <button type="button" class="btn btn-light btn-sm"
+                            <span><i class="uil uil-user"></i> {{blogPost?.createdBy}}</span>
+                            <!-- <button type="button" class="btn btn-light btn-sm"
                                 (click)="chatThisPerson(blogPost.createdById)">
                                 {{blogPost?.createdBy}} <i class="uil uil-envelope-alt me-2"></i>
-                            </button>
+                            </button> -->
                             <div>
                                 <i class="uil-eye text-muted "></i>
                                 <span class="small text-muted"> {{blogPost.views}} views</span>
