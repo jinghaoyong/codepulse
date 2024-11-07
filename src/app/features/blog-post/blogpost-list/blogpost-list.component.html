@@ -15,6 +15,7 @@
                     <th>Image</th>
                     <th>Is Visible?</th>
                     <th>Categories</th>
+                    <th>Published Date</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -28,6 +29,9 @@
                     <td><span>{{blogPost.payload.doc.data().isVisible == true ? 'Yes' :'No'}}</span></td>
                     <td>
                         <span>{{ getCategoryNameById(blogPost.payload.doc.data().categoryId) }}</span>
+                    </td>
+                    <td>
+                        <span>{{ blogPost.payload.doc.data()?.publishedDate || '' }}</span>
                     </td>
                     <td>
                         <div class="d-flex m-1">

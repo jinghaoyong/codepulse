@@ -29,7 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 to push code & deploy  to firebase : 
 1> firebase login (for device which didn;t sign in yet)
-2> firebase init
+2> firebase init , `/dist`, options: outputpath : "/dist"
 3> ng build
 4> firebase deploy
 
