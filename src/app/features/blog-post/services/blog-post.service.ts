@@ -47,7 +47,7 @@ export class BlogPostService {
   //  *************     firebase    *************
   //  *************     firebase    *************
   async getAllBlogPostsFromFirebase(): Promise<any> {
-    return this.firestore.collection('posts').snapshotChanges();
+    return this.firestore.collection('posts', ref => ref.orderBy('publishedDate', 'desc')).snapshotChanges();
   }
 
   async uploadImageToFireStore(event: any, postId: string): Promise<string> {
@@ -138,8 +138,9 @@ export class BlogPostService {
   }
 
   getPostsByCreatorIdFromFirebase(creatorId: string): Observable<any[]> {
-    return this.firestore.collection('posts', ref => ref.where('createdById', '==', creatorId))
-      .snapshotChanges()
+    return this.firestore.collection('posts', ref => 
+      ref.where('createdById', '==', creatorId).orderBy('publishedDate', 'desc')
+    ).snapshotChanges();
     // .pipe(
     //   map((actions: any) => {
     //     return actions.map((action: any) => {
