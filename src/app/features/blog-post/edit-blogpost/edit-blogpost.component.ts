@@ -137,8 +137,8 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
             console.log("this.id", this.id)
             this.blogPostServ.updatePostToFirebase(this.id, updateBlogPost).then(() => {
 
-              // this.router.navigateByUrl('/blogposts');
-              this.location.back();
+              this.router.navigateByUrl('/blog/' + this.id);
+              // this.location.back();
               this.spinServ.requestEnded();
               this.toastServ.showToast('success', `Successfully edited !`, '', true);
             })
@@ -170,7 +170,8 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
           this.blogPostServ.updatePostToFirebase(this.id, updateBlogPost).then(() => {
             this.toastServ.showToast('success', `Successfully edited !`, '', true);
             // this.router.navigateByUrl('/blogposts');
-            this.location.back();
+            this.router.navigateByUrl('/blog/' + this.id);
+            // this.location.back();
             this.spinServ.requestEnded();
 
           })

@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let blogPost of blogsFromFirebase | async">
-                    <td>{{blogPost.payload.doc.data().title}}</td>
+                    <td style="cursor: pointer;" class="text-primary" [routerLink]="['/blog',blogPost.payload.doc.id]">{{blogPost.payload.doc.data().title}}</td>
                     <td>{{blogPost.payload.doc.data().desc}}</td>
                     <td><img class="img-fluid" *ngIf="blogPost.payload.doc.data().imageUrl"
                             [src]="blogPost.payload.doc.data().imageUrl" alt="Selected Image" width="50" height="50"

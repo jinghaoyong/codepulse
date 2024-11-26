@@ -136,7 +136,8 @@ export class AddBlogpostComponent implements OnInit, OnDestroy {
         this.toastServ.showToast('success', `Successfully Posted !`, '', true);
         this.spinServ.requestEnded();
         // this.router.navigate(['/']);
-        this.location.back();
+        // this.location.back();
+        this.router.navigateByUrl('/blogposts');
 
       }).catch((error) => {
         this.spinServ.requestEnded();
