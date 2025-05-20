@@ -29,9 +29,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 to push code & deploy  to firebase : 
 1> firebase login (for device which didn;t sign in yet)
-2> firebase init , `/dist`, options: outputpath : "/dist"
+2> firebase init , 
+3> check outputpath : "/dist" in angular.json, jsut pass the value like '/dist' for public destination 🔜 for this section, self careful see which folder to be deloy, i mean sometime the main files will be stored at dist/browser, so that you need to change the "hosting": { "public": .... accordingl
 3> ng build
 4> firebase deploy
+
 
 
 to push code to github : 

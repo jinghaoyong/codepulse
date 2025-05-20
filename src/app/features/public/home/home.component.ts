@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  currentYear: number = new Date().getFullYear();
   blogs$?: Observable<BlogPost[]>;
   top3blogsFromFirebase?: any
   blogsFromFirebase?: any;
